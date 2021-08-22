@@ -10,29 +10,44 @@ Format: `<type>(<scope>): <subject>`
 
 `<scope>` is optional
 
-## Example
+### Example
 
 ```
-feat(scope): add hat wobble
-^--^         ^------------^
-|            |
-|            +-> Summary in present tense.
+feat(user): add hat wobble
+^--^        ^------------^
+|           |
+|           +-> Summary in present tense.
 |
 +-------> Type: chore, docs, feat, fix, refactor, style, or test.
 ```
 
-More Examples:
+## Types (based on the the [Angular convention](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)):
 
-- `feat`: (new feature for the user, not a new feature for build script)
-- `fix`: (bug fix for the user, not a fix to a build script)
-- `docs`: (changes to the documentation)
-- `style`: (formatting, missing semi colons, etc; no production code change)
-- `refactor`: (refactoring production code, eg. renaming a variable)
-- `test`: (adding missing tests, refactoring tests; no production code change)
-- `chore`: (updating grunt tasks etc; no production code change)
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation only changes
+- `refactor`: A code change that neither fixes a bug nor adds a feature
+- `test`: Adding missing tests or correcting existing tests
+- `build`: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- `ci`: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- `perf`: A code change that improves performance
+- `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+
+## Types
+
+Will often be related to the module (or feature) you're working.
+
+### Example
+
+```
+feat(auth): add login page
+
+fix(user): fix pagination on users table
+```
 
 References:
 
 - https://www.conventionalcommits.org/
 - https://seesparkbox.com/foundry/semantic_commit_messages
 - http://karma-runner.github.io/1.0/dev/git-commit-msg.html
+- https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines
