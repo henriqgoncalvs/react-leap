@@ -1,46 +1,49 @@
-# Getting Started with Create React App
+# React Leap 🚀👨‍🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project that's one small step for developers, one giant _leap🚀_ for Loomi.
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+At Loomi we are always experimenting new technologies, libraries, architectures and so on. This carahtheristc
 
-### `yarn start`
+This is an attempt to present the way of creating React applications using the best tools in the ecosystem with a good project structure that scales very well. It is based on the experience of working with many different codebases, and this architecture turns out to be the most effective one.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The goal of this repo is to serve as a collection of good practices when developing React applications. It is supposed to showcase solving most of the real-world problems of an application in a practical way and help developers writing better applications.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Feel free to explore the codebase to get the most value out of the repo.
 
-### `yarn test`
+#### Disclaimer:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project is heavily based on [Bulletproof React](https://github.com/alan2207/bulletproof-react). It's an awesome project build by an awesome developer named [Alan Alickovic](https://github.com/alan2207), you should definetly take a look.
 
-### `yarn build`
+This is not supposed to be a template, boilerplate or a framework. It is an opinionated guide that shows how to do some things in a certain way. You are not forced to do everything exactly as it is shown here, decide what works best for you and your team and be consistent with your style.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Table Of Contents:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Gitflow](docs/gitflow.md)
+- [The Application Overview](docs/application-overview.md)
+- [Project Configuration](docs/project-configuration.md)
+- [Project Structure](docs/project-structure.md)
+- [Components And Styling](docs/components-and-styling.md)
+- [Forms](docs/forms.md)
+- [API Layer](docs/api-layer.md)
+- [State Management](docs/state-management.md)
+- [Auth](docs/auth.md)
+- [API Mock Server](docs/api-mock-server.md)
+- [Testing](docs/testing.md)
+- [Error Handling](docs/error-handling.md)
+- [Performance](docs/performance.md)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
 
-### `yarn eject`
+Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. You can do that by going through the following steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Clone this repo
+2. Create a branch: `git checkout -b your-feature`
+3. Make some changes
+4. Test your changes
+5. Push your branch and open a Pull Request
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[MIT](https://choosealicense.com/licenses/mit/)
