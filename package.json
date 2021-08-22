@@ -34,7 +34,9 @@
     "validate-and-build": "npm-run-all --parallel check-types check-format lint build",
     "validate": "npm-run-all --parallel check-types && lint-staged",
     "generate": "yarn plop --plopfile generators/plopfile.js",
-    "commit": "commit"
+    "commit": "commit",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "browserslist": {
     "production": [
@@ -52,6 +54,12 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@commitlint/prompt-cli": "^13.1.0",
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/node-logger": "^6.3.7",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.7",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
     "commitlint": "^13.1.0",
@@ -72,7 +80,8 @@
     "lint-staged": "^11.1.2",
     "npm-run-all": "^4.1.5",
     "plop": "^2.7.4",
-    "prettier": "^2.3.2"
+    "prettier": "^2.3.2",
+    "tsconfig-paths-webpack-plugin": "^3.5.1"
   },
   "eslintConfig": {
     "extends": [
@@ -80,6 +89,14 @@
       "react-app/jest"
     ],
     "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      },
       {
         "files": [
           "**/*.stories.*"
