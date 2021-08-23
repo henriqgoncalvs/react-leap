@@ -1,6 +1,6 @@
-import { css } from '@emotion/react';
+import { css, Global } from '@emotion/react';
 
-export const Fonts = css`
+const globalFonts = css`
   @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -11,3 +11,5 @@ export const Fonts = css`
       U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 `;
+
+export const Fonts = () => <Global styles={globalFonts} />;
