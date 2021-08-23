@@ -1,0 +1,16 @@
+{
+  "403": {
+    "title": "Não autorizado.",
+    "description": "Desculpe, você não pode acessar essa página.",
+    "actions": {
+      "goBack": "Voltar"
+    }
+  },
+  "404": {
+    "title": "Não encontrado.",
+    "description": "Essa página não existe ou a url foi trocada.",
+    "actions": {
+      "goBack": "Voltar"
+    }
+  }
+}
