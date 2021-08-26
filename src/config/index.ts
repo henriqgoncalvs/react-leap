@@ -9,3 +9,11 @@ export const ENVIROMENT = process.env.NODE_ENV;
 export const DEFAULT_PUBLIC_PAGE = '/entrar';
 
 export const DEFAULT_PRIVATE_PAGE = '/';
+
+export const ACCESS_TOKEN_ID = '_react-leap_access';
+export const REFRESH_TOKEN_ID = '_react-leap_refresh';
+export const USER_INFO_ID = '_react-leap_user-info';
+
+export const MSW_DB = '_react-leap_msw-db';
+
+export const JWT_SECRET = '123456' as string;
