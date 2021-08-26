@@ -8,6 +8,7 @@ import {
   AutoCompleteList,
   AutoCompleteItem,
 } from './Fields/AutoComplete';
+import { Checkbox } from './Fields/Checkbox';
 import { DayPicker } from './Fields/DayPicker';
 import { PinInput } from './Fields/PinInput';
 import { Radio, RadioGroup } from './Fields/Radio';
@@ -25,6 +26,7 @@ type FormValues = {
   gender: string;
   age: string;
   country: string;
+  children: string | string[];
 };
 
 const MyForm = () => {
@@ -36,6 +38,7 @@ const MyForm = () => {
         dob: '',
         code: '',
         gender: '',
+        children: '',
         age: '',
         country: '',
       }}
@@ -86,6 +89,22 @@ const MyForm = () => {
                 <Radio value="2">Feminino</Radio>
                 <Radio value="3">Prefiro não me identificar</Radio>
               </RadioGroup>
+            )}
+          />
+
+          <FieldWrapper
+            name="children"
+            label="Filhos"
+            helper="Quantidade de filhos"
+            as={(fieldProps) => (
+              <Checkbox
+                {...fieldProps}
+                options={[
+                  { value: '1', label: 'Um' },
+                  { value: '2', label: 'Dois' },
+                  { value: '3', label: 'Tres' },
+                ]}
+              />
             )}
           />
 

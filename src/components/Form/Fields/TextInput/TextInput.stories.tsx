@@ -29,13 +29,13 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story<TextInputStoryProps> = ({ helper, label, required, ...restProps }) => (
+const Template: Story<TextInputStoryProps> = ({ helper, label, required, type, ...restProps }) => (
   <FieldWrapper
     name="text"
     helper={helper}
     required={required}
     label={label}
-    as={(fieldProps) => <TextInput {...restProps} {...fieldProps} />}
+    as={(fieldProps) => <TextInput type={type} {...restProps} {...fieldProps} />}
   />
 );
 
@@ -45,4 +45,13 @@ Default.args = {
   helper: '',
   label: 'Label',
   required: false,
+};
+
+export const Password = Template.bind({});
+Password.args = {
+  placeholder: 'Digite algum texto',
+  helper: '',
+  label: 'Label',
+  required: false,
+  type: 'password',
 };

@@ -23,12 +23,12 @@ export const RadioGroup = ({
   const { name, value } = field;
   const { setFieldValue } = form;
 
-  const handleChange = (value: string) => {
+  const $setFieldValue = (value: string) => {
     setFieldValue(name, value);
   };
 
   return (
-    <CRadioGroup {...field} value={value} onChange={handleChange} {...restProps}>
+    <CRadioGroup {...field} value={value} onChange={$setFieldValue} {...restProps}>
       <Stack direction={inline ? 'row' : 'column'} {...stackProps}>
         {children}
       </Stack>
