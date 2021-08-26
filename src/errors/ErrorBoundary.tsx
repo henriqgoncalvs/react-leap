@@ -8,7 +8,6 @@ import {
   Collapse,
   useDisclosure,
 } from '@chakra-ui/react';
-import React from 'react';
 import { ErrorBoundary as ReactErrorBoundary, FallbackProps } from 'react-error-boundary';
 import { FiChevronUp, FiChevronDown } from 'react-icons/fi';
 
