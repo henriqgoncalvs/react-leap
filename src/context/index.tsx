@@ -1,5 +1,6 @@
 import { Flex } from '@chakra-ui/layout';
 import { ChakraProvider, Spinner, ColorModeScript } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 import * as React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { QueryClientProvider } from 'react-query';
@@ -12,6 +13,8 @@ import { ErrorBoundary } from '@/errors';
 import { AuthProvider } from '@/lib/authentication';
 import { queryClient } from '@/lib/react-query';
 import { theme, Fonts } from '@/styles';
+
+dayjs.locale('pt-br');
 
 type AppProviderProps = {
   children: React.ReactNode;

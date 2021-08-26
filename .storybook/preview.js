@@ -1,3 +1,5 @@
+import { AppProvider } from '@/context';
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
@@ -10,8 +12,8 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    // <AppProvider>
+    <AppProvider>
       <Story />
-    // </AppProvider>
+    </AppProvider>
   ),
 ];

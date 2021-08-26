@@ -2,9 +2,8 @@ import { Button } from '@chakra-ui/react';
 
 import schema from './schema';
 
-import { TextInput } from '@/components/common/Fields/TextInput';
 import { Link } from '@/components/common/Link';
-import { FieldWrapper, Form } from '@/components/Form';
+import { FieldWrapper, Form, TextInput } from '@/components/Form';
 import { useAuth } from '@/lib/authentication';
 
 type RegisterValues = {

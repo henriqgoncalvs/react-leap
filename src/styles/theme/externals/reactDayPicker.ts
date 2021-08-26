@@ -1,5 +1,5 @@
 import { mode, GlobalStyleProps } from '@chakra-ui/theme-tools';
-// import 'react-day-picker/lib/style.css';
+import 'react-day-picker/lib/style.css';
 
 export const reactDayPicker = (props: GlobalStyleProps) => ({
   '.DayPickerInput': {

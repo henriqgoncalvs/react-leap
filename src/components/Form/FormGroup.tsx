@@ -16,7 +16,7 @@ export interface FormGroupProps
   error?: string;
   helper?: React.ReactNode;
   id?: string;
-  isRequired?: boolean;
+  required?: boolean;
   label?: React.ReactNode;
   showError?: boolean;
 }
@@ -26,11 +26,11 @@ export const FormGroup = ({
   error,
   helper,
   id,
-  isRequired,
+  required,
   label,
   ...props
 }: FormGroupProps) => (
-  <FormControl isInvalid={!!error} isRequired={isRequired} {...props}>
+  <FormControl isInvalid={!!error} isRequired={required} {...props}>
     {!!label && <FormLabel htmlFor={id}>{label}</FormLabel>}
     {children}
     {!!helper && <FormHelperText>{helper}</FormHelperText>}

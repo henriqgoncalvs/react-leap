@@ -1,12 +1,14 @@
-import { Box, Icon as ChakraIcon, IconProps as ChakraIconProps, BoxProps } from '@chakra-ui/react';
-import React, { FC } from 'react';
+import { Box, chakra, BoxProps } from '@chakra-ui/react';
+import { FC } from 'react';
 
 export interface IconProps extends BoxProps {
   icon: FC;
-  iconProps?: ChakraIconProps;
+  boxProps?: BoxProps;
 }
 
-export const Icon: FC<IconProps> = ({ icon: IconEl, iconProps, ...rest }) => {
+export const Icon: FC<IconProps> = ({ icon: IconEl, boxProps, ...rest }) => {
+  const ChakraIcon = chakra(IconEl);
+
   return (
     <Box
       as="span"
@@ -18,7 +20,7 @@ export const Icon: FC<IconProps> = ({ icon: IconEl, iconProps, ...rest }) => {
         content: '"."',
         visibility: 'hidden',
       }}
-      {...rest}
+      {...boxProps}
     >
       <ChakraIcon
         as={IconEl}
@@ -28,7 +30,7 @@ export const Icon: FC<IconProps> = ({ icon: IconEl, iconProps, ...rest }) => {
         top="50%"
         left="50%"
         transform="translate(-50%, -50%)"
-        {...iconProps}
+        {...rest}
       />
     </Box>
   );

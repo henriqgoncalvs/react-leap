@@ -3,11 +3,11 @@ import { Field, FieldProps } from 'formik';
 
 import { FormGroup } from './FormGroup';
 
-type FormikFieldProps = {
+export type FieldWrapperProps = {
   name: string;
   as: (props: FieldProps) => React.ReactNode;
   boxProps?: BoxProps;
-  required: boolean;
+  required?: boolean;
   label?: string;
   helper?: string;
 };
@@ -19,7 +19,7 @@ export const FieldWrapper = ({
   label,
   helper,
   boxProps,
-}: FormikFieldProps) => {
+}: FieldWrapperProps) => {
   const formGroupProps = {
     required,
     label,

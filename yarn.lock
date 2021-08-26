@@ -1851,6 +1851,13 @@
   dependencies:
     "@chakra-ui/utils" "1.8.2"
 
+"@choc-ui/chakra-autocomplete@^4.5.5":
+  version "4.5.5"
+  resolved "https://registry.yarnpkg.com/@choc-ui/chakra-autocomplete/-/chakra-autocomplete-4.5.5.tgz#164690666c1bdfc921336961e0724514e3c66058"
+  integrity sha512-RCQAAKoV+ybmt8G/mh0fHxjHRh0tJfecZHLaUKuOPV0Eod+PTuB7Iw7Tte2rVsZkXApZA831rcuawduBs0VcbA==
+  dependencies:
+    react-nanny "^2.9.0"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -13958,6 +13965,13 @@ react-colorful@^5.1.2:
   resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.3.0.tgz#bcbae49c1affa9ab9a3c8063398c5948419296bd"
   integrity sha512-zWE5E88zmjPXFhv6mGnRZqKin9s5vip1O3IIGynY9EhZxN8MATUxZkT3e/9OwTEm4DjQBXc6PFWP6AetY+Px+A==
 
+react-day-picker@^7.4.10:
+  version "7.4.10"
+  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-7.4.10.tgz#d3928fa65c04379ad28c76de22aa85374a8361e1"
+  integrity sha512-/QkK75qLKdyLmv0kcVzhL7HoJPazoZXS8a6HixbVoK6vWey1Od1WRLcxfyEiUsRfccAlIlf6oKHShqY2SM82rA==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-dev-utils@^11.0.3:
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"
@@ -14126,6 +14140,11 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-nanny@^2.9.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/react-nanny/-/react-nanny-2.10.0.tgz#50543fbbdd4daebb925b9603dae219da7ab7cd93"
+  integrity sha512-MmrcxrVQT5cimC0ZUYy7ZRl+t9P5hWM7E2LkFWSrWPj0C5MOlXfz4Oeauu3hImIyvoa0SunpLh22Go0L71xAbA==
 
 react-popper-tooltip@^3.1.1:
   version "3.1.1"
