@@ -2,15 +2,15 @@ import { Flex } from '@chakra-ui/layout';
 import { ChakraProvider, Spinner, ColorModeScript } from '@chakra-ui/react';
 import * as React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-// import { ReactQueryDevtools } from 'react-query/devtools';
-// import { BrowserRouter as Router } from 'react-router-dom';
+import { QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-// import { Spinner } from '@/components/Elements';
 // import { Notifications } from '@/components/Notifications/Notifications';
-import { APP_NAME } from '@/config';
+import { APP_NAME, ENVIROMENT } from '@/config';
 import { ErrorBoundary } from '@/errors';
-// import { AuthProvider } from '@/lib/auth';
-// import { queryClient } from '@/lib/react-query';
+import { AuthProvider } from '@/lib/authentication';
+import { queryClient } from '@/lib/react-query';
 import { theme, Fonts } from '@/styles';
 
 type AppProviderProps = {
@@ -46,14 +46,13 @@ export const AppProvider = ({ children }: AppProviderProps) => {
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Fonts />
           <ErrorBoundary>
-            {/* <QueryClientProvider client={queryClient}> */}
-            {/* {ENVIROMENT === 'development' && <ReactQueryDevtools />} */}
-            {/* <Notifications /> */}
-            {/* <AuthProvider> */}
-            {/* <Router>{children}</Router> */}
-            {/* </AuthProvider> */}
-            {/* </QueryClientProvider> */}
-            {children}
+            <QueryClientProvider client={queryClient}>
+              {ENVIROMENT === 'development' && <ReactQueryDevtools />}
+              {/* <Notifications /> */}
+              <AuthProvider>
+                <Router>{children}</Router>
+              </AuthProvider>
+            </QueryClientProvider>
           </ErrorBoundary>
         </ChakraProvider>
       </HelmetProvider>
