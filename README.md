@@ -4,9 +4,9 @@ The project that's one small step for developers, one giant _leap🚀_ for Loomi
 
 ## Introduction
 
-At Loomi we are always experimenting new technologies, libraries, architectures and so on. This carahtheristc
+At Loomi we are always experimenting new technologies, libraries, architectures and so on. This makes our projects always a total surprise, and that's awesome, but when the number of projects starts to grow, it becomes more difficult to maintain.
 
-This is an attempt to present the way of creating React applications using the best tools in the ecosystem with a good project structure that scales very well. It is based on the experience of working with many different codebases, and this architecture turns out to be the most effective one.
+So we decided to create an example project that implements the best tools we use to build robust, scalable and production ready applications.
 
 The goal of this repo is to serve as a collection of good practices when developing React applications. It is supposed to showcase solving most of the real-world problems of an application in a practical way and help developers writing better applications.
 
@@ -39,7 +39,7 @@ This is not supposed to be a template, boilerplate or a framework. It is an opin
 Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. You can do that by going through the following steps:
 
 1. Clone this repo
-2. Create a branch: `git checkout -b your-feature`
+2. Create a branch: `git checkout -b your-module`
 3. Make some changes
 4. Test your changes
 5. Push your branch and open a Pull Request

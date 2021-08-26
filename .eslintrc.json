@@ -47,7 +47,7 @@
         "no-restricted-imports": [
           "error",
           {
-            "patterns": ["@/features/*/*"]
+            "patterns": ["@/modules/*/*"]
           }
         ],
         "linebreak-style": ["error", "unix"],
