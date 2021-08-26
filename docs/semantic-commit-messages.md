@@ -35,7 +35,7 @@ feat(user): add hat wobble
 
 ## Types
 
-Will often be related to the module (or feature) you're working.
+Will often be related to the module (or module) you're working.
 
 ### Example
 

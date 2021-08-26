@@ -29,7 +29,7 @@ Good Server Cache Libraries:
 - [apollo client]() - GraphQL
 - [urql]() - GraphQl
 
-[Server State Example Code](../src/features/discussions/hooks/useDiscussions.ts)
+[Server State Example Code](../src/modules/discussions/hooks/useDiscussions.ts)
 
 #### URL State
 

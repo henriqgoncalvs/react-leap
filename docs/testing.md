@@ -14,9 +14,9 @@ Write unit tests for shared components and functions that are used throughout th
 #### Integration Tests
 
 Integration testing is a method of testing multiple parts of the application at once.
-Most of your tests should be integration tests, as these will give you the most benefits and confidence for your invested effort. Unit tests on their own don't guarantee that your app will work even if those tests pass, because the relationship between the units might be wrong. You should test different features with integration tests.
+Most of your tests should be integration tests, as these will give you the most benefits and confidence for your invested effort. Unit tests on their own don't guarantee that your app will work even if those tests pass, because the relationship between the units might be wrong. You should test different modules with integration tests.
 
-[Integration Test Example Code](../src/features/auth/components/__tests__/RegisterForm.test.tsx)
+[Integration Test Example Code](../src/modules/auth/components/__tests__/RegisterForm.test.tsx)
 
 #### E2E
 
@@ -29,7 +29,7 @@ Usually these tests consist of running the entire application with the frontend 
 
 #### [Jest](https://jestjs.io/)
 
-Jest is a fully featured testing framework and is the de-facto standard when it comes to testing JavaScript applications. It is very flexible and configurable to test both frontends and backends.
+Jest is a fully moduled testing framework and is the de-facto standard when it comes to testing JavaScript applications. It is very flexible and configurable to test both frontends and backends.
 
 #### [Testing Library](https://testing-library.com/)
 

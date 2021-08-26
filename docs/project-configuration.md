@@ -20,6 +20,8 @@ This is a great tool for formatting code. It enforces a consistent code style ac
 
 ESLint is great for catching some of the bugs related to the language, but since JavaScript is a dynamic language ESLint cannot check data that run through the applications, which can lead to bugs, especially on larger projects. That is why TypeScript should be used. It is very useful during large refactors because it reports any issues we might have missed otherwise. When refactoring, change the type declaration first, then fix all the TypeScript errors throughout the project and you are done. One thing you should keep in mind is that TypeScript does not protect your application from failing during the runtime, it only does type checking during the build time, but it increases development confidence drastically anyways. Here is a [great resource on using TypeScript with React](https://react-typescript-cheatsheet.netlify.app/).
 
+Check this awesome [Styleguide](https://basarat.gitbook.io/typescript/styleguide) for some conventions.
+
 #### Husky
 
 Husky is a tool for executing git hooks. Use Husky to run your code checking before every commit, thus making sure the code is in the best shape possible at any point of time and no faulty commits get into the repo. It can run linting, code formatting and type checking, etc. before it allows pushing the code. You can check how to configure it [here](https://typicode.github.io/husky/#/?id=usage).

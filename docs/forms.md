@@ -23,4 +23,4 @@ You can also integrate validation libraries with the mentioned solutions to vali
 - [zod](https://github.com/colinhacks/zod)
 - [yup](https://github.com/jquense/yup)
 
-[Validation Example Code](../src/features/auth/components/RegisterForm.tsx)
+[Validation Example Code](../src/modules/auth/components/RegisterForm.tsx)
