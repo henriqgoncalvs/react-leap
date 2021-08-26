@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "dsznajder.es7-react-js-snippets",
     "mariusalchimavicius.json-to-ts",
-    "rangav.vscode-thunder-client"
+    "rangav.vscode-thunder-client",
+    "timitejumola.chakra-ui-doc"
   ]
 }
