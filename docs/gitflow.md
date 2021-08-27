@@ -6,17 +6,20 @@
 
 *Resource Branches* must be created from **develop**. They can be:
 
-- `build`
-- `chore`
-- `ci`
-- `docs`
-- `feat`
-- `fix`
-- `perf`
-- `refactor`
-- `revert`
-- `style`
-- `test`
+- `build`: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- `chore`: Changes that updates grunt tasks etc. No production code change. Nothing that an external user would see
+  - implementation (of an existing feature, which doesn't involve a fix),
+  - configuration (like the .gitignore or .gitattributes),
+  - private internal methods...
+- `ci`: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- `docs`: Documentation only changes
+- `feat`: A new feature
+- `fix`: A bug fix
+- `perf`: A code change that improves performance
+- `refactor`: A code change that neither fixes a bug nor adds a feature
+- `revert`: A code change that reverts any changes made in the past
+- `style`: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- `test`: Adding missing tests or correcting existing tests
 
 After the task is finished, the developer should upload a pull request to Develop and wait for Code Review for the amount of devs defined at the beginning of the project.
 
