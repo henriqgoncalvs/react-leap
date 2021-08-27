@@ -4,7 +4,7 @@
 
 For forms we use and recommend [Formik](https://formik.org). Formik is an extremely robust and feature-packed library, in addition to using great standards that allow developers to build their components on top of Formik's base components.
 
-Our [Form]('../src/components/Form') component is built on top of Formik and you can use it that way:
+Our [Form](../src/components/Form) component is built on top of Formik and you can use it that way:
 
 ```jsx
 type LoginValues = {
@@ -49,12 +49,12 @@ type LoginValues = {
 </Form>
 ```
 
-All types of inputs are available [here]('../src/components/Form/Fields'), feel free to modify, create new ones and invent as you like.
+All types of inputs are available [here](../src/components/Form/Fields), feel free to modify, create new ones and invent as you like.
 ## API Layer
 
 Our APIs are always made with REST and we think [Axios](https://github.com/axios/axios) is the best library to handle this type of request. We use a strategy to configure an Axios instance and use this instance throughout the application, which allows us to have greater control and manage to handle the flow of our requests.
 
-Our Axios configuration is available [here]('../src/lib/axios.ts'). In this instance we set things like:
+Our Axios configuration is available [here](../src/lib/axios.ts). In this instance we set things like:
 
 - base URL
 - Interceptors

@@ -2,7 +2,7 @@
 
 ## Library
 
-Throughout the projects, we were building our collection of components that you can find in [Components]('../src/components'), but there are also several libraries that spectacularly implement components that we use in everyday life.
+Throughout the projects, we were building our collection of components that you can find in [Components](../src/components), but there are also several libraries that spectacularly implement components that we use in everyday life.
 
 ### Chakra UI
 
@@ -25,7 +25,7 @@ If you need a realtime editor for Chakra Theme, you can enable the [HyperTheme E
 
 ## Global Styles
 
-Chakra allows us to do a global theme configuration extremely easily. You can find this setting [here]('../src/styles').
+Chakra allows us to do a global theme configuration extremely easily. You can find this setting [here](../src/styles).
 
 We use a separation based on Chakra documentation and [Design System](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969).
 
