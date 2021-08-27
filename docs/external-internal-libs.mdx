@@ -1,0 +1,88 @@
+# External and Internal Libs
+
+## Forms
+
+For forms we use and recommend [Formik](https://formik.org). Formik is an extremely robust and feature-packed library, in addition to using great standards that allow developers to build their components on top of Formik's base components.
+
+Our [Form]('../src/components/Form') component is built on top of Formik and you can use it that way:
+
+```jsx
+type LoginValues = {
+  email: string;
+  password: string;
+};
+
+<Form<LoginValues>
+  initialValues={{
+    email: '',
+    password: '',
+  }}
+  onSubmit={async (values) => {
+    await login(values);
+    onSuccess();
+  }}
+  validationSchema={schema}
+  withDebugger
+  >
+  {() => (
+    <>
+      <FieldWrapper
+        name="email"
+        helper="Insert a valid email"
+        required
+        label="Email"
+        as={(props) => <TextInput type="email" {...props} />}
+      />
+      <FieldWrapper
+        name="password"
+        helper="Insert a valid password"
+        required
+        label="Password"
+        as={(props) => <TextInput type="password" {...props} />}
+      />
+
+      <Button type="submit" className="w-full">
+        Log in
+      </Button>
+    </>
+  )}
+</Form>
+```
+
+All types of inputs are available [here]('../src/components/Form/Fields'), feel free to modify, create new ones and invent as you like.
+## API Layer
+
+Our APIs are always made with REST and we think [Axios](https://github.com/axios/axios) is the best library to handle this type of request. We use a strategy to configure an Axios instance and use this instance throughout the application, which allows us to have greater control and manage to handle the flow of our requests.
+
+Our Axios configuration is available [here]('../src/lib/axios.ts'). In this instance we set things like:
+
+- base URL
+- Interceptors
+- Access and Refresh token dealings
+
+## State Management
+
+Before talking about the libraries we use, it is important to emphasize the difference between State Management and Dependency Injenction.
+
+### Dependency Injection
+
+Usually, when your problem is to pass data from a parent component to more distant children in the tree, to not need to pass the props from child to child (Prop Drilling) the ideal is to use a Dependency Injection strategy. For this we can use:
+
+- [ContextAPI](https://reactjs.org/docs/context.html) + [hooks](https://reactjs.org/docs/hooks-intro.html)
+- [constate](https://github.com/diegohaz/constate)
+
+### Handle States throughout the application
+
+However, when your problem is actually storing states and having control over how it changes over time, then a state management library is recommended ~~please don't use Redux~~ like:
+
+- [zustand](https://github.com/pmndrs/zustand)
+
+Zustand is extremely minimalist and offers very simple strategies for state management.
+
+### Server Cache State
+
+This is the state that comes from the server which is being cached on the client for further usage. It is possible to store remote data inside a state management store such as redux, but there are better solutions for that.
+
+Good Server Cache Libraries:
+
+- [react-query](https://react-query.tanstack.com/) - REST + GraphQL

@@ -24,10 +24,9 @@ This is not supposed to be a template, boilerplate or a framework. It is an opin
 - [The Application Overview](docs/application-overview.md)
 - [Project Configuration](docs/project-configuration.md)
 - [Project Structure](docs/project-structure.md)
+- [Code Best Practices](docs/code-best-practices.md)
 - [Components And Styling](docs/components-and-styling.md)
-- [Forms](docs/forms.md)
-- [API Layer](docs/api-layer.md)
-- [State Management](docs/state-management.md)
+- [External and Internal Libs]('docs/external-internal-libs.md')
 - [Auth](docs/auth.md)
 - [API Mock Server](docs/api-mock-server.md)
 - [Testing](docs/testing.md)
@@ -39,7 +38,7 @@ This is not supposed to be a template, boilerplate or a framework. It is an opin
 Contributions are always welcome! If you have any ideas, suggestions, fixes, feel free to contribute. You can do that by going through the following steps:
 
 1. Clone this repo
-2. Create a branch: `git checkout -b your-module`
+2. Create a branch: `git checkout -b feat/your-module`
 3. Make some changes
 4. Test your changes
 5. Push your branch and open a Pull Request
