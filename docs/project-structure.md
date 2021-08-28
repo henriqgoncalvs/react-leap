@@ -41,7 +41,7 @@ src/modules/awesome-module
 |
 +-- hooks       # hooks scoped to the module, not used anywhere else
 |
-+-- routes      # route components for the given module
++-- pages      # pages components for the given module
 |
 +-- types       # typescript types for the given module
 |

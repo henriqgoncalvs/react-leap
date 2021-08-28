@@ -71,7 +71,7 @@ Usually, when your problem is to pass data from a parent component to more dista
 - [ContextAPI](https://reactjs.org/docs/context.html) + [hooks](https://reactjs.org/docs/hooks-intro.html)
 - [constate](https://github.com/diegohaz/constate)
 
-### Handle States throughout the application
+### Client Global State
 
 However, when your problem is actually storing states and having control over how it changes over time, then a state management library is recommended ~~please don't use Redux~~ like:
 
@@ -79,10 +79,14 @@ However, when your problem is actually storing states and having control over ho
 
 Zustand is extremely minimalist and offers very simple strategies for state management.
 
-### Server Cache State
+### Server Global State
 
-This is the state that comes from the server which is being cached on the client for further usage. It is possible to store remote data inside a state management store such as redux, but there are better solutions for that.
+When dealing with state that is coming from an external resource, usually an API, there is a bunch of problems that we need to take care of
 
-Good Server Cache Libraries:
+- fetching
+- caching
+- synchronizing
+- updating server state
+- and many more
 
-- [react-query](https://react-query.tanstack.com/) - REST + GraphQL
+There is a couple a libraries that can do this, but here we use [react-query](https://react-query.tanstack.com/).

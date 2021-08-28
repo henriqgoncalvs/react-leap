@@ -26,7 +26,7 @@ This is not supposed to be a template, boilerplate or a framework. It is an opin
 - [Project Structure](docs/project-structure.md)
 - [Code Best Practices](docs/code-best-practices.md)
 - [Components And Styling](docs/components-and-styling.md)
-- [External and Internal Libs](docs/external-internal-libs.md)
+- [External and Internal Libs](docs/external-internal-libs.mdx)
 - [Auth](docs/auth.md)
 - [API Mock Server](docs/api-mock-server.md)
 - [Testing](docs/testing.md)

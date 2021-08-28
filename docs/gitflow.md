@@ -23,6 +23,8 @@
 
 After the task is finished, the developer should upload a pull request to Develop and wait for Code Review for the amount of devs defined at the beginning of the project.
 
+[Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)
+
 ## **Develop**
 
 No developer will be able to upload code on this branch directly.
@@ -43,7 +45,9 @@ Attested (approved) by QA and by e2e, merge in main, create the tag with the ver
 
 References:
 
-[Fluxo de trabalho de Gitflow | Atlassian Git Tutorial](https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow) - _MUST READ_
+[Fluxo de trabalho de Gitflow | Atlassian Git Tutorial](https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow)
+
+_MUST READ_
 [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/)
 
 ## Commit Structure
