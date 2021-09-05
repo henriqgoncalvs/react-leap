@@ -1,14 +1,23 @@
-import { useNavigate } from 'react-router-dom';
+import { useToast } from '@chakra-ui/react';
 
 import { AuthLayout } from '../components/AuthLayout';
 import { RegisterForm } from '../components/RegisterForm';
 
 export const Register = () => {
-  const navigate = useNavigate();
+  const toast = useToast();
 
   return (
-    <AuthLayout title="Log in to your account">
-      <RegisterForm onSuccess={() => navigate('/auth/login')} />
+    <AuthLayout title="Create an account">
+      <RegisterForm
+        onSuccess={() =>
+          toast({
+            title: 'Account successfully createad.',
+            status: 'success',
+            duration: 5000,
+            isClosable: true,
+          })
+        }
+      />
     </AuthLayout>
   );
 };

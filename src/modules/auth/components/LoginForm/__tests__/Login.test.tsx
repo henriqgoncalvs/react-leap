@@ -8,8 +8,9 @@ test('should login new user and call onSuccess cb which should navigate the user
   const newUser = await createUser({ teamId: undefined });
 
   const onSuccess = jest.fn();
+  const onError = jest.fn();
 
-  await render(<LoginForm onSuccess={onSuccess} />, { user: null });
+  await render(<LoginForm onSuccess={onSuccess} onError={onError} />, { user: null });
 
   userEvent.type(screen.getByLabelText(/email/i), newUser.email);
   userEvent.type(screen.getByLabelText(/password/i, { selector: 'input' }), newUser.password);

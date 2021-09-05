@@ -1,3 +1,5 @@
+import { Roles } from '@/types';
+
 export type LoginCredentials = {
   email: string;
   password: string;
@@ -6,8 +8,19 @@ export type LoginCredentials = {
 export type RegisterCredentials = {
   email: string;
   password: string;
+  confirmPassword: string;
   firstName: string;
   lastName: string;
+  bio?: string;
+  role?: Roles;
+};
+
+export type UpdateCredentials = {
+  email?: string;
+  password?: string;
+  firstName?: string;
+  lastName?: string;
+  bio?: string;
 };
 
 export type AuthUser = {
@@ -15,11 +28,11 @@ export type AuthUser = {
   email: string;
   firstName: string;
   lastName: string;
-  bio: string;
-  role: 'ADMIN' | 'USER';
+  bio?: string;
+  role: Roles;
 };
 
 export type UserResponse = {
-  jwt: string;
+  accessToken: string;
   user: AuthUser;
 };
