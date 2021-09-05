@@ -14,11 +14,11 @@ const externalsStyles = (props: GlobalStyleProps) =>
 export const styles = {
   global: (props: GlobalStyleProps) => ({
     html: {
-      bg: mode('gray.100', 'gray.800')(props),
+      bg: mode('whiteAlpha.600', 'gray.800')(props),
       minH: '100vh',
     },
     body: {
-      bg: mode('gray.100', 'gray.800')(props),
+      bg: mode('whiteAlpha.600', 'gray.800')(props),
       h: '100%',
       WebkitTapHighlightColor: 'transparent',
     },

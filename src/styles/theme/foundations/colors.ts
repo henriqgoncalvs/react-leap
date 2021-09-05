@@ -4,6 +4,7 @@ import tailwindColors from './tailwindColors';
 
 export const colors = {
   ...theme.colors,
+  ...tailwindColors,
   brand: {
     50: '#ff7ae4',
     100: '#ff47da',

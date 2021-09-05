@@ -9,4 +9,7 @@ export default {
       },
     }),
   },
+  defaultProps: {
+    variant: 'outline',
+  },
 };
