@@ -8,7 +8,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 // import { Notifications } from '@/components/Notifications/Notifications';
-import { APP_NAME, ENVIROMENT } from '@/config';
+import { APP_NAME } from '@/config';
 import { ErrorBoundary } from '@/errors';
 import { AuthProvider } from '@/lib/authentication';
 import { queryClient } from '@/lib/react-query';
@@ -50,7 +50,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
           <Fonts />
           <ErrorBoundary>
             <QueryClientProvider client={queryClient}>
-              {ENVIROMENT === 'development' && <ReactQueryDevtools />}
+              <ReactQueryDevtools position="bottom-left" />
               {/* <Notifications /> */}
               <AuthProvider>
                 <Router>{children}</Router>

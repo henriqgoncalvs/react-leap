@@ -1,4 +1,4 @@
-import { AppProvider } from '@/context';
+import { AppProvider } from '@/context/AppProvider';
 import { AppRoutes } from '@/routes';
 
 function App() {
