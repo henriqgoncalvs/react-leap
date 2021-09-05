@@ -1,6 +1,8 @@
 import axiosInstance, { AxiosError } from 'axios';
 
-import { API_URL } from '@/config';
+import history from './history';
+
+import { API_URL, MOCK_API_URL } from '@/config';
 import { cookies, storage } from '@/utils';
 
 const config = {
@@ -14,7 +16,9 @@ const unathenticatedInstance = axiosInstance.create(config);
 const authenticatedInstance = axiosInstance.create(config);
 
 export default {
-  unauthorized() {
+  unauthorized({ mock = false }: { mock?: boolean }) {
+    if (mock) unathenticatedInstance.defaults.baseURL = MOCK_API_URL;
+
     unathenticatedInstance.interceptors.response.use(
       (response) => response,
       (error: AxiosError) => Promise.reject(error),
@@ -22,8 +26,9 @@ export default {
 
     return unathenticatedInstance;
   },
-  authorized() {
+  authorized({ mock = false }: { mock?: boolean }) {
     authenticatedInstance.defaults.headers.common.Authorization = `Bearer ${cookies.getAccess()}`;
+    if (mock) authenticatedInstance.defaults.baseURL = MOCK_API_URL;
 
     const interceptor = authenticatedInstance.interceptors.response.use(
       (response) => response,
@@ -31,6 +36,10 @@ export default {
         // Reject promise if usual error
         if (error.response) {
           if (error.response.status !== 401) {
+            cookies.clearAccess();
+            cookies.clearRefresh();
+            storage.clearUser();
+            history.push('/');
             return Promise.reject(error);
           }
 
@@ -58,6 +67,7 @@ export default {
               cookies.clearRefresh();
               storage.clearUser();
               // TODO redirect to /entrar
+              history.push('/');
               return Promise.reject(error);
             });
         }
