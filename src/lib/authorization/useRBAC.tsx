@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 
-import { RoleTypes } from './permissions/roles';
-
 import { useAuth } from '@/lib/authentication';
+import { Roles } from '@/types';
 
 export const useRBAC = () => {
   const { user } = useAuth();
@@ -12,7 +11,7 @@ export const useRBAC = () => {
   }
 
   const checkAllowedRole = useCallback(
-    ({ allowedRoles }: { allowedRoles: RoleTypes[] }) => {
+    ({ allowedRoles }: { allowedRoles: Roles[] }) => {
       if (allowedRoles && allowedRoles.length > 0) {
         return allowedRoles?.includes(user.role);
       }

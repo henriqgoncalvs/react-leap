@@ -1,14 +1,15 @@
 import { Arg1 } from 'tsargs';
 
 import { PoliciesTypes, POLICIES } from './permissions/policies';
-import { RoleTypes } from './permissions/roles';
+
+import { Roles } from '@/types';
 
 export type AuthorizationProps = {
   forbiddenFallback?: React.ReactNode;
   children: React.ReactNode;
 } & (
   | {
-      allowedRoles: RoleTypes[];
+      allowedRoles: Roles[];
       policies?: never;
     }
   | {
