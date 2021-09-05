@@ -87,7 +87,7 @@ export const Landing = () => {
             <LC.Horizontal mt={20} spacing={20} center>
               <Button
                 as={Link}
-                to="/auth/login"
+                to="/login"
                 variant="solid"
                 colorScheme="brand"
                 display="inline-flex"
