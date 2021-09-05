@@ -1,38 +1,43 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { Box, Button, Heading } from '@chakra-ui/react';
+import * as React from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import textura from '@/assets/textura.png';
+import { MotionBox } from '@/components/common/MotionBox';
+import { Head } from '@/components/Head';
 
 type PageProps = {
-  withBackButton?: boolean;
   children: React.ReactNode;
+  title?: string;
+  withBackButton?: boolean;
 };
 
-export const Page = ({ withBackButton = false, children }: PageProps) => {
+export const Page = ({ children, withBackButton = false, title }: PageProps) => {
+  const navigate = useNavigate();
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.5,
+      },
+    },
+  };
+
   return (
-    <Flex
-      maxW="100vw"
-      minH="100vh"
-      justifyContent="center"
-      bgImg={textura}
-      bgPos="right"
-      bgAttachment="fixed"
-      bgSize="cover"
-      bgRepeat="no-repeat"
-      position="relative"
-      _before={{
-        content: '""',
-        w: '100%',
-        h: '100%',
-        pos: 'fixed',
-        right: '0',
-        top: '0',
-        bgGradient: 'linear(to-l, #BC00FF29, #BC00FF00)',
-        bgAttachment: 'fixed',
-        zIndex: '-1',
-      }}
-    >
+    <MotionBox variants={container} initial="hidden" animate="show">
+      <Head title={title} />
+      <Box py={6} px={5} minH="100vh" w="100%">
+        {title && (
+          <Box maxW="xl" pb={5}>
+            <Heading as="h1">{title}</Heading>
+          </Box>
+        )}
+        <Box maxW="xl" h="100%">
+          {children}
+        </Box>
+      </Box>
       {withBackButton && (
         <Button
           position="absolute"
@@ -41,13 +46,11 @@ export const Page = ({ withBackButton = false, children }: PageProps) => {
           zIndex="1000"
           leftIcon={<IoIosArrowBack />}
           variant="primaryLighter"
-          as={Link}
-          to="/"
+          onClick={() => navigate(-1)}
         >
           Voltar
         </Button>
       )}
-      {children}
-    </Flex>
+    </MotionBox>
   );
 };
