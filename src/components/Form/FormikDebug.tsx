@@ -1,5 +1,6 @@
-import { Box, IconButton, Portal, Slide } from '@chakra-ui/react';
+import { Box, IconButton, Portal, Slide, useOutsideClick } from '@chakra-ui/react';
 import { Field } from 'formik';
+import { useRef } from 'react';
 import { RiCloseCircleLine } from 'react-icons/ri';
 
 export const isDevelopmentMode = () =>
@@ -10,15 +11,29 @@ type FormikDebugProps = {
   onToggle: () => void;
 };
 
-export const FormikDebug = ({ isOpen, onToggle }: FormikDebugProps) =>
-  isDevelopmentMode() ? (
+export const FormikDebug = ({ isOpen, onToggle }: FormikDebugProps) => {
+  const debuggerRef = useRef(null);
+
+  useOutsideClick({
+    ref: debuggerRef,
+    handler: () => {
+      if (isOpen) onToggle();
+    },
+  });
+
+  return isDevelopmentMode() ? (
     <Portal>
-      <Slide direction="bottom" in={isOpen} style={{ maxWidth: 'fit-content', zIndex: 10 }}>
+      <Slide
+        ref={debuggerRef}
+        direction="bottom"
+        in={isOpen}
+        style={{ maxWidth: 'fit-content', zIndex: 10 }}
+      >
         <Box
           p="40px"
           color="white"
           mt="4"
-          bg="teal.500"
+          bg="brand.500"
           rounded="md"
           shadow="md"
           h="100vh"
@@ -38,5 +53,5 @@ export const FormikDebug = ({ isOpen, onToggle }: FormikDebugProps) =>
       </Slide>
     </Portal>
   ) : null;
-
+};
 export default FormikDebug;

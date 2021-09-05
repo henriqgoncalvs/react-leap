@@ -22,7 +22,15 @@ export const Form = <TFormValues extends Record<string, unknown> = Record<string
           <FormikForm style={{ width: '100%' }}>{children(props)}</FormikForm>
           {withDebugger && (
             <>
-              <Button ml="auto" d="block" onClick={onDebuggerToggle}>
+              <Button
+                ml="auto"
+                d="block"
+                onClick={onDebuggerToggle}
+                w="100%"
+                mx="auto"
+                mt={5}
+                variant="@secondary"
+              >
                 {isDebuggerOpen ? 'Fechar debugger' : 'Abrir debugger'}
               </Button>
               <FormikDebug isOpen={isDebuggerOpen} onToggle={onDebuggerToggle} />

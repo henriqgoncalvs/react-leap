@@ -5,6 +5,8 @@ import {
   FormHelperText,
   SlideFade,
   FormControlProps,
+  Text,
+  Box,
 } from '@chakra-ui/react';
 import { FiAlertCircle } from 'react-icons/fi';
 
@@ -38,8 +40,10 @@ export const FormGroup = ({
     {error && (
       <FormErrorMessage>
         <SlideFade in offsetY={-6}>
-          <Icon icon={FiAlertCircle} me="2" />
-          {error}
+          <Box d="flex">
+            <Icon icon={FiAlertCircle} />
+            <Text ml={2}>{error}</Text>
+          </Box>
         </SlideFade>
       </FormErrorMessage>
     )}
