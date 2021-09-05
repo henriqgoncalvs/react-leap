@@ -1,6 +1,8 @@
 import { Spinner } from '@chakra-ui/react';
 import { initReactQueryAuth } from 'react-query-auth';
 
+import history from './history';
+
 import {
   loginWithEmailAndPassword,
   getUserProfile,
@@ -12,44 +14,47 @@ import {
 } from '@/modules/auth';
 import { storage, cookies } from '@/utils';
 
-async function handleUserResponse(data: UserResponse) {
-  const { jwt, user } = data;
+function handleUserResponse(data: UserResponse) {
+  const { accessToken, user } = data;
   storage.setUser(user);
-  cookies.setAccess(jwt);
+  cookies.setAccess(accessToken);
   return user;
 }
 
 async function loadUser() {
   const user = storage.getUser();
+  const access = cookies.getAccess();
 
-  if (user) {
-    return user;
+  if (!user || !access) {
+    storage.clearUser();
+    cookies.clearAccess();
+    return null;
   }
 
-  if (cookies.getAccess()) {
+  if (user) return user;
+
+  if (access) {
     const data = await getUserProfile();
     return data;
   }
-
-  return null;
 }
 
 async function loginFn(data: LoginCredentials) {
   const response = await loginWithEmailAndPassword(data);
-  const user = await handleUserResponse(response);
+  const user = await handleUserResponse(response.data);
   return user;
 }
 
 async function registerFn(data: RegisterCredentials) {
   const response = await registerWithEmailAndPassword(data);
-  const user = await handleUserResponse(response);
+  const user = await handleUserResponse(response.data);
   return user;
 }
 
 async function logoutFn() {
   storage.clearUser();
   cookies.clearAccess();
-  window.location.assign(window.location.origin as unknown as string);
+  history.push('/');
 }
 
 const authConfig = {
