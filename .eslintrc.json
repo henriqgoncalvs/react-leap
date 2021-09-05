@@ -53,6 +53,8 @@
         "linebreak-style": ["error", "unix"],
         "react/prop-types": "off",
 
+        "no-debugger": "off",
+
         "import/order": [
           "error",
           {
