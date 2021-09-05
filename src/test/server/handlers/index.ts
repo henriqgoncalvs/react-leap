@@ -1,13 +1,15 @@
+import { agencyHandlers } from './agency';
 import { authHandlers } from './auth';
-import { commentsHandlers } from './comments';
-import { discussionsHandlers } from './discussions';
-import { teamsHandlers } from './teams';
+import { countryHandlers } from './country';
+import { countryCommentHandlers } from './countryComment';
+import { userCountryHandlers } from './userCountry';
 import { usersHandlers } from './users';
 
 export const handlers = [
   ...authHandlers,
-  ...commentsHandlers,
-  ...discussionsHandlers,
-  ...teamsHandlers,
   ...usersHandlers,
+  ...agencyHandlers,
+  ...userCountryHandlers,
+  ...countryHandlers,
+  ...countryCommentHandlers,
 ];

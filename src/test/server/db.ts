@@ -1,40 +1,8 @@
-import { factory, primaryKey } from '@mswjs/data';
+import { factory } from '@mswjs/data';
+
+import { models } from './models';
 
 import { MSW_DB } from '@/config';
-
-const models = {
-  user: {
-    id: primaryKey(String),
-    firstName: String,
-    lastName: String,
-    email: String,
-    password: String,
-    teamId: String,
-    role: String,
-    bio: String,
-    createdAt: Number,
-  },
-  team: {
-    id: primaryKey(String),
-    name: String,
-    description: String,
-    createdAt: Number,
-  },
-  discussion: {
-    id: primaryKey(String),
-    title: String,
-    body: String,
-    teamId: String,
-    createdAt: Number,
-  },
-  comment: {
-    id: primaryKey(String),
-    body: String,
-    authorId: String,
-    discussionId: String,
-    createdAt: Number,
-  },
-};
 
 export const db = factory(models);
 

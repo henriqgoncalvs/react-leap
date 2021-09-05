@@ -4,7 +4,7 @@ import { RestRequest, createResponseComposition, context } from 'msw';
 
 import { db } from './db';
 
-import { JWT_SECRET } from '@/config';
+import { JWT_ACCESS_SECRET, JWT_ACCESS_EXPIRES_IN } from '@/config';
 
 const isTesting = process.env.NODE_ENV === 'test' || ((window as any).Cypress as any);
 
@@ -35,8 +35,12 @@ export function authenticate({ email, password }: { email: string; password: str
 
   if (user?.password === hash(password)) {
     const sanitizedUser = sanitizeUser(user);
-    const encodedToken = jwt.sign(sanitizedUser, JWT_SECRET);
-    return { user: sanitizedUser, jwt: encodedToken };
+
+    const encodedAccess = jwt.sign(sanitizedUser, JWT_ACCESS_SECRET, {
+      expiresIn: JWT_ACCESS_EXPIRES_IN,
+    });
+
+    return { user: sanitizedUser, accessToken: encodedAccess };
   }
 
   const error = new Error('Invalid username or password');
@@ -45,16 +49,19 @@ export function authenticate({ email, password }: { email: string; password: str
 
 export function requireAuth(request: RestRequest) {
   try {
-    const encodedToken = request.headers.get('authorization');
-    if (!encodedToken) {
+    const encodedToken = request.headers.get('Authorization');
+    const token = encodedToken?.split(' ')[1];
+
+    if (!token) {
       throw new Error('No authorization token provided!');
     }
-    const decodedToken = jwt.verify(encodedToken, JWT_SECRET) as { id: string };
+
+    const decodedAccessToken = jwt.verify(token, JWT_ACCESS_SECRET) as { id: string };
 
     const user = db.user.findFirst({
       where: {
         id: {
-          equals: decodedToken.id,
+          equals: decodedAccessToken.id,
         },
       },
     });

@@ -4,105 +4,98 @@ import { nanoid } from 'nanoid';
 import { db, persistDb } from '../db';
 import { requireAuth, requireAdmin, delayedResponse } from '../utils';
 
-import { API_URL } from '@/config';
+import { MOCK_API_URL } from '@/config';
+import { AgencyBody } from '@/modules/agency';
 
-type DiscussionBody = {
-  title: string;
-  body: string;
-};
-
-export const discussionsHandlers = [
-  rest.get(`${API_URL}/discussions`, (req, res, ctx) => {
+export const agencyHandlers = [
+  rest.get(`${MOCK_API_URL}/agency`, (req, res, ctx) => {
     try {
-      const user = requireAuth(req);
-      const result = db.discussion.findMany({
-        where: {
-          teamId: {
-            equals: user.teamId,
-          },
-        },
-      });
+      requireAuth(req);
+      const result = db.agency.findMany({});
+
       return delayedResponse(ctx.json(result));
     } catch (error) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
 
-  rest.get(`${API_URL}/discussions/:discussionId`, (req, res, ctx) => {
+  rest.get(`${MOCK_API_URL}/country/:agencyId`, (req, res, ctx) => {
     try {
-      const user = requireAuth(req);
-      const { discussionId } = req.params;
-      const result = db.discussion.findFirst({
+      requireAuth(req);
+
+      const { agencyId } = req.params;
+
+      const result = db.agency.findFirst({
         where: {
           id: {
-            equals: discussionId,
-          },
-          teamId: {
-            equals: user.teamId,
+            equals: agencyId,
           },
         },
       });
+
       return delayedResponse(ctx.json(result));
     } catch (error) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
 
-  rest.post<DiscussionBody>(`${API_URL}/discussions`, (req, res, ctx) => {
+  rest.post<AgencyBody>(`${MOCK_API_URL}/agency`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
-      const data = req.body;
       requireAdmin(user);
-      const result = db.discussion.create({
-        teamId: user.teamId,
+      const data = req.body;
+
+      const result = db.agency.create({
         id: nanoid(),
         createdAt: Date.now(),
         ...data,
       });
-      persistDb('discussion');
+
+      persistDb('agency');
       return delayedResponse(ctx.json(result));
     } catch (error) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
 
-  rest.patch<DiscussionBody>(`${API_URL}/discussions/:discussionId`, (req, res, ctx) => {
+  rest.patch<AgencyBody>(`${MOCK_API_URL}/agency/:agencyId`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
-      const data = req.body;
-      const { discussionId } = req.params;
       requireAdmin(user);
-      const result = db.discussion.update({
+
+      const data = req.body;
+      const { agencyId } = req.params;
+
+      const result = db.agency.update({
         where: {
-          teamId: {
-            equals: user.teamId,
-          },
           id: {
-            equals: discussionId,
+            equals: agencyId,
           },
         },
         data,
       });
-      persistDb('discussion');
+
+      persistDb('agency');
       return delayedResponse(ctx.json(result));
     } catch (error) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
 
-  rest.delete(`${API_URL}/discussions/:discussionId`, (req, res, ctx) => {
+  rest.delete(`${MOCK_API_URL}/agency/:agencyId`, (req, res, ctx) => {
     try {
       const user = requireAuth(req);
-      const { discussionId } = req.params;
       requireAdmin(user);
-      const result = db.discussion.delete({
+
+      const { agencyId } = req.params;
+
+      const result = db.agency.delete({
         where: {
-          id: {
-            equals: discussionId,
-          },
+          id: agencyId,
         },
       });
-      persistDb('discussion');
+
+      persistDb('agency');
       return delayedResponse(ctx.json(result));
     } catch (error) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));

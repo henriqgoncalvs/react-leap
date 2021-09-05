@@ -2,11 +2,11 @@ import { render as rtlRender, screen, waitForElementToBeRemoved } from '@testing
 import userEvent from '@testing-library/user-event';
 import { FunctionComponent } from 'react';
 
-import { discussionGenerator, userGenerator } from './data-generators';
+import { userGenerator } from './data-generators';
 import { db } from './server/db';
 import { authenticate, hash } from './server/utils';
 
-import { AppProvider } from '@/context';
+import { AppProvider } from '@/context/AppProvider';
 import { cookies } from '@/utils';
 
 export const createUser = async (userProperties?: any) => {
@@ -15,15 +15,15 @@ export const createUser = async (userProperties?: any) => {
   return user;
 };
 
-export const createDiscussion = async (discussionProperties?: any) => {
-  const discussion = discussionGenerator(discussionProperties);
-  const res = await db.discussion.create(discussion);
-  return res;
-};
+// export const createDiscussion = async (discussionProperties?: any) => {
+//   const discussion = discussionGenerator(discussionProperties);
+//   const res = await db.discussion.create(discussion);
+//   return res;
+// };
 
 export const loginAsUser = async (user: any) => {
   const authUser = await authenticate(user);
-  cookies.setAccess(authUser.jwt);
+  cookies.setAccess(authUser.accessToken);
   return authUser;
 };
 
