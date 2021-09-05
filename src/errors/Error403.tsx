@@ -10,7 +10,7 @@ export const Error403 = () => {
       <Stack align="center" textAlign="center">
         <Heading>{errors['403'].title}</Heading>
         <Text color="gray.600">{errors['403'].description}</Text>
-        <Button onClick={() => navigate('/')}>{errors['403'].actions.goBack}</Button>
+        <Button onClick={() => navigate(-1)}>{errors['403'].actions.goBack}</Button>
       </Stack>
     </Center>
   );
