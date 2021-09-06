@@ -1,7 +1,7 @@
 import pipe from 'ramda/es/pipe';
 import create, { StateCreator } from 'zustand';
 
-import { immer, log } from '@/lib/zustand-middlewares';
+import { immer } from '@/lib/zustand-middlewares';
 
 interface Sidebar {
   state: {
@@ -13,7 +13,7 @@ interface Sidebar {
   };
 }
 
-const createStore = pipe(immer, log, create);
+const createStore = pipe(immer, create);
 
 const initialState = {
   isOpen: false,
