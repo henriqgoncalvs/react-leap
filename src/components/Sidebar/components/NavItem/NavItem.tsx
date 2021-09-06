@@ -31,12 +31,14 @@ export const NavItem = ({ icon, count, to, name }: NavItemP) => {
     borderRadius: 'lg',
   };
 
-  console.log(to, active);
+  const handleNavClick = () => {
+    toggleSidebar();
+  };
 
   return (
     // <LinkBox>
     <Center>
-      <Box as={Link} to={to || ''} ml="auto" mr="auto" w="90%" onClick={toggleSidebar}>
+      <Box as={Link} to={to || ''} ml="auto" mr="auto" w="90%" onClick={handleNavClick}>
         <Stack
           direction="row"
           cursor="pointer"
