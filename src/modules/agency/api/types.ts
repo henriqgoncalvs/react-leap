@@ -2,7 +2,7 @@ import { Agency } from '../types';
 
 import { BaseEntity } from '@/types';
 
-export type AgencyBody = Omit<Agency, keyof BaseEntity | 'id' | 'owner'>;
+export type AgencyBody = Omit<Agency, keyof BaseEntity | 'id'>;
 
 export type GetAgencyOptions = {
   id: string;
