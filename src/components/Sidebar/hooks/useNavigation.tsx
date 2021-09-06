@@ -1,5 +1,5 @@
 import { FiPower } from 'react-icons/fi';
-import { HiUsers, HiUser } from 'react-icons/hi';
+import { HiUsers, HiUser, HiOfficeBuilding } from 'react-icons/hi';
 import { RiDashboardLine } from 'react-icons/ri';
 
 import { useAuth } from '@/lib/authentication';
@@ -31,10 +31,15 @@ export const useNavigation = () => {
 
   const navigation = [
     { name: 'Dashboard', to: '/app', icon: RiDashboardLine, count: '2' },
-    checkAllowedRole({ allowedRoles: [ROLES.USER as Roles, ROLES.ADMIN as Roles] }) && {
+    checkAllowedRole({ allowedRoles: [ROLES.ADMIN as Roles] }) && {
       name: 'Users',
       to: '/app/users',
       icon: HiUsers,
+    },
+    checkAllowedRole({ allowedRoles: [ROLES.ADMIN as Roles] }) && {
+      name: 'Agencies',
+      to: '/app/agencies',
+      icon: HiOfficeBuilding,
     },
   ].filter(Boolean) as SideNavigationItem[];
 
