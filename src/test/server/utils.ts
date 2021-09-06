@@ -4,7 +4,7 @@ import { RestRequest, createResponseComposition, context } from 'msw';
 
 import { db } from './db';
 
-import { JWT_ACCESS_SECRET, JWT_ACCESS_EXPIRES_IN } from '@/config';
+import { JWT_ACCESS_SECRET } from '@/config';
 
 const isTesting = process.env.NODE_ENV === 'test' || ((window as any).Cypress as any);
 
@@ -36,9 +36,7 @@ export function authenticate({ email, password }: { email: string; password: str
   if (user?.password === hash(password)) {
     const sanitizedUser = sanitizeUser(user);
 
-    const encodedAccess = jwt.sign(sanitizedUser, JWT_ACCESS_SECRET, {
-      expiresIn: JWT_ACCESS_EXPIRES_IN,
-    });
+    const encodedAccess = jwt.sign(sanitizedUser, JWT_ACCESS_SECRET);
 
     return { user: sanitizedUser, accessToken: encodedAccess };
   }
@@ -72,6 +70,7 @@ export function requireAuth(request: RestRequest) {
 
     return sanitizeUser(user);
   } catch (err) {
+    console.log(err);
     throw new Error(err);
   }
 }
