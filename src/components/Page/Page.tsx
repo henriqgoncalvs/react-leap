@@ -1,19 +1,21 @@
 import { Box, Button, Heading } from '@chakra-ui/react';
-import * as React from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { MotionBox } from '@/components/common/MotionBox';
 import { Head } from '@/components/Head';
 
 type PageProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   title?: string;
   withBackButton?: boolean;
 };
 
 export const Page = ({ children, withBackButton = false, title }: PageProps) => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const pageRef = useRef<HTMLDivElement>(null);
 
   const container = {
     hidden: { opacity: 0 },
@@ -25,8 +27,14 @@ export const Page = ({ children, withBackButton = false, title }: PageProps) => 
     },
   };
 
+  useEffect(() => {
+    if (pathname && pageRef) {
+      pageRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [pathname]);
+
   return (
-    <MotionBox variants={container} initial="hidden" animate="show">
+    <MotionBox variants={container} initial="hidden" animate="show" ref={pageRef}>
       <Head title={title} />
       <Box py={6} px={5} minH="100vh" w="100%">
         {title && (
@@ -34,9 +42,7 @@ export const Page = ({ children, withBackButton = false, title }: PageProps) => 
             <Heading as="h1">{title}</Heading>
           </Box>
         )}
-        <Box maxW="xl" h="100%">
-          {children}
-        </Box>
+        <Box h="100%">{children}</Box>
       </Box>
       {withBackButton && (
         <Button
