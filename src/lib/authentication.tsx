@@ -41,13 +41,13 @@ async function loadUser() {
 
 async function loginFn(data: LoginCredentials) {
   const response = await loginWithEmailAndPassword(data);
-  const user = await handleUserResponse(response.data);
+  const user = await handleUserResponse(response);
   return user;
 }
 
 async function registerFn(data: RegisterCredentials) {
   const response = await registerWithEmailAndPassword(data);
-  const user = await handleUserResponse(response.data);
+  const user = await handleUserResponse(response);
   return user;
 }
 

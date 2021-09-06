@@ -20,7 +20,7 @@ export default {
     if (mock) unathenticatedInstance.defaults.baseURL = MOCK_API_URL;
 
     unathenticatedInstance.interceptors.response.use(
-      (response) => response,
+      (response) => response?.data,
       (error: AxiosError) => Promise.reject(error),
     );
 
@@ -31,7 +31,10 @@ export default {
     if (mock) authenticatedInstance.defaults.baseURL = MOCK_API_URL;
 
     const interceptor = authenticatedInstance.interceptors.response.use(
-      (response) => response,
+      (response) => {
+        authenticatedInstance.interceptors.response.eject(interceptor);
+        return response.data;
+      },
       async (error: AxiosError) => {
         // Reject promise if usual error
         if (error.response) {

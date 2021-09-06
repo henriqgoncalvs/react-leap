@@ -10,7 +10,7 @@ import {
 import axios from '@/lib/axios';
 
 export const getAgencies = (): Promise<Agency[]> => {
-  return axios.authorized({}).get(`/agency`);
+  return axios.authorized({ mock: true }).get(`/agency`);
 };
 
 export const getAgency = ({ id }: GetAgencyOptions): Promise<Agency> => {
@@ -18,7 +18,7 @@ export const getAgency = ({ id }: GetAgencyOptions): Promise<Agency> => {
 };
 
 export const createAgency = ({ data }: CreateAgencyOptions): Promise<Agency> => {
-  return axios.authorized({}).post(`/agency`, data);
+  return axios.authorized({ mock: true }).post(`/agency`, data);
 };
 
 export const updateAgency = ({ id, data }: UpdateAgencyOptions): Promise<Agency> => {
