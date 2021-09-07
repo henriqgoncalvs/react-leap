@@ -2,7 +2,7 @@ import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 
 import { MainLayout } from '@/components/Layout';
 // import { DiscussionsRoutes } from '@/modules/discussions';
-import { AgenciesRoutes } from '@/modules/agency';
+import { AgenciesRoutes } from '@/modules/agencies';
 import { Landing, Dashboard, Users } from '@/modules/misc';
 // import { Profile, Users } from '@/modules/users';
 

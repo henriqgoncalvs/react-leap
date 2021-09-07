@@ -48,7 +48,7 @@ export const AddAgencyForm = ({ onClose }: AddAgencyFormProps) => {
             label="Name"
             as={(props) => <TextInput {...props} />}
           />
-          <FieldWrapper name="bio" label="Bio" as={(props) => <TextArea {...props} />} />
+          <FieldWrapper name="bio" required label="Bio" as={(props) => <TextArea {...props} />} />
           <FieldWrapper
             name="phone"
             helper="Contact phone"

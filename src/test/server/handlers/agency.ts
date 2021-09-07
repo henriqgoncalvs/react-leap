@@ -5,7 +5,7 @@ import { db, persistDb } from '../db';
 import { requireAuth, requireAdmin, delayedResponse } from '../utils';
 
 import { MOCK_API_URL } from '@/config';
-import { AgencyBody } from '@/modules/agency';
+import { AgencyBody } from '@/modules/agencies';
 
 export const agencyHandlers = [
   rest.get(`${MOCK_API_URL}/agency`, (req, res, ctx) => {
