@@ -19,9 +19,21 @@ export default {
   unauthorized({ mock = false }: { mock?: boolean }) {
     if (mock) unathenticatedInstance.defaults.baseURL = MOCK_API_URL;
 
-    unathenticatedInstance.interceptors.response.use(
+    const interceptor = unathenticatedInstance.interceptors.response.use(
       (response) => response?.data,
       (error: AxiosError) => Promise.reject(error),
+    );
+
+    unathenticatedInstance.interceptors.request.use(
+      function (config) {
+        // Do something before request is sent
+        unathenticatedInstance.interceptors.response.eject(interceptor);
+        return config;
+      },
+      function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+      },
     );
 
     return unathenticatedInstance;
@@ -32,7 +44,7 @@ export default {
 
     const interceptor = authenticatedInstance.interceptors.response.use(
       (response) => {
-        authenticatedInstance.interceptors.response.eject(interceptor);
+        // authenticatedInstance.interceptors.response.eject(interceptor);
         return response.data;
       },
       async (error: AxiosError) => {
@@ -74,6 +86,18 @@ export default {
               return Promise.reject(error);
             });
         }
+      },
+    );
+
+    authenticatedInstance.interceptors.request.use(
+      function (config) {
+        // Do something before request is sent
+        authenticatedInstance.interceptors.response.eject(interceptor);
+        return config;
+      },
+      function (error) {
+        // Do something with request error
+        return Promise.reject(error);
       },
     );
 
