@@ -1,15 +1,6 @@
-import { agencyHandlers } from './agency';
 import { authHandlers } from './auth';
-import { countryHandlers } from './country';
-import { countryCommentHandlers } from './countryComment';
-import { userCountryHandlers } from './userCountry';
+import { expenseHandlers } from './expense';
+import { incomeHandlers } from './income';
 import { usersHandlers } from './users';
 
-export const handlers = [
-  ...authHandlers,
-  ...usersHandlers,
-  ...agencyHandlers,
-  ...userCountryHandlers,
-  ...countryHandlers,
-  ...countryCommentHandlers,
-];
+export const handlers = [...authHandlers, ...usersHandlers, ...incomeHandlers, ...expenseHandlers];
