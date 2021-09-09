@@ -1,5 +1,5 @@
 export type BaseEntity = {
-  createdAt: number;
+  createdAt: string;
 };
 
 export type Roles = 'ADMIN' | 'USER';
