@@ -56,8 +56,6 @@ export const DayPicker = ({
     if (DateUtils.isDate(parsed)) return parsed;
   };
 
-  console.log(dayjs().format('dddd'));
-
   const $setFieldValue = (day: Date) => setFieldValue(name, day);
 
   return (

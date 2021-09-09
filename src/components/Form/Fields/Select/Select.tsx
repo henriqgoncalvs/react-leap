@@ -30,7 +30,6 @@ export const Select = ({
   const { setFieldValue } = form;
 
   const $setFieldValue = (value: any) => {
-    console.log(value);
     setFieldValue(name, value);
   };
 
