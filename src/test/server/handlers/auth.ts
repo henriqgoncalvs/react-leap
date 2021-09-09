@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import _ from 'lodash';
 import { rest } from 'msw';
 import { nanoid } from 'nanoid';
@@ -35,7 +36,7 @@ export const authHandlers = [
       db.user.create({
         ...userObject,
         id: nanoid(),
-        createdAt: Date.now(),
+        createdAt: dayjs().toISOString(),
         role: role === 'ADMIN' || role === 'USER' ? role : 'USER',
         password: hash(password),
       });

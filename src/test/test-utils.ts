@@ -1,5 +1,6 @@
 import { render as rtlRender, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import dayjs from 'dayjs';
 import { FunctionComponent } from 'react';
 
 import { userGenerator } from './data-generators';
@@ -11,7 +12,11 @@ import { cookies } from '@/utils';
 
 export const createUser = async (userProperties?: any) => {
   const user = userGenerator(userProperties);
-  await db.user.create({ ...user, password: hash(user.password) });
+  await db.user.create({
+    ...user,
+    password: hash(user.password),
+    createdAt: dayjs().toISOString(),
+  });
   return user;
 };
 
