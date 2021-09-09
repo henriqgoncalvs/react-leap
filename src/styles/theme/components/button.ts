@@ -7,6 +7,7 @@ const customVariant = ({
   color,
   colorHover = color,
   boxShadowFocus = 'outline',
+  ...restProps
 }: any) => {
   return {
     bg,
@@ -22,6 +23,7 @@ const customVariant = ({
       },
     },
     _active: { bg: bgActive },
+    ...restProps,
   };
 };
 
