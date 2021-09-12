@@ -32,6 +32,7 @@ This is not supposed to be a template, boilerplate or a framework. It is an opin
 - [Testing](docs/testing.md)
 - [Error Handling](docs/error-handling.md)
 - [Performance](docs/performance.md)
+- [Deploy](docs/deployment.md)
 
 ## Contributing
 
