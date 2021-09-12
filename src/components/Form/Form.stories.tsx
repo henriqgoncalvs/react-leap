@@ -1,12 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import { Meta, Story } from '@storybook/react';
 
-import {
-  AutoComplete,
-  AutoCompleteInput,
-  AutoCompleteList,
-  AutoCompleteItem,
-} from './Fields/AutoComplete';
+import { AutoComplete } from './Fields/AutoComplete';
 import { Checkbox } from './Fields/Checkbox';
 import { DayPicker } from './Fields/DayPicker';
 import { PinInput } from './Fields/PinInput';
@@ -117,24 +112,21 @@ const MyForm = () => {
           <FieldWrapper
             name="country"
             required
-            label="Local de nascimento"
             as={(fieldProps) => (
-              <AutoComplete {...fieldProps} openOnFocus>
-                <AutoCompleteInput variant="filled" />
-                <AutoCompleteList>
-                  {['nigeria', 'japan', 'india', 'united states', 'south korea', 'brazil'].map(
-                    (country, cid) => (
-                      <AutoCompleteItem
-                        key={`option-${cid}`}
-                        value={country}
-                        textTransform="capitalize"
-                      >
-                        {country}
-                      </AutoCompleteItem>
-                    ),
-                  )}
-                </AutoCompleteList>
-              </AutoComplete>
+              <AutoComplete
+                {...fieldProps}
+                label="Local de nascimento"
+                placeholder="Digite"
+                items={[
+                  { value: 'ghana', label: 'Ghana' },
+                  { value: 'nigeria', label: 'Nigeria' },
+                  { value: 'kenya', label: 'Kenya' },
+                  { value: 'southAfrica', label: 'South Africa' },
+                  { value: 'unitedStates', label: 'United States' },
+                  { value: 'canada', label: 'Canada' },
+                  { value: 'germany', label: 'Germany' },
+                ]}
+              />
             )}
           />
 

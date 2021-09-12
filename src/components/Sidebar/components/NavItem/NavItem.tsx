@@ -36,7 +36,6 @@ export const NavItem = ({ icon, count, to, name }: NavItemP) => {
   };
 
   return (
-    // <LinkBox>
     <Center>
       <Box as={Link} to={to || ''} ml="auto" mr="auto" w="90%" onClick={handleNavClick}>
         <Stack
@@ -80,6 +79,5 @@ export const NavItem = ({ icon, count, to, name }: NavItemP) => {
         </Stack>
       </Box>
     </Center>
-    // </LinkBox>
   );
 };

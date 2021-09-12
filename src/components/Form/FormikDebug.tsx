@@ -27,7 +27,7 @@ export const FormikDebug = ({ isOpen, onToggle }: FormikDebugProps) => {
         ref={debuggerRef}
         direction="bottom"
         in={isOpen}
-        style={{ maxWidth: 'fit-content', zIndex: 10 }}
+        style={{ maxWidth: 'fit-content', zIndex: 100000 }}
       >
         <Box
           p="40px"

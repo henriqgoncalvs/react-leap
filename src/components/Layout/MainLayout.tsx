@@ -3,7 +3,6 @@ import { Box, Stack, useMediaQuery } from '@chakra-ui/react';
 import textura from '@/assets/textura.png';
 import { Scroll } from '@/components/common/Scroll';
 import { Sidebar, MobileSidebar } from '@/components/Sidebar';
-// import { Page } from '@/components/Page';
 
 type MainLayoutProps = {
   children: React.ReactNode;
@@ -36,7 +35,6 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
                 pos: 'fixed',
                 right: '0',
                 top: '0',
-                // bgGradient: 'linear(to-l, #BC00FF29, #BC00FF00)',
                 bg: '#bb00ff89',
                 bgAttachment: 'fixed',
                 zIndex: '-1',

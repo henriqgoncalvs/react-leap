@@ -1,12 +1,12 @@
 import { Box, chakra, BoxProps } from '@chakra-ui/react';
-import { FC } from 'react';
+import { ReactNode, FC } from 'react';
 
 export interface IconProps extends BoxProps {
   icon: FC;
   boxProps?: BoxProps;
 }
 
-export const Icon: FC<IconProps> = ({ icon: IconEl, boxProps, ...rest }) => {
+export const Icon = ({ icon: IconEl, boxProps, ...rest }: IconProps): ReactNode => {
   const ChakraIcon = chakra(IconEl);
 
   return (

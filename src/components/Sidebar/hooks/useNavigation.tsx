@@ -57,16 +57,6 @@ export const useNavigation = () => {
     //   fn: () => console.log('object'),
     //   icon: FaJira,
     // },
-    // {
-    //   name: 'Slack',
-    //   fn: () => console.log('object'),
-    //   icon: FaSlack,
-    // },
-    // {
-    //   name: 'Intercom',
-    //   fn: () => console.log('object'),
-    //   icon: FaIntercom,
-    // },
   ] as SideActionItem[];
 
   const footer = [

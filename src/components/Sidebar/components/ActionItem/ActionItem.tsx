@@ -1,8 +1,7 @@
 import { Stack, Text } from '@chakra-ui/layout';
+import { Icon } from '@chakra-ui/react';
 import { useColorModeValue as mode } from '@chakra-ui/system';
 import { IconType } from 'react-icons';
-
-import { Icon } from '@/components/common/Icon';
 
 export type ActionItemP = {
   icon: IconType;
@@ -28,7 +27,7 @@ export const ActionItem = ({ icon, name, fn }: ActionItemP) => {
       spacing={4}
       onClick={fn}
     >
-      <Icon aria-label="Interation" w={5} h={5} icon={icon} />
+      <Icon aria-label="Interation" w={5} h={5} as={icon} />
       <Text>{name}</Text>
     </Stack>
   );

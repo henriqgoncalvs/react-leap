@@ -31,7 +31,6 @@ export const NavCollapsedItem = ({
               aria-label={name}
               variant={active ? 'solid' : 'ghost'}
               borderRadius="md"
-              // boxSize="40px"
               alignSelf="center"
               _focus={{ shadow: 'none' }}
               icon={
