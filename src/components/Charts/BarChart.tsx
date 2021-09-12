@@ -14,7 +14,6 @@ export function BarChart<T extends BarDatum>({
   width,
   ...restProps
 }: BarChartProps<T>) {
-  console.log(data);
   return (
     <LC.Vertical
       spaceBetween
@@ -32,7 +31,6 @@ export function BarChart<T extends BarDatum>({
       </Text>
       <ResponsiveBar
         data={data}
-        keys={['value']}
         margin={{ top: 10, right: 10, bottom: 30, left: 40 }}
         padding={0.6}
         colors={{ scheme: 'nivo' }}
@@ -40,22 +38,22 @@ export function BarChart<T extends BarDatum>({
         borderRadius={5}
         axisTop={null}
         axisRight={null}
-        // axisBottom={{
-        //   tickSize: 0,
-        //   tickPadding: 10,
-        //   tickRotation: 0,
-        //   legend: '',
-        //   legendPosition: 'middle',
-        //   legendOffset: 32,
-        // }}
-        // axisLeft={{
-        //   tickSize: 0,
-        //   tickPadding: 5,
-        //   tickRotation: 0,
-        //   legend: '',
-        //   legendPosition: 'middle',
-        //   legendOffset: -40,
-        // }}
+        axisBottom={{
+          tickSize: 0,
+          tickPadding: 10,
+          tickRotation: 0,
+          legend: '',
+          legendPosition: 'middle',
+          legendOffset: 32,
+        }}
+        axisLeft={{
+          tickSize: 0,
+          tickPadding: 5,
+          tickRotation: 0,
+          legend: '',
+          legendPosition: 'middle',
+          legendOffset: -40,
+        }}
         {...restProps}
       />
     </LC.Vertical>
