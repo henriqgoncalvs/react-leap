@@ -46,7 +46,7 @@ export const authHandlers = [
       const result = authenticate({ email: userObject.email, password: password });
 
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -56,7 +56,7 @@ export const authHandlers = [
       const credentials = req.body;
       const result = authenticate(credentials);
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -66,7 +66,7 @@ export const authHandlers = [
       const user = requireAuth(req);
 
       return delayedResponse(ctx.status(200), ctx.json(user));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(401), ctx.json({ message: error.message }));
     }
   }),

@@ -20,12 +20,6 @@ export const createUser = async (userProperties?: any) => {
   return user;
 };
 
-// export const createDiscussion = async (discussionProperties?: any) => {
-//   const discussion = discussionGenerator(discussionProperties);
-//   const res = await db.discussion.create(discussion);
-//   return res;
-// };
-
 export const loginAsUser = async (user: any) => {
   const authUser = await authenticate(user);
   cookies.setAccess(authUser.accessToken);

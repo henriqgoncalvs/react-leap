@@ -15,7 +15,7 @@ export const incomeHandlers = [
       const result = db.income.findMany({});
 
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -35,7 +35,7 @@ export const incomeHandlers = [
       });
 
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -54,7 +54,7 @@ export const incomeHandlers = [
 
       persistDb('income');
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -78,7 +78,7 @@ export const incomeHandlers = [
 
       persistDb('income');
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -98,7 +98,7 @@ export const incomeHandlers = [
 
       persistDb('income');
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),

@@ -9,7 +9,6 @@ const models = {
     password: String,
     role: String,
     bio: String,
-    monthIncome: Number,
     createdAt: String,
   },
   income: {
@@ -25,6 +24,7 @@ const models = {
     value: Number,
     description: String,
     date: String,
+    category: String,
     createdAt: String,
   },
 };

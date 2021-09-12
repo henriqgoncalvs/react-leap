@@ -13,7 +13,7 @@ export const usersHandlers = [
       const result = db.user.findMany({});
 
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -32,7 +32,7 @@ export const usersHandlers = [
       });
       persistDb('user');
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -51,7 +51,7 @@ export const usersHandlers = [
       });
       persistDb('user');
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),

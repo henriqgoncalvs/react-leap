@@ -15,7 +15,7 @@ export const expenseHandlers = [
       const result = db.expense.findMany({});
 
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -35,15 +35,14 @@ export const expenseHandlers = [
       });
 
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
 
   rest.post<ExpenseBody>(`${MOCK_API_URL}/expense`, (req, res, ctx) => {
     try {
-      const user = requireAuth(req);
-      requireAdmin(user);
+      requireAuth(req);
       const data = req.body;
 
       const result = db.expense.create({
@@ -54,7 +53,7 @@ export const expenseHandlers = [
 
       persistDb('expense');
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -78,7 +77,7 @@ export const expenseHandlers = [
 
       persistDb('expense');
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
@@ -98,7 +97,7 @@ export const expenseHandlers = [
 
       persistDb('expense');
       return delayedResponse(ctx.json(result));
-    } catch (error) {
+    } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),
