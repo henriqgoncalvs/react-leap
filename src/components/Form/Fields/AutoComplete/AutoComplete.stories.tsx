@@ -1,12 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 
-import {
-  AutoComplete,
-  AutoCompleteProps,
-  AutoCompleteInput,
-  AutoCompleteList,
-  AutoCompleteItem,
-} from './AutoComplete';
+import { AutoComplete, AutoCompleteProps } from './AutoComplete';
 
 import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
 
@@ -40,18 +34,21 @@ const Template: Story<AutoCompleteStoryProps> = ({ helper, label, required, ...r
     name="text"
     helper={helper}
     required={required}
-    label={label}
     as={(fieldProps) => (
-      <AutoComplete {...fieldProps} {...restProps} openOnFocus>
-        <AutoCompleteInput variant="filled" />
-        <AutoCompleteList>
-          {['nigeria', 'japan', 'india', 'united states', 'south korea'].map((country, cid) => (
-            <AutoCompleteItem key={`option-${cid}`} value={country} textTransform="capitalize">
-              {country}
-            </AutoCompleteItem>
-          ))}
-        </AutoCompleteList>
-      </AutoComplete>
+      <AutoComplete
+        {...fieldProps}
+        {...restProps}
+        label={label}
+        items={[
+          { value: 'ghana', label: 'Ghana' },
+          { value: 'nigeria', label: 'Nigeria' },
+          { value: 'kenya', label: 'Kenya' },
+          { value: 'southAfrica', label: 'South Africa' },
+          { value: 'unitedStates', label: 'United States' },
+          { value: 'canada', label: 'Canada' },
+          { value: 'germany', label: 'Germany' },
+        ]}
+      />
     )}
   />
 );
