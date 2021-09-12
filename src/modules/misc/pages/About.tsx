@@ -1,4 +1,4 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Text, Wrap, WrapItem } from '@chakra-ui/react';
 
 import { Link } from '@/components/common/Link';
 import { Page } from '@/components/Page';
@@ -10,68 +10,71 @@ export const About = () => {
   return (
     <Page title="About">
       <Box minH="200vh">
-        <h1 className="text-xl mt-2">
+        <Text as="h3">
           Welcome <b>{`${user?.firstName} ${user?.lastName}`}</b>
-        </h1>
-        <h4 className="my-3">
+        </Text>
+        <Text as="h4">
           Your role is : <b>{user?.role}</b>
-        </h4>
-        <p className="font-medium">In this application you can:</p>
-        {user?.role === ROLES.USER && (
-          <ul className="my-4 list-inside list-disc">
-            <li>
-              Create incomes at <br />
-              <Button as={Link} to="../incomes">
-                Incomes
-              </Button>
-            </li>
-            <li>
-              Create expenses at
-              <br />
-              <Button as={Link} to="../expenses">
-                Expenses
-              </Button>
-            </li>
-            <li>
-              See reports about your incomes and expenses at
-              <br />
-              <Button as={Link} to="../">
-                Dashboard
-              </Button>
-            </li>
-          </ul>
-        )}
-        {user?.role === ROLES.ADMIN && (
-          <ul className="my-4 list-inside list-disc">
-            <li>
-              Create incomes at <br />
-              <Button as={Link} to="../incomes">
-                Incomes
-              </Button>
-            </li>
-            <li>
-              Create expenses at
-              <br />
-              <Button as={Link} to="../expenses">
-                Expenses
-              </Button>
-            </li>
-            <li>
-              See reports about your incomes and expenses at
-              <br />
-              <Button as={Link} to="../">
-                Dashboard
-              </Button>
-            </li>
-            <li>
-              Manage users at
-              <br />
-              <Button as={Link} to="../users">
-                Users
-              </Button>
-            </li>
-          </ul>
-        )}
+        </Text>
+        <Text>In this application you can:</Text>
+
+        <Box my="12">
+          {user?.role === ROLES.USER && (
+            <Wrap direction="column" spacing="6">
+              <WrapItem>
+                Create incomes at <br />
+                <Button ml="5" as={Link} to="../incomes">
+                  Incomes
+                </Button>
+              </WrapItem>
+              <WrapItem>
+                Create expenses at
+                <br />
+                <Button ml="5" as={Link} to="../expenses">
+                  Expenses
+                </Button>
+              </WrapItem>
+              <WrapItem>
+                See reports about your incomes and expenses at
+                <br />
+                <Button ml="5" as={Link} to="..">
+                  Dashboard
+                </Button>
+              </WrapItem>
+            </Wrap>
+          )}
+          {user?.role === ROLES.ADMIN && (
+            <Wrap direction="column" spacing="6">
+              <WrapItem>
+                Create incomes at <br />
+                <Button ml="5" as={Link} to="../incomes">
+                  Incomes
+                </Button>
+              </WrapItem>
+              <WrapItem>
+                Create expenses at
+                <br />
+                <Button ml="5" as={Link} to="../expenses">
+                  Expenses
+                </Button>
+              </WrapItem>
+              <WrapItem>
+                See reports about your incomes and expenses at
+                <br />
+                <Button ml="5" as={Link} to="..">
+                  Dashboard
+                </Button>
+              </WrapItem>
+              <WrapItem>
+                Manage users at
+                <br />
+                <Button ml="5" as={Link} to="../users">
+                  Users
+                </Button>
+              </WrapItem>
+            </Wrap>
+          )}
+        </Box>
       </Box>
     </Page>
   );
