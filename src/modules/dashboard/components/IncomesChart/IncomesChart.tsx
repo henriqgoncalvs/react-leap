@@ -20,12 +20,14 @@ export const IncomesChart = () => {
   );
 
   return (
-    <BarChart
-      label="Incomes"
-      height={500}
-      width={500}
-      indexBy="label"
-      data={incomesChartData || []}
-    />
+    <>
+      <BarChart
+        label="Incomes"
+        height={500}
+        width={500}
+        indexBy="label"
+        data={incomesChartData || []}
+      />
+    </>
   );
 };
