@@ -18,7 +18,7 @@ export const IncomesTable = () => {
       {
         Header: 'Source',
         accessor: 'source',
-        Cell: ({ value }) => parseIncomeSourceLabel[value] || 'Unknown',
+        Cell: ({ value }) => parseIncomeSourceLabel(value),
       },
       {
         Header: 'Value',

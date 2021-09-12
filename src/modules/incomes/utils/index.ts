@@ -6,4 +6,5 @@ const incomeSourceLabel = {
   investiment: 'Investiment',
 };
 
-export const parseIncomeSourceLabel = (source: Sources): string => incomeSourceLabel[source];
+export const parseIncomeSourceLabel = (source: Sources): string =>
+  incomeSourceLabel[source] || 'Unknown';
