@@ -39,12 +39,3 @@ Use modern image formats such as WEBP for faster image loading.
 ### Web vitals
 
 Since Google started taking web vitals in account when indexing websites, you should keep an eye on web vitals scores from [Lighthouse](https://web.dev/measure/) and [Pagespeed Insights](https://developers.google.com/speed/pagespeed/insights/).
-
-### Deployment
-
-Deploy and serve your application and assets over a CDN. Good options for that are:
-
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
-- [AWS](https://aws.amazon.com/cloudfront/)
-- [CloudFlare](https://www.cloudflare.com/en-gb/cdn/)

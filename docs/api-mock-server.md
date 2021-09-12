@@ -6,6 +6,6 @@ It can be used for designing API endpoints. The business logic of the mocked API
 
 [API Handlers Example Code](../src/test/server/handlers/auth.ts)
 
-[Data Models Example Code](../src/test/server/db.ts)
+[Data Models Example Code](../src/test/server/models.ts)
 
 Having fully functional mocked API server also handy when it comes to testing, you don't have to mock fetch, but make requests to the mocked server instead with the data your application would expect.

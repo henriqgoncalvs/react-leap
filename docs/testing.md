@@ -9,21 +9,15 @@ This [tweet](https://twitter.com/rauchg/status/807626710350839808) explains in a
 Unit testing, as the naming already reveals is a type of testing where a unit of the application is being tested in isolation.
 Write unit tests for shared components and functions that are used throughout the entire application as they might be used in different scenarios which might be difficult to reproduce in the integration tests.
 
-[Unit Test Example Code](../src/components/Elements/ConfirmationDialog/__tests__/ConfirmationDialog.test.tsx)
-
 #### Integration Tests
 
 Integration testing is a method of testing multiple parts of the application at once.
 Most of your tests should be integration tests, as these will give you the most benefits and confidence for your invested effort. Unit tests on their own don't guarantee that your app will work even if those tests pass, because the relationship between the units might be wrong. You should test different modules with integration tests.
 
-[Integration Test Example Code](../src/modules/auth/components/__tests__/RegisterForm.test.tsx)
-
 #### E2E
 
 End-To-End Testing is a testing method where the application is tested as a complete entity.
 Usually these tests consist of running the entire application with the frontend and the backend in an automated way and verifying that the entire system works. It is usually written in the way the application should be used by the user.
-
-[E2E Example Code](../cypress/integration/smoke.ts)
 
 ### Tooling:
 
@@ -46,5 +40,3 @@ You define all the commands a real world user would execute when using the app a
 It is very configurable with plugins and commands. You can even pair it with [Testing Library](https://testing-library.com/docs/cypress-testing-library/intro/) which is makes your tests even easier to write.
 
 You can also write custom commands to abstract some common tasks.
-
-[Custom Cypress Commands Example Code](../cypress/support/commands.ts)
