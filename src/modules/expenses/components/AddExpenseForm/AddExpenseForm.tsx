@@ -1,11 +1,19 @@
 import { Button } from '@chakra-ui/react';
 
+import { expenseCategories } from '../..';
 import { ExpenseBody } from '../../api/types';
 import { useCreateExpense } from '../../hooks/useCreateExpense';
 
 import schema from './schema';
 
-import { Form, FieldWrapper, DayPicker, TextArea, NumberInput } from '@/components/Form';
+import {
+  Form,
+  FieldWrapper,
+  DayPicker,
+  TextArea,
+  NumberInput,
+  AutoComplete,
+} from '@/components/Form';
 import * as LC from '@/components/LC';
 
 type AddExpenseFormProps = {
@@ -23,6 +31,7 @@ export const AddExpenseForm = ({ onClose }: AddExpenseFormProps) => {
         date: '',
         description: '',
         value: 0,
+        category: '',
       }}
       onSubmit={async (values) => {
         await createExpenseMutation.mutateAsync({
@@ -51,6 +60,18 @@ export const AddExpenseForm = ({ onClose }: AddExpenseFormProps) => {
             required
             label="Description"
             as={(props) => <TextArea {...props} />}
+          />
+          <FieldWrapper
+            name="category"
+            required
+            as={(props) => (
+              <AutoComplete
+                {...props}
+                placeholder="Category"
+                label="Category"
+                items={expenseCategories}
+              />
+            )}
           />
 
           <Button

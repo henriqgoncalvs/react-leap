@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import { BsFillArchiveFill } from 'react-icons/bs';
 
 import { useExpenses } from '../../hooks/useExpenses';
+import { parseExpenseCategoryLabel } from '../../utils';
 
 import { Table } from './Table';
 
@@ -21,6 +22,11 @@ export const ExpensesTable = () => {
       {
         Header: 'Description',
         accessor: 'description',
+      },
+      {
+        Header: 'Category',
+        accessor: 'category',
+        Cell: ({ value }) => parseExpenseCategoryLabel(value),
       },
       {
         Header: 'Date',
