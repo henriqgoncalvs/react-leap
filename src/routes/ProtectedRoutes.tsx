@@ -1,12 +1,10 @@
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 
 import { MainLayout } from '@/components/Layout';
-// import { DiscussionsRoutes } from '@/modules/discussions';
 import { Dashboard } from '@/modules/dashboard';
 import { ExpensesRoutes } from '@/modules/expenses';
 import { IncomesRoutes } from '@/modules/incomes';
 import { Landing, Users, About } from '@/modules/misc';
-// import { Profile, Users } from '@/modules/users';
 
 const App = () => {
   return (
@@ -25,7 +23,6 @@ export const ProtectedRoutes = () => {
         <Route path="/expenses/*" element={<ExpensesRoutes />} />
         <Route path="/incomes/*" element={<IncomesRoutes />} />
         <Route path="/users/*" element={<Users />} />
-        {/* <Route path="/profile" element={<Profile />} /> */}
         <Route path="*" element={<Navigate to="/app" />} />
       </Route>
       <Route path="/" element={<Landing />} />
