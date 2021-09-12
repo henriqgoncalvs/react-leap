@@ -1,7 +1,6 @@
-import { mode, GlobalStyleProps } from '@chakra-ui/theme-tools';
 import 'react-day-picker/lib/style.css';
 
-export const reactDayPicker = (props: GlobalStyleProps) => ({
+export const reactDayPicker = () => ({
   '.DayPickerInput': {
     display: 'inline-block',
     fontSize: '0.1em',
@@ -25,14 +24,14 @@ export const reactDayPicker = (props: GlobalStyleProps) => ({
     zIndex: 2,
     borderRadius: 'md',
     boxShadow: 'lg',
-    bg: mode('white', 'gray.700')(props),
+    bg: 'gray.700',
   },
 
   '.DayPicker': {
     display: 'inline-block',
     fontSize: { base: '0.8rem', sm: '1rem' },
     border: '1px solid',
-    borderColor: mode('gray.200', 'gray.900')(props),
+    borderColor: 'gray.900',
     borderRadius: 'md',
     maxWidth: '90vw',
   },
@@ -43,12 +42,12 @@ export const reactDayPicker = (props: GlobalStyleProps) => ({
 
   '.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside)': {
     position: 'relative',
-    backgroundColor: mode('brand.500', 'brand.600')(props),
+    backgroundColor: 'brand.600',
     borderRadius: '100%',
   },
 
   '.DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside):hover': {
-    backgroundColor: mode('brand.400', 'brand.500')(props),
+    backgroundColor: 'brand.500',
     borderRadius: '100%',
     color: 'white',
   },
@@ -56,9 +55,9 @@ export const reactDayPicker = (props: GlobalStyleProps) => ({
   '.DayPicker:not(.DayPicker--interactionDisabled)': {
     '.DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover':
       {
-        backgroundColor: mode('blackAlpha.200', 'whiteAlpha.200')(props),
+        backgroundColor: 'whiteAlpha.200',
         borderRadius: '100%',
-        color: mode('black', 'white')(props),
+        color: 'white',
       },
   },
 
@@ -71,7 +70,7 @@ export const reactDayPicker = (props: GlobalStyleProps) => ({
   },
 
   '.DayPicker-Day--today': {
-    color: mode('black', 'white')(props),
+    color: 'white',
     fontWeight: 'bold',
   },
 
@@ -82,7 +81,7 @@ export const reactDayPicker = (props: GlobalStyleProps) => ({
 
   '.DayPicker-Weekday': {
     fontWeight: '350',
-    color: mode('black', 'white')(props),
+    color: 'white',
     fontSize: '0.875em',
   },
 });

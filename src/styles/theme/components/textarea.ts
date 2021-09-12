@@ -4,7 +4,6 @@ export default {
   variants: {
     outline: (props) => ({
       bg: mode('blackAlpha.50', 'whiteAlpha.50')(props),
-      borderColor: mode('blackAlpha.100', 'whiteAlpha.100')(props),
     }),
   },
   defaultProps: {

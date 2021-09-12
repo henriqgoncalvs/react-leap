@@ -74,4 +74,12 @@ export default {
   defaultProps: {
     size: 'xs',
   },
+  baseStyle: {
+    popper: {
+      bg: 'white',
+    },
+    content: {
+      color: 'black',
+    },
+  },
 };
