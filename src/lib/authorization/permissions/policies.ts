@@ -1,32 +1,13 @@
-// import { Comment } from '@/modules/comments';
-// import { User } from '@/modules/users';
-
-import { BaseEntity } from '@/types';
-
-export type Comment = {
-  id: string;
-  body: string;
-  authorId: string;
-  discussionId: string;
-} & BaseEntity;
-
-export type User = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  role: 'ADMIN' | 'USER';
-  teamId: string;
-  bio: string;
-} & BaseEntity;
+import { AuthUser } from '@/modules/auth';
+import { Income } from '@/modules/incomes';
 
 export const POLICIES = {
-  'comment:delete': ({ user, comment }: { user: User; comment: Comment }) => {
+  'income:delete': ({ user, income }: { user: AuthUser; income: Income }) => {
     if (user.role === 'ADMIN') {
       return true;
     }
 
-    if (user.role === 'USER' && comment.authorId === user.id) {
+    if (user.role === 'USER' && income.source === 'freelance') {
       return true;
     }
 

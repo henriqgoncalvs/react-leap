@@ -1,4 +1,6 @@
+import { Roles } from '@/types';
+
 export const ROLES = {
-  ADMIN: 'ADMIN' as string,
-  USER: 'USER' as string,
+  ADMIN: 'ADMIN' as Roles,
+  USER: 'USER' as Roles,
 };

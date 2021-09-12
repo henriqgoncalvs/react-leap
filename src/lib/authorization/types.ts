@@ -10,10 +10,10 @@ export type AuthorizationProps = {
 } & (
   | {
       allowedRoles: Roles[];
-      policies?: never;
+      policies?: Policy[];
     }
   | {
-      allowedRoles?: never;
+      allowedRoles?: Roles[];
       policies: Policy[];
     }
 );
