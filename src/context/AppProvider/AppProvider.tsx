@@ -7,7 +7,6 @@ import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-// import { Notifications } from '@/components/Notifications/Notifications';
 import { APP_NAME } from '@/config';
 import { ErrorBoundary } from '@/errors';
 import { AuthProvider } from '@/lib/authentication';
@@ -51,7 +50,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
           <ErrorBoundary>
             <QueryClientProvider client={queryClient}>
               <ReactQueryDevtools position="bottom-left" />
-              {/* <Notifications /> */}
               <AuthProvider>
                 <Router>{children}</Router>
               </AuthProvider>
