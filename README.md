@@ -1,6 +1,10 @@
+<img src="./src/assets/react-leap-banner.png" style="width: 100%; margin-bottom: 10px; border-radius: 10px;" />
+
 # React Leap 🚀👨‍🚀
 
 The project that's one small step for developers, one giant _leap🚀_ for Loomi.
+
+<p style="font-size: 13px;font-style: italic;">Powered by <a href="https://github.com/loomi">Loomi</a> Developers.</p>
 
 ## Introduction
 
