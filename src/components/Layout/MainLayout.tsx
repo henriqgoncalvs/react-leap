@@ -1,6 +1,5 @@
 import { Box, Stack, useMediaQuery } from '@chakra-ui/react';
 
-import textura from '@/assets/textura.png';
 import { Scroll } from '@/components/common/Scroll';
 import { Sidebar, MobileSidebar } from '@/components/Sidebar';
 
@@ -22,7 +21,6 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
             <Box
               w="full"
               minH="100vh"
-              bgImg={textura}
               bgPos="right"
               bgAttachment="fixed"
               bgSize="cover"
