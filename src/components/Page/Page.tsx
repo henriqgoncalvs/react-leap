@@ -1,4 +1,4 @@
-import { Box, Button, Heading } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 import { ReactNode, useEffect, useRef } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -34,14 +34,16 @@ export const Page = ({ children, withBackButton = false, title }: PageProps) => 
   }, [pathname]);
 
   return (
-    <MotionBox variants={container} initial="hidden" animate="show" ref={pageRef}>
+    <MotionBox
+      variants={container}
+      initial="hidden"
+      animate="show"
+      ref={pageRef}
+      maxW="container.xl"
+      mx="auto"
+    >
       <Head title={title} />
-      <Box py={6} px={5} minH="100vh" w="100%">
-        {title && (
-          <Box maxW="xl" pb={5}>
-            <Heading as="h1">{title}</Heading>
-          </Box>
-        )}
+      <Box pt={8} pb={6} px={10} w="100%">
         <Box h="100%">{children}</Box>
       </Box>
       {withBackButton && (

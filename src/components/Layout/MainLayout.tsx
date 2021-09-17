@@ -14,30 +14,11 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
     <Scroll>
       <Box textStyle="light">
         {/* <Navbar /> */}
-        <Box pos="relative" h="max-content">
-          <Stack direction="row">
+        <Box pos="relative" h="full" bg="white" position="relative">
+          <Stack direction="row" spacing="0">
             <Sidebar />
             {isSmallScreen && <MobileSidebar />}
-            <Box
-              w="full"
-              minH="100vh"
-              bgPos="right"
-              bgAttachment="fixed"
-              bgSize="cover"
-              bgRepeat="no-repeat"
-              position="relative"
-              _before={{
-                content: '""',
-                w: '100%',
-                h: '100%',
-                pos: 'fixed',
-                right: '0',
-                top: '0',
-                bg: '#bb00ff89',
-                bgAttachment: 'fixed',
-                zIndex: '-1',
-              }}
-            >
+            <Box w="full" minH="100vh" ml="-0.5rem" position="relative">
               {children}
             </Box>
           </Stack>
