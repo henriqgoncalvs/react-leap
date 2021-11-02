@@ -1,5 +1,3 @@
-import { Divider } from '@chakra-ui/react';
-
 import { useNavigation } from '../hooks/useNavigation';
 import { useSidebar } from '../store/sidebar';
 
@@ -18,7 +16,7 @@ export const ActionSection = ({ title }: ActionSectionP) => {
 
   return (
     <>
-      {title && isOpen ? <SectionDivider>{title}</SectionDivider> : <Divider />}
+      {title && isOpen ? <SectionDivider>{title}</SectionDivider> : <></>}
 
       {isOpen
         ? actions.map((props) => <Action.Item key={`action-nav-item-${props.name}`} {...props} />)
