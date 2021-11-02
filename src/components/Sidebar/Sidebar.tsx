@@ -1,5 +1,5 @@
 import { Divider, Spacer, Stack } from '@chakra-ui/layout';
-import { Box, Button, Center, IconButton, useOutsideClick } from '@chakra-ui/react';
+import { Box, Button, Center, IconButton, useOutsideClick, useMediaQuery } from '@chakra-ui/react';
 import { useRef } from 'react';
 import { HiArrowNarrowLeft, HiMenuAlt2 } from 'react-icons/hi';
 
@@ -14,6 +14,7 @@ export const Sidebar = () => {
     state: { isOpen },
     actions: { toggleSidebar },
   } = useSidebar();
+  const [isSmallScreen] = useMediaQuery('(max-width: 860px)');
 
   useOutsideClick({
     ref: sidebarRef,
@@ -26,7 +27,7 @@ export const Sidebar = () => {
     <Box
       // Uncomment if you want the Content Layout to resize on Sidebar open
       // w={isOpen ? { base: '400px', lg: '370px', xl: '360px' } : '100px'}
-      w="100px"
+      minW={[0, 0, 0, '60px']}
       transition="width .4s ease-in-out"
       position="relative"
       zIndex="overlay"
@@ -38,28 +39,32 @@ export const Sidebar = () => {
         bg="white"
         overflowX="clip"
         maxH="95vh"
-        pt={4}
-        pb={8}
+        pt={[isOpen ? 4 : 1, 4]}
+        pb={[isOpen ? 4 : 1, 4]}
         layerStyle="card"
         rounded="xl"
         transition="all .4s ease-in-out"
         position="fixed"
-        w={isOpen ? '250px' : '60px'}
+        w={isOpen ? (isSmallScreen ? ['90%', '250px'] : '250px') : ['50px', '60px']}
         shadow="md"
         spacing={2}
         fontSize="sm"
       >
-        {isOpen ? (
-          <Center w="full">
-            <Logo maxW="min(60%, 200px)" />
-          </Center>
+        {!isSmallScreen ? (
+          isOpen ? (
+            <Center w="full" py={3}>
+              <Logo maxW="min(60%, 200px)" />
+            </Center>
+          ) : (
+            <Center w="full" px={2}>
+              <LogoCollapsed />
+            </Center>
+          )
         ) : (
-          <Center w="full" px={2}>
-            <LogoCollapsed />
-          </Center>
+          <></>
         )}
 
-        <Divider />
+        {!isSmallScreen ? <Divider /> : <></>}
 
         {isOpen ? (
           <Button
@@ -85,15 +90,19 @@ export const Sidebar = () => {
           </Center>
         )}
 
-        <Divider />
+        {!isSmallScreen || isOpen ? <Divider /> : <></>}
+
+        {!isSmallScreen || isOpen ? <Spacer /> : <></>}
 
         <NavigationSection />
 
         <ActionSection />
 
-        <Spacer />
+        {!isSmallScreen || isOpen ? <Spacer /> : <></>}
 
-        <Divider />
+        {!isSmallScreen || isOpen ? <Divider /> : <></>}
+
+        {!isSmallScreen || isOpen ? <Spacer /> : <></>}
 
         <FooterSection />
       </Stack>

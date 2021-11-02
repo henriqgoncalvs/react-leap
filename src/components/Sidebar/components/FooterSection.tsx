@@ -1,5 +1,3 @@
-import { Divider } from '@chakra-ui/react';
-
 import { useNavigation } from '../hooks/useNavigation';
 import { useSidebar } from '../store/sidebar';
 
@@ -18,7 +16,7 @@ export const FooterSection = ({ title }: FooterSectionP) => {
 
   return (
     <>
-      {title && isOpen ? <SectionDivider>{title}</SectionDivider> : <Divider />}
+      {title && isOpen ? <SectionDivider>{title}</SectionDivider> : <></>}
 
       {isOpen
         ? footer.map((props) => <Action.Item key={`footer-nav-item-${props.name}`} {...props} />)
