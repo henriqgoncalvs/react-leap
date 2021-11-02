@@ -6,6 +6,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter as Router } from 'react-router-dom';
+import SwiperCore, { A11y, Navigation, Pagination } from 'swiper';
 
 import { APP_NAME } from '@/config';
 import { ErrorBoundary } from '@/errors';
@@ -13,7 +14,13 @@ import { AuthProvider } from '@/lib/authentication';
 import { queryClient } from '@/lib/react-query';
 import { theme, Fonts } from '@/styles';
 
+import 'swiper/swiper.min.css';
+import 'swiper/components/navigation/navigation.min.css';
+import 'swiper/components/pagination/pagination.min.css';
+
 dayjs.locale('pt-br');
+
+SwiperCore.use([Navigation, Pagination, A11y]);
 
 type AppProviderProps = {
   children: React.ReactNode;
