@@ -12,7 +12,7 @@ type PageProps = {
   withBackButton?: boolean;
 };
 
-export const Page = ({ children, withBackButton = false, title }: PageProps) => {
+export const Page = ({ children, withBackButton = false, title, ...restProps }: PageProps) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const pageRef = useRef<HTMLDivElement>(null);
@@ -39,11 +39,11 @@ export const Page = ({ children, withBackButton = false, title }: PageProps) => 
       initial="hidden"
       animate="show"
       ref={pageRef}
-      maxW="container.xl"
+      maxW={{ base: 'container.lg', lg: '900px', xl: '1400', '2xl': 'container.2xl' }}
       mx="auto"
     >
       <Head title={title} />
-      <Box pt={8} pb={6} px={10} w="100%">
+      <Box pt={[16, 24, 20, 8]} pb={6} px={[6, 8]} w="100%" {...restProps}>
         <Box h="100%">{children}</Box>
       </Box>
       {withBackButton && (
