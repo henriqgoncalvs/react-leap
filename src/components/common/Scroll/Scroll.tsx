@@ -12,7 +12,6 @@ export const Scroll = ({ children }: any) => {
             return <span {...restProps} style={{ padding: 0 }} ref={elementRef} />;
           },
         }}
-        mobileNative
       >
         {children}
       </Scrollbar>
