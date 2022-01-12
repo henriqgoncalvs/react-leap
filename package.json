@@ -56,18 +56,8 @@
     "start": "craco start",
     "start:cli": "cross-env BROWSER=none craco start",
     "build": "craco build",
-    "test": "is-ci-cli \"test:coverage\" \"test:jest\"",
-    "test:jest": "craco test",
-    "test:coverage": "CI=1 yarn test:jest -- --coverage",
     "eject": "react-scripts eject",
     "husky:postinstall": "husky install",
-    "cy:install": "cypress install",
-    "cy:run": "cypress run",
-    "cy:open": "cypress open",
-    "test:e2e:dev": "start-server-and-test start:cli http://localhost:3000 cy:open",
-    "pretest:e2e:run": "yarn build",
-    "test:e2e:run": "start-server-and-test serve http://localhost:3000 cy:run",
-    "test:e2e": "is-ci \"test:e2e:run\" \"test:e2e:dev\"",
     "lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
     "format": "npm run prettier -- --write",
@@ -76,9 +66,7 @@
     "validate-and-build": "npm-run-all --parallel check-types check-format lint build",
     "validate": "npm-run-all --parallel check-types && lint-staged",
     "generate": "yarn plop --plopfile generators/plopfile.js",
-    "commit": "commit",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "commit": "commit"
   },
   "browserslist": {
     "production": [
@@ -96,13 +84,6 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@commitlint/prompt-cli": "^13.1.0",
-    "@mswjs/data": "^0.5.1",
-    "@storybook/addon-actions": "^6.3.7",
-    "@storybook/addon-essentials": "^6.3.7",
-    "@storybook/addon-links": "^6.3.7",
-    "@storybook/node-logger": "^6.3.7",
-    "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.7",
     "@types/palx": "^1.0.1",
     "@types/ramda": "^0.27.44",
     "@types/react-custom-scrollbars": "^4.0.8",
@@ -111,11 +92,9 @@
     "@typescript-eslint/parser": "^4.29.2",
     "commitlint": "^13.1.0",
     "cross-env": "^7.0.3",
-    "cypress": "^8.3.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.4.0",
-    "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-import": "^2.24.1",
     "eslint-plugin-jest-dom": "^3.9.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -124,13 +103,9 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^4.11.0",
     "eslint-plugin-unused-imports": "^1.1.4",
-    "faker": "^5.5.3",
     "husky": "^7.0.1",
     "is-ci-cli": "^2.2.0",
-    "jsonwebtoken": "^8.5.1",
     "lint-staged": "^11.1.2",
-    "msw": "^0.35.0",
-    "nanoid": "^3.1.25",
     "npm-run-all": "^4.1.5",
     "plop": "^2.7.4",
     "prettier": "^2.3.2",
@@ -139,37 +114,10 @@
   "resolutions": {
     "babel-loader": "8.1.0"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      },
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
-    ]
-  },
   "lint-staged": {
     "*.+(ts|tsx)": [
       "yarn lint"
     ]
-  },
-  "msw": {
-    "workerDirectory": "public"
   },
   "jest": {
     "moduleNameMapper": {
