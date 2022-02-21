@@ -2,7 +2,7 @@ import { Box, Button, Text, Wrap, WrapItem } from '@chakra-ui/react';
 
 import { Link } from '@/components/common/Link';
 import { Page } from '@/components/Page';
-import { useAuth } from '@/lib/authentication';
+import { useAuth } from '@/lib/auth/authentication';
 import { Authorization, ROLES } from '@/lib/authorization';
 
 export const About = () => {

@@ -7,7 +7,7 @@ import schema from './schema';
 import { Link } from '@/components/common/Link';
 import { FieldWrapper, Form, RadioGroup, TextArea, TextInput, Radio } from '@/components/Form';
 import * as LC from '@/components/LC';
-import { useAuth } from '@/lib/authentication';
+import { useAuth } from '@/lib/auth/authentication';
 
 type RegisterFormProps = {
   onSuccess: () => void;

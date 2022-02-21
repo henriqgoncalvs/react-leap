@@ -2,7 +2,7 @@ import { Text } from '@chakra-ui/react';
 import { Navigate } from 'react-router';
 
 import { Page } from '@/components/Page';
-import { useAuth } from '@/lib/authentication';
+import { useAuth } from '@/lib/auth/authentication';
 import { Authorization, ROLES } from '@/lib/authorization';
 
 export const Users = () => {
