@@ -33,9 +33,6 @@ export const Modal = ({ title, triggerButton, children, ...restProps }: ModalPro
         scrollBehavior="outside"
         isOpen={isOpen}
         onClose={onClose}
-        css={{
-          filter: 'blur(1000px)',
-        }}
         {...restProps}
       >
         <ModalOverlay />
