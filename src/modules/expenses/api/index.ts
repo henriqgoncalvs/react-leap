@@ -1,3 +1,5 @@
+import axios from '@/lib/axios';
+
 import { Expense } from '../types';
 
 import {
@@ -6,8 +8,6 @@ import {
   UpdateExpenseOptions,
   DeleteExpenseOptions,
 } from './types';
-
-import axios from '@/lib/axios';
 
 export const getExpenses = (): Promise<Expense[]> => {
   return axios.authorized().get(`/expense`);

@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react';
 
-import { AutoComplete, AutoCompleteProps } from './AutoComplete';
-
 import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
+
+import { AutoComplete, AutoCompleteProps } from './AutoComplete';
 
 type AutoCompleteStoryProps = AutoCompleteProps &
   Pick<FieldWrapperProps, 'helper' | 'label' | 'required'>;

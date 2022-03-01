@@ -1,3 +1,5 @@
+import axios from '@/lib/axios';
+
 import { Income } from '../types';
 
 import {
@@ -6,8 +8,6 @@ import {
   UpdateIncomeOptions,
   DeleteIncomeOptions,
 } from './types';
-
-import axios from '@/lib/axios';
 
 export const getIncomes = (): Promise<Income[]> => {
   return axios.authorized().get(`/income`);

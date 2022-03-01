@@ -1,11 +1,11 @@
 import { Button } from '@chakra-ui/react';
 import { IoMdAdd } from 'react-icons/io';
 
-import { AddExpenseForm } from '../components/AddExpenseForm';
-import { ExpensesTable } from '../components/ExpensesTable';
-
 import { Modal } from '@/components/Modal';
 import { Page } from '@/components/Page';
+
+import { AddExpenseForm } from '../components/AddExpenseForm';
+import { ExpensesTable } from '../components/ExpensesTable';
 
 export const Expenses = () => {
   return (
