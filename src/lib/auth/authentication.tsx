@@ -2,7 +2,7 @@ import { Spinner } from '@chakra-ui/react';
 
 import history from '../history';
 
-import { initReactQueryAuth } from './authContext';
+import { initReactQueryAuth } from './context';
 
 import {
   loginWithEmailAndPassword,
