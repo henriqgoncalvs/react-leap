@@ -1,6 +1,6 @@
-import { BaseEntity } from '@/types';
-
 import { Income } from '../types';
+
+import { BaseEntity } from '@/types';
 
 export type IncomeBody = Omit<Income, keyof BaseEntity | 'id'>;
 

@@ -2,11 +2,11 @@ import { useToast } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { useMutation } from 'react-query';
 
-import { MutationConfig, queryClient } from '@/lib/react-query';
-
 import { createExpense } from '../api';
 import { CreateExpenseOptions } from '../api/types';
 import { Expense } from '../types';
+
+import { MutationConfig, queryClient } from '@/lib/react-query';
 
 type UseCreateExpenseOptions = {
   config?: MutationConfig<typeof createExpense>;
