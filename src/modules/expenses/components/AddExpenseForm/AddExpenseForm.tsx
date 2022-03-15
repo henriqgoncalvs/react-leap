@@ -1,11 +1,5 @@
 import { Button } from '@chakra-ui/react';
 
-import { expenseCategories } from '../..';
-import { ExpenseBody } from '../../api/types';
-import { useCreateExpense } from '../../hooks/useCreateExpense';
-
-import schema from './schema';
-
 import {
   Form,
   FieldWrapper,
@@ -15,6 +9,12 @@ import {
   AutoComplete,
 } from '@/components/Form';
 import * as LC from '@/components/LC';
+
+import { expenseCategories } from '../..';
+import { ExpenseBody } from '../../api/types';
+import { useCreateExpense } from '../../hooks/useCreateExpense';
+
+import schema from './schema';
 
 type AddExpenseFormProps = {
   onClose?: () => void;
