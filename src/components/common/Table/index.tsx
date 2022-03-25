@@ -25,10 +25,9 @@ export type TableP<T extends Record<string, any>> = {
   data?: T[];
   columns: readonly Column<T>[];
   manualPagination?: {
-    totalItems: number;
     onPageChange: (page: number) => number;
     pageIndex: number;
-    take: number;
+    totalPages: number;
   };
   isLoading?: boolean;
   $headerProps?: StyleProps;
@@ -64,7 +63,7 @@ export const Table = <T extends Record<string, any>>({
       ...(manualPagination
         ? {
             initialState: { pageIndex: manualPagination?.pageIndex },
-            pageCount: Math.ceil(manualPagination.totalItems / manualPagination.take),
+            pageCount: manualPagination.totalPages,
             stateReducer: (nextState, action) => {
               switch (action.type) {
                 case 'gotoPage':
