@@ -6,8 +6,9 @@ import { QueryConfig } from '@/lib/react-query';
 
 type UseIncomesOptions = {
   config?: QueryConfig<typeof getIncomes>;
+  queryKey?: any;
 };
 
-export const useIncomes = ({ config }: UseIncomesOptions) => {
-  return useQuery('incomes', getIncomes, config);
+export const useIncomes = ({ config, queryKey }: UseIncomesOptions) => {
+  return useQuery(['incomes', queryKey], () => getIncomes({ queryKey }), config);
 };

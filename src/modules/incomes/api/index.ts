@@ -9,8 +9,8 @@ import {
 
 import axios from '@/lib/axios';
 
-export const getIncomes = (): Promise<Income[]> => {
-  return axios.authorized({ mock: true }).get(`/income`);
+export const getIncomes = ({ queryKey }): Promise<Income[]> => {
+  return axios.authorized({ mock: true }).get(`/income`, { params: queryKey });
 };
 
 export const getIncome = ({ id }: GetIncomeOptions): Promise<Income> => {

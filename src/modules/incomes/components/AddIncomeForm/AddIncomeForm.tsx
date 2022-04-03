@@ -1,10 +1,13 @@
 import { Button } from '@chakra-ui/react';
+import { useState } from 'react';
 
 import { IncomeBody } from '../../api/types';
+import { useIncomes } from '../../hooks';
 import { useCreateIncome } from '../../hooks/useCreateIncome';
 
 import schema from './schema';
 
+import { AutocompleteOptions } from '@/components/common/AutocompleteOptions';
 import { Form, FieldWrapper, DayPicker, TextArea, NumberInput, Select } from '@/components/Form';
 import * as LC from '@/components/LC';
 
@@ -14,6 +17,11 @@ type AddIncomeFormProps = {
 
 export const AddIncomeForm = ({ onClose }: AddIncomeFormProps) => {
   const createIncomeMutation = useCreateIncome({ onClose });
+
+  const [incomesSearch, setIncomesSearch] = useState('');
+  const incomesQuery = useIncomes({
+    queryKey: { description: incomesSearch, take: 10 },
+  });
 
   return (
     <Form<IncomeBody>
@@ -31,7 +39,7 @@ export const AddIncomeForm = ({ onClose }: AddIncomeFormProps) => {
       validationSchema={schema}
       withDebugger
     >
-      {() => (
+      {(form) => (
         <LC.Vertical w="100%">
           <FieldWrapper
             name="source"
@@ -45,6 +53,21 @@ export const AddIncomeForm = ({ onClose }: AddIncomeFormProps) => {
                   { label: 'Freelance', value: 'freelance' },
                   { label: 'Investiments', value: 'investiments' },
                 ]}
+              />
+            )}
+          />
+          <FieldWrapper
+            label="Incomes"
+            name="incomes"
+            as={() => (
+              <AutocompleteOptions
+                isLoading={incomesQuery.isLoading}
+                options={incomesQuery.data?.map((income) => ({
+                  label: income.description,
+                  value: income.id,
+                }))}
+                callback={(search) => setIncomesSearch(search)}
+                onChange={(value) => form.setFieldValue('incomes', value)}
               />
             )}
           />
