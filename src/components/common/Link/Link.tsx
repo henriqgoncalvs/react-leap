@@ -9,7 +9,7 @@ type LinkProps =
 
 export const Link = ({ to, children, ...restProps }: LinkProps) => {
   return (
-    <ChakraLink as={RouterLink} to={to} {...(restProps as any)}>
+    <ChakraLink as={RouterLink} to={to} {...restProps}>
       {children}
     </ChakraLink>
   );
