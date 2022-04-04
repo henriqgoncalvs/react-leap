@@ -9,5 +9,5 @@ type UseExpensesOptions = {
 };
 
 export const useExpenses = ({ config }: UseExpensesOptions) => {
-  return useQuery('expenses', getExpenses, config as any);
+  return useQuery('expenses', getExpenses, config);
 };

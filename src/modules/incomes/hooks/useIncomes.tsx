@@ -9,5 +9,5 @@ type UseIncomesOptions = {
 };
 
 export const useIncomes = ({ config }: UseIncomesOptions) => {
-  return useQuery('incomes', getIncomes, config as any);
+  return useQuery('incomes', getIncomes, config);
 };
