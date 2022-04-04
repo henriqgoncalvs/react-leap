@@ -1,4 +1,4 @@
-import { useAuth } from '@/lib/authentication';
+import { useAuth } from '@/lib/auth/authentication';
 import { lazyImport } from '@/utils/lazyImport';
 
 const { ProtectedRoutes } = lazyImport(() => import('./ProtectedRoutes'), 'ProtectedRoutes');

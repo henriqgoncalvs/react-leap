@@ -10,7 +10,7 @@ import SwiperCore, { A11y, Navigation, Pagination } from 'swiper';
 
 import { APP_NAME } from '@/config';
 import { ErrorBoundary } from '@/errors';
-import { AuthProvider } from '@/lib/authentication';
+import { AuthProvider } from '@/lib/auth/authentication';
 import { queryClient } from '@/lib/react-query';
 import { theme, Fonts } from '@/styles';
 

@@ -2,11 +2,11 @@ import { useToast } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { useMutation } from 'react-query';
 
+import { MutationConfig, queryClient } from '@/lib/react-query';
+
 import { createIncome } from '../api';
 import { CreateIncomeOptions } from '../api/types';
 import { Income } from '../types';
-
-import { MutationConfig, queryClient } from '@/lib/react-query';
 
 type UseCreateIncomeOptions = {
   config?: MutationConfig<typeof createIncome>;
