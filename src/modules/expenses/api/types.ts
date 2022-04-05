@@ -8,6 +8,11 @@ export type GetExpenseOptions = {
   id: string;
 };
 
+export type GetExpensesParams = {
+  take: number;
+  skip: number;
+};
+
 export type CreateExpenseOptions = {
   data: ExpenseBody;
 };

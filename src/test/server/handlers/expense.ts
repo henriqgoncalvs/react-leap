@@ -5,14 +5,31 @@ import { nanoid } from 'nanoid';
 import { db, persistDb } from '../db';
 import { requireAuth, requireAdmin, delayedResponse } from '../utils';
 
+import { DataFromApi } from '@/components/common/Table';
 import { MOCK_API_URL } from '@/config';
 import { ExpenseBody } from '@/modules/expenses';
 
 export const expenseHandlers = [
   rest.get(`${MOCK_API_URL}/expense`, (req, res, ctx) => {
+    const take = req.url.searchParams.get('take');
+    const skip = req.url.searchParams.get('skip');
+
+    const paramsObject = {
+      ...(take ? { take: Number(take) } : null),
+      ...(skip ? { skip: Number(skip) } : null),
+      orderBy: {
+        orderTimestamp: 'desc',
+      },
+    };
+
     try {
       requireAuth(req);
-      const result = db.expense.findMany({});
+      const expenses = db.expense.findMany(paramsObject as any);
+      const count = db.expense.count();
+      const result = {
+        data: expenses,
+        totalItems: count,
+      } as DataFromApi;
 
       return delayedResponse(ctx.json(result));
     } catch (error: any) {

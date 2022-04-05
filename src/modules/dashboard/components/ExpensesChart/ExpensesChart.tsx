@@ -5,7 +5,7 @@ import { PieChart } from '@/components/Charts/PieChart';
 import { useExpenses, parseExpenseCategoryLabel, Category } from '@/modules/expenses';
 
 export const ExpensesChart = () => {
-  const expensesQuery = useExpenses({});
+  const expensesQuery = useExpenses({ take: 10, skip: 0 });
 
   const expensesChartData = useMemo(
     () =>

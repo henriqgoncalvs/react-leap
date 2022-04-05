@@ -70,7 +70,7 @@
     "test:e2e": "is-ci \"test:e2e:run\" \"test:e2e:dev\"",
     "lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
-    "format": "npm run prettier -- --write",
+    "format": "yarn prettier -- --write",
     "check-types": "tsc --project tsconfig.json --pretty --noEmit",
     "check-format": "npm run prettier -- --list-different",
     "validate-and-build": "npm-run-all --parallel check-types check-format lint build",

@@ -28,6 +28,7 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
         confirmPassword: '',
       }}
       onSubmit={async (values) => {
+        console.log('valores', values);
         await register(values);
         onSuccess();
       }}

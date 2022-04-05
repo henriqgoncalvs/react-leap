@@ -5,15 +5,20 @@ import {
   CreateIncomeOptions,
   UpdateIncomeOptions,
   DeleteIncomeOptions,
+  GetIncome,
 } from './types';
 
 import axios from '@/lib/axios';
 
-export const getIncomes = (): Promise<Income[]> => {
-  return axios.authorized({ mock: true }).get(`/income`);
+export const getIncomes = ({ take, skip }: GetIncomeOptions): Promise<Income[]> => {
+  const params = new URLSearchParams();
+
+  params.append('take', String(take));
+  params.append('skip', String(skip));
+  return axios.authorized({ mock: true }).get(`/income`, { params });
 };
 
-export const getIncome = ({ id }: GetIncomeOptions): Promise<Income> => {
+export const getIncome = ({ id }: GetIncome): Promise<Income> => {
   return axios.authorized({ mock: true }).get(`/income/${id}`);
 };
 

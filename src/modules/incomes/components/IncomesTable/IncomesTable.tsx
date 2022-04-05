@@ -3,15 +3,23 @@ import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { BsFillArchiveFill } from 'react-icons/bs';
 
-import { useIncomes } from '../../hooks/useIncomes';
+import { getIncomes } from '../../api';
+import { Income } from '../../types';
 import { parseIncomeSourceLabel } from '../../utils';
 
-import { Table } from './Table';
+import { Table, useTableInstance } from '@/components/common/Table';
 
 export const IncomesTable = () => {
-  const incomesQuery = useIncomes({});
-
-  const data = useMemo(() => incomesQuery?.data?.map((income) => income), [incomesQuery.data]);
+  const {
+    pagination: { pageIndex, onPageChange, totalPages },
+    query: { data, isLoading, isError },
+  } = useTableInstance<Income[]>({
+    take: 1,
+    queryConfig: {
+      queryFn: getIncomes,
+      key: 'get-incomes-query',
+    },
+  });
 
   const columns = useMemo(
     () => [
@@ -42,14 +50,24 @@ export const IncomesTable = () => {
     [],
   );
 
-  if (incomesQuery.isLoading)
+  const sanitizedData = data?.map((expense) => expense);
+
+  if (isError)
+    return (
+      <Center mt={8}>
+        <BsFillArchiveFill />
+        <Text ml={4}>A error has occured</Text>
+      </Center>
+    );
+
+  if (isLoading)
     return (
       <Center mt={8}>
         <Spinner size="lg" />
       </Center>
     );
 
-  if (!incomesQuery?.data?.length)
+  if (!sanitizedData?.length && !isLoading)
     return (
       <Center mt={8}>
         <BsFillArchiveFill />
@@ -57,5 +75,16 @@ export const IncomesTable = () => {
       </Center>
     );
 
-  return <Table data={data || []} columns={columns} mt={8} />;
+  return (
+    <Table
+      columns={columns}
+      data={data || []}
+      isLoading={isLoading}
+      manualPagination={{
+        onPageChange,
+        pageIndex,
+        totalPages,
+      }}
+    />
+  );
 };

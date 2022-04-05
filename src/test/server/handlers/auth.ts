@@ -12,6 +12,7 @@ import { LoginCredentials, RegisterCredentials } from '@/modules/auth';
 export const authHandlers = [
   rest.post<RegisterCredentials>(`${MOCK_API_URL}/auth/register`, (req, res, ctx) => {
     try {
+      console.log('CEHGOU');
       const role = req.body.role;
       const password = req.body.password;
       const confirmPassword = req.body.confirmPassword;

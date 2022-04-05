@@ -3,21 +3,18 @@ const toPath = (_path) => path.join(process.cwd(), _path);
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
-  "stories": [
-    "../src/**/*.stories.mdx",
-    "../src/**/*.stories.@(js|jsx|ts|tsx)"
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/preset-create-react-app',
   ],
-  "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/preset-create-react-app"
-  ],
-  "webpackFinal": async (config) => {
+  webpackFinal: async (config) => {
     config.resolve.plugins = config.resolve.plugins || [];
     config.resolve.plugins.push(
       new TsconfigPathsPlugin({
         configFile: path.resolve(__dirname, '../tsconfig.json'),
-      })
+      }),
     );
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -34,4 +31,4 @@ module.exports = {
       }),
     };
   },
-}
+};

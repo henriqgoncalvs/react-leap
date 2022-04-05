@@ -1,20 +1,19 @@
 import { useCallback, useState, useMemo } from 'react';
 import { useQuery } from 'react-query';
 
-import { UseTableProps, UseTableReturn } from './types';
+import { DataFromApi, PaginationFilters, UseTableProps, UseTableReturn } from './types';
 
 export const useTableInstance = <T extends unknown>({
   take,
   queryConfig,
 }: UseTableProps): UseTableReturn<T> => {
-  const [filters, setFilters] = useState<Record<string, any>>({ take: take, skip: 0 });
+  const [filters, setFilters] = useState<PaginationFilters>({ take, skip: 0 });
   const page = filters.skip / filters.take;
 
-  const query = useQuery<T>([queryConfig.key, filters], () =>
-    queryConfig.queryFn({ queryKey: [queryConfig.key, filters] }),
-  );
+  const query = useQuery<T>([queryConfig.key, filters], () => queryConfig.queryFn({ ...filters }));
+
   const totalPages = useMemo(() => {
-    const parseData = query.data as any;
+    const parseData = query.data as DataFromApi;
     return Math.ceil((parseData?.totalItems || 0) / filters.take);
   }, [filters.take, query.data]);
 
@@ -25,13 +24,19 @@ export const useTableInstance = <T extends unknown>({
     },
     [filters.take, page],
   );
+
+  const queryWithoutCount = {
+    ...query,
+    data: (query.data as DataFromApi)?.data,
+  };
+
   return {
     pagination: {
       pageIndex: page,
       onPageChange,
       totalPages: totalPages,
     },
-    query,
+    query: queryWithoutCount,
     setFilters: (filters) => setFilters({ ...filters, skip: 0, take }),
   };
 };
