@@ -11,9 +11,10 @@ import { useAuth } from '@/lib/authentication';
 
 type RegisterFormProps = {
   onSuccess: () => void;
+  onError: (message: string) => void;
 };
 
-export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
+export const RegisterForm = ({ onSuccess, onError }: RegisterFormProps) => {
   const { register, isRegistering } = useAuth();
 
   return (
@@ -28,8 +29,12 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
         confirmPassword: '',
       }}
       onSubmit={async (values) => {
-        await register(values);
-        onSuccess();
+        try {
+          await register(values);
+          onSuccess();
+        } catch (err: any) {
+          onError(err.message);
+        }
       }}
       validationSchema={schema}
     >

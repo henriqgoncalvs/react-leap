@@ -17,6 +17,14 @@ export const Register = () => {
             isClosable: true,
           })
         }
+        onError={(message: string) => {
+          toast({
+            title: message,
+            status: 'error',
+            duration: 5000,
+            isClosable: true,
+          });
+        }}
       />
     </AuthLayout>
   );
