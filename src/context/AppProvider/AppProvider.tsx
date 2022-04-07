@@ -11,9 +11,9 @@ import SwiperCore, { A11y, Navigation, Pagination } from 'swiper';
 import { APP_NAME } from '@/config';
 import { ErrorBoundary } from '@/errors';
 import { AuthProvider } from '@/lib/authentication';
+import { InjectAxiosInterceptors } from '@/lib/axios';
 import { queryClient } from '@/lib/react-query';
 import { theme, Fonts } from '@/styles';
-
 import 'swiper/swiper.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 import 'swiper/components/pagination/pagination.min.css';
@@ -58,7 +58,10 @@ export const AppProvider = ({ children }: AppProviderProps) => {
             <QueryClientProvider client={queryClient}>
               <ReactQueryDevtools position="bottom-left" />
               <AuthProvider>
-                <Router>{children}</Router>
+                <Router>
+                  <InjectAxiosInterceptors />
+                  {children}
+                </Router>
               </AuthProvider>
             </QueryClientProvider>
           </ErrorBoundary>
