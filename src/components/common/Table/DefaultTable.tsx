@@ -13,7 +13,7 @@ import {
   TableLoading,
 } from './TableCompound';
 
-export const DefaultTable = ({ ...tableContainerProps }: TableP<T>) => {
+export const DefaultTable = <T,>({ ...tableContainerProps }: TableP<T>) => {
   return (
     <TableContainer<T>
       overflow="auto"

@@ -1,13 +1,6 @@
 import { Box, BoxProps } from '@chakra-ui/react';
 import { createContext, ReactNode, useContext } from 'react';
-import {
-  useTable,
-  useSortBy,
-  usePagination,
-  Column,
-  TableInstance,
-  ColumnInstance,
-} from 'react-table';
+import { useTable, useSortBy, usePagination, Column, TableInstance } from 'react-table';
 
 export type TableContextValues<T extends Record<string, any>> = TableP<T> & {
   getTableProps: TableInstance['getTableProps'];
@@ -27,7 +20,7 @@ export type TableContextValues<T extends Record<string, any>> = TableP<T> & {
 
 export type TableP<T extends Record<string, any>> = {
   data?: T[];
-  columns: readonly Column<T>[];
+  columns: Column<T>[];
   manualPagination?: {
     onPageChange: (page: number) => number;
     pageIndex: number;
@@ -63,7 +56,7 @@ export const TableContainer = <T,>({
     state: { pageIndex },
   } = useTable(
     {
-      columns: columns as Column<any>[],
+      columns: columns as Column<Record<string, any>>[],
       data: data || [],
       manualPagination: !!manualPagination,
       ...(manualPagination
@@ -106,7 +99,7 @@ export const TableContainer = <T,>({
         isLoading,
         manualPagination,
         data,
-        columns: columns as readonly Column<any>[] & ColumnInstance<any>[],
+        columns: columns as Column<Record<string, any>>[],
         ...props,
       }}
     >

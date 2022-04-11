@@ -12,27 +12,30 @@ export type TableHeaderRowsProps = {
 export const TableHeaderRows = ({ headerRowProps, headerCellProps }: TableHeaderRowsProps) => {
   const { headerGroups } = useTableContext();
 
-  return;
-  headerGroups.map((headerGroup, indexGroup) => (
-    <Tr {...headerGroup.getHeaderGroupProps()} key={indexGroup} {...headerRowProps}>
-      {headerGroup.headers.map((column, indexHeader) => (
-        <Th
-          {...column.getHeaderProps(column.getSortByToggleProps())}
-          key={indexHeader}
-          {...headerCellProps}
-        >
-          {column.render('Header')}
-          <chakra.span pl="4" d="inline-block">
-            {column.isSorted ? (
-              column.isSortedDesc ? (
-                <GoTriangleUp aria-label="sorted descending" />
-              ) : (
-                <GoTriangleDown aria-label="sorted ascending" />
-              )
-            ) : null}
-          </chakra.span>
-        </Th>
+  return (
+    <>
+      {headerGroups.map((headerGroup, indexGroup) => (
+        <Tr {...headerGroup.getHeaderGroupProps()} key={indexGroup} {...headerRowProps}>
+          {headerGroup.headers.map((column, indexHeader) => (
+            <Th
+              {...column.getHeaderProps(column.getSortByToggleProps())}
+              key={indexHeader}
+              {...headerCellProps}
+            >
+              {column.render('Header')}
+              <chakra.span pl="4" d="inline-block">
+                {column.isSorted ? (
+                  column.isSortedDesc ? (
+                    <GoTriangleUp aria-label="sorted descending" />
+                  ) : (
+                    <GoTriangleDown aria-label="sorted ascending" />
+                  )
+                ) : null}
+              </chakra.span>
+            </Th>
+          ))}
+        </Tr>
       ))}
-    </Tr>
-  ));
+    </>
+  );
 };

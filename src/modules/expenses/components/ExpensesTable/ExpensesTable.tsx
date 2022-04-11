@@ -70,7 +70,7 @@ export const ExpensesTable = () => {
     );
 
   return (
-    <DefaultTable
+    <DefaultTable<any>
       columns={columns}
       data={data || []}
       isLoading={isLoading}

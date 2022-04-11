@@ -76,7 +76,7 @@ export const IncomesTable = () => {
     );
 
   return (
-    <DefaultTable
+    <DefaultTable<any>
       columns={columns}
       data={data || []}
       isLoading={isLoading}
