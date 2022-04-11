@@ -1,8 +1,29 @@
-import { StyleProps, Box, BoxProps } from '@chakra-ui/react';
+import { Box, BoxProps } from '@chakra-ui/react';
 import { createContext, ReactNode, useContext } from 'react';
-import { useTable, useSortBy, usePagination, Column } from 'react-table';
+import {
+  useTable,
+  useSortBy,
+  usePagination,
+  Column,
+  TableInstance,
+  ColumnInstance,
+} from 'react-table';
 
-export type TableContextValues<T> = TableP<T> & any;
+export type TableContextValues<T extends Record<string, any>> = TableP<T> & {
+  getTableProps: TableInstance['getTableProps'];
+  getTableBodyProps: TableInstance['getTableBodyProps'];
+  headerGroups: TableInstance['headerGroups'];
+  page: TableInstance['page'];
+  prepareRow: TableInstance['prepareRow'];
+  canPreviousPage: TableInstance['canPreviousPage'];
+  canNextPage: TableInstance['canNextPage'];
+  pageOptions: TableInstance['pageOptions'];
+  pageCount: TableInstance['pageCount'];
+  gotoPage: TableInstance['gotoPage'];
+  nextPage: TableInstance['nextPage'];
+  previousPage: TableInstance['previousPage'];
+  pageIndex: number;
+};
 
 export type TableP<T extends Record<string, any>> = {
   data?: T[];
@@ -13,20 +34,19 @@ export type TableP<T extends Record<string, any>> = {
     totalPages: number;
   };
   isLoading?: boolean;
-  $headerProps?: StyleProps;
   children?: ReactNode;
-} & BoxProps;
+} & Partial<BoxProps>;
 
-const TableContext = createContext({} as TableContextValues<any>);
+const TableContext = createContext({} as TableContextValues<Record<string, any>>);
 
-export const TableContainer = ({
+export const TableContainer = <T,>({
   data,
   columns,
   manualPagination,
   isLoading,
   children,
   ...props
-}: TableP<any>) => {
+}: TableP<T>) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -43,7 +63,7 @@ export const TableContainer = ({
     state: { pageIndex },
   } = useTable(
     {
-      columns: columns as any,
+      columns: columns as Column<any>[],
       data: data || [],
       manualPagination: !!manualPagination,
       ...(manualPagination
@@ -86,7 +106,7 @@ export const TableContainer = ({
         isLoading,
         manualPagination,
         data,
-        columns,
+        columns: columns as readonly Column<any>[] & ColumnInstance<any>[],
         ...props,
       }}
     >

@@ -11,7 +11,7 @@ export type TableBodyRowsProps = {
 export const TableBodyRows = ({ bodyCellProps, bodyRowProps }: TableBodyRowsProps) => {
   const { page, prepareRow } = useTableContext();
 
-  return page?.map((row, index) => {
+  return page.map((row, index) => {
     prepareRow(row);
     return (
       <Tr {...row.getRowProps()} key={index} {...bodyRowProps}>

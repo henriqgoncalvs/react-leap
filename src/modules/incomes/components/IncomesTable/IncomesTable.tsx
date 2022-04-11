@@ -7,7 +7,7 @@ import { getIncomes } from '../../api';
 import { Income } from '../../types';
 import { parseIncomeSourceLabel } from '../../utils';
 
-import { Table, useTableInstance } from '@/components/common/Table';
+import { DefaultTable, useTableInstance } from '@/components/common/Table';
 
 export const IncomesTable = () => {
   const {
@@ -76,7 +76,7 @@ export const IncomesTable = () => {
     );
 
   return (
-    <Table
+    <DefaultTable
       columns={columns}
       data={data || []}
       isLoading={isLoading}

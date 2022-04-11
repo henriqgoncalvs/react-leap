@@ -1,6 +1,5 @@
 /* eslint-disable no-case-declarations */
 import { Center, Spinner } from '@chakra-ui/react';
-import React from 'react';
 
 import {
   TableContainer,
@@ -14,9 +13,9 @@ import {
   TableLoading,
 } from './TableCompound';
 
-export const ReactLeapTable = ({ ...tableContainerProps }: TableP<any>) => {
+export const DefaultTable = ({ ...tableContainerProps }: TableP<T>) => {
   return (
-    <TableContainer
+    <TableContainer<T>
       overflow="auto"
       h="100%"
       sx={{

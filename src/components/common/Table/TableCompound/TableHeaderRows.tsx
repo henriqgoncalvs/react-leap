@@ -12,7 +12,8 @@ export type TableHeaderRowsProps = {
 export const TableHeaderRows = ({ headerRowProps, headerCellProps }: TableHeaderRowsProps) => {
   const { headerGroups } = useTableContext();
 
-  return headerGroups.map((headerGroup, indexGroup) => (
+  return;
+  headerGroups.map((headerGroup, indexGroup) => (
     <Tr {...headerGroup.getHeaderGroupProps()} key={indexGroup} {...headerRowProps}>
       {headerGroup.headers.map((column, indexHeader) => (
         <Th

@@ -7,8 +7,7 @@ import { getExpenses } from '../../api';
 import { Expense } from '../../types';
 import { parseExpenseCategoryLabel } from '../../utils';
 
-import { useTableInstance } from '@/components/common/Table';
-import { ReactLeapTable } from '@/components/common/Table/ReactLeapTable';
+import { useTableInstance, DefaultTable } from '@/components/common/Table';
 
 export const ExpensesTable = () => {
   const {
@@ -71,7 +70,7 @@ export const ExpensesTable = () => {
     );
 
   return (
-    <ReactLeapTable
+    <DefaultTable
       columns={columns}
       data={data || []}
       isLoading={isLoading}
