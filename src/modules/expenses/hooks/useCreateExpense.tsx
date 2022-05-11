@@ -21,7 +21,7 @@ export const useCreateExpense = ({ onClose, config }: UseCreateExpenseOptions) =
       await queryClient.cancelQueries('expenses');
 
       const previousExpenses: any = queryClient.getQueryData<Expense[]>('expenses');
-      console.log(previousExpenses || []);
+
       queryClient.setQueryData('expenses', [
         ...(previousExpenses?.data || []),
         { ...newExpense.data, createdAt: dayjs().toISOString() },

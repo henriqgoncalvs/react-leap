@@ -12,7 +12,6 @@ import { LoginCredentials, RegisterCredentials } from '@/modules/auth';
 export const authHandlers = [
   rest.post<RegisterCredentials>(`${MOCK_API_URL}/auth/register`, (req, res, ctx) => {
     try {
-      console.log('CAIU');
       const role = req.body.role;
       const password = req.body.password;
       const confirmPassword = req.body.confirmPassword;
@@ -48,7 +47,6 @@ export const authHandlers = [
 
       return delayedResponse(ctx.json(result));
     } catch (error: any) {
-      console.log('erro', error);
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));
     }
   }),

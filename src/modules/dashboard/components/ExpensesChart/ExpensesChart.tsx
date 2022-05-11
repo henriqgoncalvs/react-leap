@@ -19,8 +19,6 @@ export const ExpensesChart = () => {
     [expensesQuery.data],
   );
 
-  console.log(expensesChartData);
-
   return (
     <PieChart
       label="Expenses"
