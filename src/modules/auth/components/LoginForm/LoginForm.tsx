@@ -1,13 +1,13 @@
 import { Button } from '@chakra-ui/react';
 
+import { LoginCredentials } from '../../api/types';
+
+import schema from './schema';
+
 import { Link } from '@/components/common/Link';
 import { FieldWrapper, Form, TextInput } from '@/components/Form';
 import * as LC from '@/components/LC';
 import { useAuth } from '@/lib/auth/authentication';
-
-import { LoginCredentials } from '../../api/types';
-
-import schema from './schema';
 
 type LoginFormProps = {
   onSuccess: () => void;

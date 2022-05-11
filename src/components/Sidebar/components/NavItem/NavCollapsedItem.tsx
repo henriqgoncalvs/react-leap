@@ -5,16 +5,16 @@ import { chakra } from '@chakra-ui/system';
 import { Tooltip } from '@chakra-ui/tooltip';
 import { useLocation } from 'react-router-dom';
 
-import { Link } from '@/components/common/Link';
-
 import { NavItemP } from './NavItem';
+
+import { Link } from '@/components/common/Link';
 
 export const NavCollapsedItem = ({
   name,
   scheme = 'black',
-  icon,
   to,
   count,
+  icon,
 }: NavItemP & { scheme?: string }) => {
   const { pathname } = useLocation();
   const [isSmallScreen] = useMediaQuery('(max-width: 860px)');

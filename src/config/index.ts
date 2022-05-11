@@ -4,6 +4,7 @@ export const BRAND_COLOR = '#135f9b';
 
 export const API_URL = process.env.REACT_APP_API_URL as string;
 export const MOCK_API_URL = process.env.REACT_APP_MOCK_API_URL as string;
+console.log(MOCK_API_URL);
 
 export const ENVIROMENT = process.env.NODE_ENV;
 
