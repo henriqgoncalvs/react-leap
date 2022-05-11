@@ -1,9 +1,9 @@
 import axiosInstance, { AxiosError } from 'axios';
 
-import history from './history';
-
-import { API_URL, MOCK_API_URL } from '@/config';
+import { API_URL } from '@/config';
 import { cookies, storage } from '@/utils';
+
+import history from './history';
 
 const config = {
   baseURL: API_URL,
@@ -53,19 +53,17 @@ authenticatedInstance.interceptors.response.use(
 );
 
 export default {
-  unauthorized({ mock = false }: { mock?: boolean }) {
-    if (mock) unathenticatedInstance.defaults.baseURL = MOCK_API_URL;
-    else unathenticatedInstance.defaults.baseURL = API_URL;
+  unauthorized() {
+    unathenticatedInstance.defaults.baseURL = API_URL;
 
     return unathenticatedInstance;
   },
-  authorized({ mock = false }: { mock?: boolean }) {
+  authorized() {
     authenticatedInstance.defaults.headers.common.Authorization = `Bearer ${cookies.getAccess()}`;
 
     authenticatedInstance.interceptors.request.use(
       function (config) {
-        if (mock) config.baseURL = MOCK_API_URL;
-        else config.baseURL = API_URL;
+        config.baseURL = API_URL;
 
         return config;
       },

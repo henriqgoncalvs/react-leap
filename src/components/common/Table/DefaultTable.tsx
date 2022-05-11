@@ -20,21 +20,21 @@ export const DefaultTable = <T,>({ ...tableContainerProps }: TableP<T>) => {
       h="100%"
       sx={{
         '::-webkit-scrollbar': {
-          height: '12px',
-          width: '12px',
+          height: '0.75rem',
+          width: '0.75rem',
         },
         '::-webkit-scrollbar-track': {
-          height: '4px',
-          borderLeft: '2px solid #5BA699',
-          borderRight: '2px solid #5BA699',
-          borderTop: '2px solid #5BA699',
-          borderBottom: '2px solid #5BA699',
+          height: '0.25rem',
+          borderLeft: '0.125rem solid #5BA699',
+          borderRight: '0.125rem solid #5BA699',
+          borderTop: '0.125rem solid #5BA699',
+          borderBottom: '0.125 solid #5BA699',
           background: 'primary.600',
           borderRadius: '1.2rem',
         },
         '::-webkit-scrollbar-thumb': {
           background: 'primary.700',
-          borderRadius: '1.2px',
+          borderRadius: '0.075rem',
         },
       }}
       bg="white"

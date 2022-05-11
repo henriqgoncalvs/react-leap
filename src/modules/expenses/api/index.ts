@@ -20,17 +20,17 @@ export const getExpenses = ({ take, skip }: GetExpensesParams): Promise<Expense[
 };
 
 export const getExpense = ({ id }: GetExpenseOptions): Promise<Expense> => {
-  return axios.authorized({}).get(`/expense/${id}`);
+  return axios.authorized().get(`/expense/${id}`);
 };
 
 export const createExpense = ({ data }: CreateExpenseOptions): Promise<Expense> => {
-  return axios.authorized({ mock: true }).post(`/expense`, data);
+  return axios.authorized().post(`/expense`, data);
 };
 
 export const updateExpense = ({ id, data }: UpdateExpenseOptions): Promise<Expense> => {
-  return axios.authorized({}).patch(`/expense/${id}`, data);
+  return axios.authorized().patch(`/expense/${id}`, data);
 };
 
 export const deleteExpense = ({ id }: DeleteExpenseOptions) => {
-  return axios.authorized({}).patch(`/expense/${id}`);
+  return axios.authorized().patch(`/expense/${id}`);
 };

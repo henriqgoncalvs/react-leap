@@ -23,13 +23,13 @@ export const getIncome = ({ id }: GetIncome): Promise<Income> => {
 };
 
 export const createIncome = ({ data }: CreateIncomeOptions): Promise<Income> => {
-  return axios.authorized({ mock: true }).post(`/income`, data);
+  return axios.authorized().post(`/income`, data);
 };
 
 export const updateIncome = ({ id, data }: UpdateIncomeOptions): Promise<Income> => {
-  return axios.authorized({}).patch(`/income/${id}`, data);
+  return axios.authorized().patch(`/income/${id}`, data);
 };
 
 export const deleteIncome = ({ id }: DeleteIncomeOptions) => {
-  return axios.authorized({}).patch(`/income/${id}`);
+  return axios.authorized().patch(`/income/${id}`);
 };

@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react';
 
-import { PinInput, PinInputProps } from './PinInput';
-
 import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
+
+import { PinInput, PinInputProps } from './PinInput';
 
 type PinInputStoryProps = PinInputProps & Pick<FieldWrapperProps, 'helper' | 'label' | 'required'>;
 

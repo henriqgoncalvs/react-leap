@@ -1,7 +1,4 @@
 import { Spinner } from '@chakra-ui/react';
-import { initReactQueryAuth } from 'react-query-auth';
-
-import history from './history';
 
 import {
   loginWithEmailAndPassword,
@@ -13,6 +10,10 @@ import {
   AuthUser,
 } from '@/modules/auth';
 import { storage, cookies } from '@/utils';
+
+import history from '../history';
+
+import { initReactQueryAuth } from './context';
 
 function handleUserResponse(data: UserResponse) {
   const { accessToken, user } = data;
