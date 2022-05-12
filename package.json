@@ -157,5 +157,8 @@
       "!src/**/*.stories.{js,jsx,ts,tsx}",
       "!src/test/**/*.{js,jsx,ts,tsx}"
     ]
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
