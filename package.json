@@ -22,7 +22,6 @@
     "axios": "^0.21.1",
     "chakra-ui-autocomplete": "^1.4.3",
     "dayjs": "^1.10.6",
-    "faker": "^6.6.6",
     "formik": "^2.2.9",
     "framer-motion": "^4",
     "history": "^5.0.1",

@@ -1,9 +1,9 @@
 import axiosInstance, { AxiosError } from 'axios';
 
-import history from './history';
-
 import { API_URL, MOCK_API_URL } from '@/config';
 import { cookies, storage } from '@/utils';
+
+import history from './history';
 
 const config = {
   baseURL: API_URL,

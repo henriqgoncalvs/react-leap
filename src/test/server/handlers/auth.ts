@@ -3,11 +3,11 @@ import _ from 'lodash';
 import { rest } from 'msw';
 import { nanoid } from 'nanoid';
 
-import { db, persistDb } from '../db';
-import { authenticate, delayedResponse, hash, requireAuth } from '../utils';
-
 import { MOCK_API_URL } from '@/config';
 import { LoginCredentials, RegisterCredentials } from '@/modules/auth';
+
+import { db, persistDb } from '../db';
+import { authenticate, delayedResponse, hash, requireAuth } from '../utils';
 
 export const authHandlers = [
   rest.post<RegisterCredentials>(`${MOCK_API_URL}/auth/register`, (req, res, ctx) => {

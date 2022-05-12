@@ -2,12 +2,12 @@ import dayjs from 'dayjs';
 import { rest } from 'msw';
 import { nanoid } from 'nanoid';
 
-import { db, persistDb } from '../db';
-import { requireAuth, requireAdmin, delayedResponse } from '../utils';
-
 import { DataFromApi } from '@/components/common/Table';
 import { MOCK_API_URL } from '@/config';
 import { IncomeBody } from '@/modules/incomes';
+
+import { db, persistDb } from '../db';
+import { requireAuth, requireAdmin, delayedResponse } from '../utils';
 
 export const incomeHandlers = [
   rest.get(`${MOCK_API_URL}/income`, (req, res, ctx) => {
@@ -46,7 +46,7 @@ export const incomeHandlers = [
       const result = db.income.findFirst({
         where: {
           id: {
-            equals: incomeId,
+            equals: incomeId as string,
           },
         },
       });
@@ -87,7 +87,7 @@ export const incomeHandlers = [
       const result = db.income.update({
         where: {
           id: {
-            equals: incomeId,
+            equals: incomeId as string,
           },
         },
         data,
@@ -109,7 +109,7 @@ export const incomeHandlers = [
 
       const result = db.income.delete({
         where: {
-          id: incomeId,
+          id: incomeId as any,
         },
       });
 

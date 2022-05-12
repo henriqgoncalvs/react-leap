@@ -3,11 +3,11 @@ import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { BsFillArchiveFill } from 'react-icons/bs';
 
+import { DefaultTable, useTableInstance } from '@/components/common/Table';
+
 import { getIncomes } from '../../api';
 import { Income } from '../../types';
 import { parseIncomeSourceLabel } from '../../utils';
-
-import { DefaultTable, useTableInstance } from '@/components/common/Table';
 
 export const IncomesTable = () => {
   const {

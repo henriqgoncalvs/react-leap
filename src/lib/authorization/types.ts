@@ -1,8 +1,8 @@
 import { Arg1 } from 'tsargs';
 
-import { PoliciesTypes, POLICIES } from './permissions/policies';
-
 import { Roles } from '@/types';
+
+import { PoliciesTypes, POLICIES } from './permissions/policies';
 
 export type AuthorizationProps = {
   forbiddenFallback?: React.ReactNode;
