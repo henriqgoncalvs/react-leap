@@ -3,15 +3,23 @@ import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { BsFillArchiveFill } from 'react-icons/bs';
 
-import { useExpenses } from '../../hooks/useExpenses';
+import { useTableInstance, DefaultTable } from '@/components/common/Table';
+
+import { getExpenses } from '../../api';
+import { Expense } from '../../types';
 import { parseExpenseCategoryLabel } from '../../utils';
 
-import { Table } from './Table';
-
 export const ExpensesTable = () => {
-  const expensesQuery = useExpenses({});
-
-  const data = useMemo(() => expensesQuery?.data?.map((expense) => expense), [expensesQuery.data]);
+  const {
+    pagination: { pageIndex, onPageChange, totalPages },
+    query: { data, isLoading, isError },
+  } = useTableInstance<Expense[]>({
+    take: 1,
+    queryConfig: {
+      queryFn: getExpenses,
+      key: 'get-expenses-query',
+    },
+  });
 
   const columns = useMemo(
     () => [
@@ -36,15 +44,24 @@ export const ExpensesTable = () => {
     ],
     [],
   );
+  const sanitizedData = data?.map((expense) => expense);
 
-  if (expensesQuery.isLoading)
+  if (isError)
+    return (
+      <Center mt={8}>
+        <BsFillArchiveFill />
+        <Text ml={4}>A error has occured</Text>
+      </Center>
+    );
+
+  if (isLoading)
     return (
       <Center mt={8}>
         <Spinner size="lg" />
       </Center>
     );
 
-  if (!expensesQuery?.data?.length)
+  if (!sanitizedData?.length && !isLoading)
     return (
       <Center mt={8}>
         <BsFillArchiveFill />
@@ -52,5 +69,16 @@ export const ExpensesTable = () => {
       </Center>
     );
 
-  return <Table data={data || []} columns={columns} mt={8} />;
+  return (
+    <DefaultTable<any>
+      columns={columns}
+      data={data || []}
+      isLoading={isLoading}
+      manualPagination={{
+        onPageChange,
+        pageIndex,
+        totalPages,
+      }}
+    />
+  );
 };

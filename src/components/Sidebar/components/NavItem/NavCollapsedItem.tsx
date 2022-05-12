@@ -12,9 +12,9 @@ import { NavItemP } from './NavItem';
 export const NavCollapsedItem = ({
   name,
   scheme = 'black',
-  icon,
   to,
   count,
+  icon,
 }: NavItemP & { scheme?: string }) => {
   const { pathname } = useLocation();
   const [isSmallScreen] = useMediaQuery('(max-width: 860px)');

@@ -7,14 +7,19 @@ import {
   CreateIncomeOptions,
   UpdateIncomeOptions,
   DeleteIncomeOptions,
+  GetIncome,
 } from './types';
 
-export const getIncomes = (): Promise<Income[]> => {
-  return axios.authorized().get(`/income`);
+export const getIncomes = ({ take, skip }: GetIncomeOptions): Promise<Income[]> => {
+  const params = new URLSearchParams();
+
+  params.append('take', String(take));
+  params.append('skip', String(skip));
+  return axios.authorized({ mock: true }).get(`/income`, { params });
 };
 
-export const getIncome = ({ id }: GetIncomeOptions): Promise<Income> => {
-  return axios.authorized().get(`/income/${id}`);
+export const getIncome = ({ id }: GetIncome): Promise<Income> => {
+  return axios.authorized({ mock: true }).get(`/income/${id}`);
 };
 
 export const createIncome = ({ data }: CreateIncomeOptions): Promise<Income> => {
