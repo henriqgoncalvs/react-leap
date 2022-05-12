@@ -11,5 +11,5 @@ type UseIncomesOptions = {
 };
 
 export const useIncomes = ({ config, take = 10, skip = 0 }: UseIncomesOptions) => {
-  return useQuery('incomes', () => getIncomes({ take, skip }), config);
+  return useQuery('incomes', () => getIncomes({ take, skip }), config as any);
 };

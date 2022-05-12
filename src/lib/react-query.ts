@@ -11,7 +11,8 @@ const queryConfig: DefaultOptions = {
 
 export const queryClient = new QueryClient({ defaultOptions: queryConfig });
 
-export type QueryConfig<FetcherFnType extends (...args: any) => any> = UseQueryOptions<any>;
+export type QueryConfig<FetcherFnType extends (...args: any) => any> =
+  UseQueryOptions<FetcherFnType>;
 
 export type MutationConfig<FetcherFnType extends (...args: any) => any> = UseMutationOptions<
   any,

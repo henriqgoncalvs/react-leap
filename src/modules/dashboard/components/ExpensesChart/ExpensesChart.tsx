@@ -11,7 +11,7 @@ export const ExpensesChart = () => {
     () =>
       _.chain(expensesQuery?.data)
         .groupBy('category')
-        .map((value, key) => ({
+        .map((value: any, key) => ({
           label: parseExpenseCategoryLabel(key as Category),
           value: _.reduce(value, (acc, expense) => Number(expense.value) + acc, 0),
         }))

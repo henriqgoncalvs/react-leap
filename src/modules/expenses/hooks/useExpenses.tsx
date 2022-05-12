@@ -11,5 +11,5 @@ type UseExpensesOptions = {
 };
 
 export const useExpenses = ({ config, take = 10, skip }: UseExpensesOptions) => {
-  return useQuery('expenses', () => getExpenses({ take, skip }), config);
+  return useQuery('expenses', () => getExpenses({ take, skip }), config as any);
 };
