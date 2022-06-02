@@ -7,6 +7,7 @@
     "@craco/craco": "^6.2.0",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@mswjs/data": "^0.10.0",
     "@nivo/bar": "^0.73.1",
     "@nivo/core": "^0.73.0",
     "@nivo/pie": "^0.73.0",
@@ -26,7 +27,9 @@
     "history": "^5.0.1",
     "immer": "^9.0.6",
     "js-cookie": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
+    "msw": "^0.39.2",
     "parallax-js": "^3.1.0",
     "ramda": "^0.27.1",
     "react": "^17.0.2",
@@ -60,7 +63,7 @@
     "husky:postinstall": "husky install",
     "lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
-    "format": "npm run prettier -- --write",
+    "format": "yarn prettier -- --write",
     "check-types": "tsc --project tsconfig.json --pretty --noEmit",
     "check-format": "npm run prettier -- --list-different",
     "validate-and-build": "npm-run-all --parallel check-types check-format lint build",
@@ -88,6 +91,7 @@
     "@types/ramda": "^0.27.44",
     "@types/react-custom-scrollbars": "^4.0.8",
     "@types/react-router-dom": "^5.1.8",
+    "@types/react-table": "^7.7.10",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^5.18.0",
     "commitlint": "^13.1.0",
@@ -153,5 +157,8 @@
       "!src/**/*.stories.{js,jsx,ts,tsx}",
       "!src/test/**/*.{js,jsx,ts,tsx}"
     ]
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

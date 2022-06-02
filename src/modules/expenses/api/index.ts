@@ -7,10 +7,16 @@ import {
   CreateExpenseOptions,
   UpdateExpenseOptions,
   DeleteExpenseOptions,
+  GetExpensesParams,
 } from './types';
 
-export const getExpenses = (): Promise<Expense[]> => {
-  return axios.authorized().get(`/expense`);
+export const getExpenses = ({ take, skip }: GetExpensesParams): Promise<Expense[]> => {
+  const params = new URLSearchParams();
+
+  params.append('take', String(take));
+  params.append('skip', String(skip));
+
+  return axios.authorized({ mock: true }).get(`/expense`, { params });
 };
 
 export const getExpense = ({ id }: GetExpenseOptions): Promise<Expense> => {

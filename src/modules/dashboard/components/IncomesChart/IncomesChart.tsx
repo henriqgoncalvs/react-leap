@@ -11,7 +11,7 @@ export const IncomesChart = () => {
     () =>
       _.chain(incomesQuery?.data)
         .groupBy('source')
-        .map((value, key) => ({
+        .map((value: any, key) => ({
           label: parseIncomeSourceLabel(key as Sources),
           value: _.reduce(value, (acc, income) => Number(income.value) + acc, 0),
         }))

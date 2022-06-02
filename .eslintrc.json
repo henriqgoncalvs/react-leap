@@ -3,9 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "eslint:recommended"
-  ],
+  "extends": ["eslint:recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -50,10 +48,9 @@
             "patterns": ["@/modules/*/*"]
           }
         ],
+        "linebreak-style": ["error", "windows"],
         "react/prop-types": "off",
-
         "no-debugger": "off",
-
         "import/order": [
           "error",
           {
@@ -79,17 +76,13 @@
             "argsIgnorePattern": "^_"
           }
         ],
-
         "react/react-in-jsx-scope": "off",
         "react/jsx-uses-react": "error",
-
         "jsx-a11y/anchor-is-valid": "off",
-
         "@typescript-eslint/explicit-function-return-type": ["off"],
         "@typescript-eslint/explicit-module-boundary-types": ["off"],
         "@typescript-eslint/no-empty-function": ["off"],
         "@typescript-eslint/no-explicit-any": ["off"],
-
         "prettier/prettier": ["error", {}, { "usePrettierrc": true }]
       }
     }

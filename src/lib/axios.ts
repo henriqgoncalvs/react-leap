@@ -1,6 +1,6 @@
 import axiosInstance, { AxiosError } from 'axios';
 
-import { API_URL } from '@/config';
+import { API_URL, MOCK_API_URL } from '@/config';
 import { cookies, storage } from '@/utils';
 
 import history from './history';
@@ -58,12 +58,13 @@ export default {
 
     return unathenticatedInstance;
   },
-  authorized() {
+  authorized({ mock } = { mock: false }) {
     authenticatedInstance.defaults.headers.common.Authorization = `Bearer ${cookies.getAccess()}`;
 
     authenticatedInstance.interceptors.request.use(
       function (config) {
-        config.baseURL = API_URL;
+        if (mock) config.baseURL = MOCK_API_URL;
+        else config.baseURL = API_URL;
 
         return config;
       },
