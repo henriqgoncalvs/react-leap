@@ -57,8 +57,8 @@
   },
   "scripts": {
     "start": "craco start",
-    "start:cli": "cross-env BROWSER=none craco start",
     "build": "craco build",
+    "start:cli": "cross-env BROWSER=none craco start",
     "eject": "react-scripts eject",
     "husky:postinstall": "husky install",
     "lint": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",

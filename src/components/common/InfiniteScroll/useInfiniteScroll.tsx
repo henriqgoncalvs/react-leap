@@ -1,18 +1,22 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
-import { UseInfinityScrollProps, UseInfinityScrollReturn } from './types';
-export const useInfinityScroll = <T,>({
+import { UseInfiniteScrollProps, UseInfiniteScrollReturn } from './types';
+
+export const useInfiniteScroll = <T,>({
   queryFn,
   filters,
   take,
   queryKey,
-}: UseInfinityScrollProps): UseInfinityScrollReturn<T> => {
+}: UseInfiniteScrollProps): UseInfiniteScrollReturn<T> => {
   const [page, setPage] = useState(0);
   const [data, setData] = useState<T[]>([]);
-  const { data: queryData, isLoading } = useQuery<{ data: T[]; totalItems: number }>(
-    [queryKey, filters, page],
-    () => queryFn({ ...filters, take, skip: take * page }),
+  const {
+    data: queryData,
+    isLoading,
+    isError,
+  } = useQuery<{ data: T[]; totalItems: number }>([queryKey, filters, page], () =>
+    queryFn({ ...filters, take, skip: take * page }),
   );
 
   useEffect(() => {
@@ -27,5 +31,5 @@ export const useInfinityScroll = <T,>({
     }
   }, [queryData, take]);
 
-  return { data, onEndReached, isLoading };
+  return { data, onEndReached, isLoading, isError };
 };
