@@ -3,22 +3,27 @@ import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { BsFillArchiveFill } from 'react-icons/bs';
 
-import { DefaultTable, useTableInstance } from '@/components/common/Table';
+import { InfiniteScroll, useInfiniteScroll } from '@/components/common/InfiniteScroll';
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableHeaderRows,
+  TableBody,
+  TableBodyRows,
+} from '@/components/common/Table/TableCompound';
+import scrollbarStyle from '@/styles/scrollbarStyle';
 
 import { getIncomes } from '../../api';
 import { Income } from '../../types';
 import { parseIncomeSourceLabel } from '../../utils';
 
 export const IncomesTable = () => {
-  const {
-    pagination: { pageIndex, onPageChange, totalPages },
-    query: { data, isLoading, isError },
-  } = useTableInstance<Income[]>({
-    take: 1,
-    queryConfig: {
-      queryFn: getIncomes,
-      key: 'get-incomes-query',
-    },
+  const { onEndReached, data, isLoading, isError } = useInfiniteScroll<Income>({
+    take: 8,
+    queryFn: getIncomes,
+    filters: {},
+    queryKey: 'get-incomes-query',
   });
 
   const columns = useMemo(
@@ -60,13 +65,6 @@ export const IncomesTable = () => {
       </Center>
     );
 
-  if (isLoading)
-    return (
-      <Center mt={8}>
-        <Spinner size="lg" />
-      </Center>
-    );
-
   if (!sanitizedData?.length && !isLoading)
     return (
       <Center mt={8}>
@@ -76,15 +74,41 @@ export const IncomesTable = () => {
     );
 
   return (
-    <DefaultTable<any>
-      columns={columns}
-      data={data || []}
-      isLoading={isLoading}
-      manualPagination={{
-        onPageChange,
-        pageIndex,
-        totalPages,
-      }}
-    />
+    <InfiniteScroll onEndReached={onEndReached} threshold={1}>
+      <TableContainer<any>
+        overflow="auto"
+        h="25rem"
+        sx={{
+          ...scrollbarStyle,
+        }}
+        bg="white"
+        borderRadius="xl"
+        columns={columns}
+        data={data || []}
+        isLoading={isLoading}
+      >
+        <Table variant="striped">
+          <TableHead position="sticky" top={0} bg="brand.700" zIndex={1} boxShadow="md">
+            <TableHeaderRows
+              headerCellProps={{
+                color: 'white',
+                textTransform: 'none',
+                py: 3,
+                fontWeight: '500',
+                fontSize: '1rem',
+              }}
+            />
+          </TableHead>
+          <TableBody>
+            <TableBodyRows />
+          </TableBody>
+        </Table>
+        {isLoading && (
+          <Center w="100%" mt={8}>
+            <Spinner size="lg" />
+          </Center>
+        )}
+      </TableContainer>
+    </InfiniteScroll>
   );
 };
