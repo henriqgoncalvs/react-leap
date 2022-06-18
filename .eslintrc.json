@@ -50,7 +50,7 @@
             "patterns": ["@/modules/*/*"]
           }
         ],
-        "linebreak-style": ["error", "unix"],
+        "linebreak-style": ["error", "windows"],
         "react/prop-types": "off",
 
         "no-debugger": "off",

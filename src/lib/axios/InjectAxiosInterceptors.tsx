@@ -11,7 +11,7 @@ export const InjectAxiosInterceptors = () => {
   const toast = useToast();
 
   useEffect(() => {
-    AxiosSetup.setupInterceptors(logout, toast);
+    AxiosSetup.setupInterceptors({ logout, toast });
   }, [logout, toast]);
 
   return null;

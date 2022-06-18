@@ -71,7 +71,7 @@ export function requireAuth(request: RestRequest) {
     return sanitizeUser(user);
   } catch (err) {
     console.log(err);
-    throw new Error(err);
+    throw new Error((err as Error).message);
   }
 }
 

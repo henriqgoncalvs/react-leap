@@ -54,7 +54,9 @@ async function registerFn(data: RegisterCredentials) {
 async function logoutFn() {
   storage.clearUser();
   cookies.clearAccess();
+  cookies.clearRefresh();
   history.push('/');
+  window.location.reload();
 }
 
 const authConfig = {
