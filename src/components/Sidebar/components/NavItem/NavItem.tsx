@@ -5,9 +5,9 @@ import { chakra } from '@chakra-ui/system';
 import { IconType } from 'react-icons';
 import { useLocation } from 'react-router-dom';
 
-import { useSidebar } from '../../store/sidebar';
-
 import { Link } from '@/components/common/Link';
+
+import { useSidebar } from '../../store/sidebar';
 
 export type NavItemP = {
   icon: IconType;

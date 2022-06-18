@@ -1,8 +1,8 @@
 import { factory } from '@mswjs/data';
 
-import { models } from './models';
-
 import { MSW_DB } from '@/config';
+
+import { models } from './models';
 
 export const db = factory(models);
 
@@ -13,7 +13,7 @@ export const loadDb = () => Object.assign(JSON.parse(window.localStorage.getItem
 export const persistDb = (model: Model) => {
   if (process.env.NODE_ENV === 'test') return;
   const data = loadDb();
-  data[model] = db[model].getAll();
+  data[model] = (db[model] as any).getAll();
   window.localStorage.setItem(MSW_DB, JSON.stringify(data));
 };
 

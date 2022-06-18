@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { useAuth } from '@/lib/authentication';
+import { useAuth } from '@/lib/auth/authentication';
 import { Roles } from '@/types';
 
 export const useRBAC = () => {

@@ -2,17 +2,34 @@ import dayjs from 'dayjs';
 import { rest } from 'msw';
 import { nanoid } from 'nanoid';
 
-import { db, persistDb } from '../db';
-import { requireAuth, requireAdmin, delayedResponse } from '../utils';
-
+import { DataFromApi } from '@/components/common/Table';
 import { MOCK_API_URL } from '@/config';
 import { IncomeBody } from '@/modules/incomes';
 
+import { db, persistDb } from '../db';
+import { requireAuth, requireAdmin, delayedResponse } from '../utils';
+
 export const incomeHandlers = [
   rest.get(`${MOCK_API_URL}/income`, (req, res, ctx) => {
+    const take = req.url.searchParams.get('take');
+    const skip = req.url.searchParams.get('skip');
+
+    const paramsObject = {
+      ...(take ? { take: Number(take) } : null),
+      ...(skip ? { skip: Number(skip) } : null),
+      orderBy: {
+        orderTimestamp: 'desc',
+      },
+    };
+
     try {
       requireAuth(req);
-      const result = db.income.findMany({});
+      const incomes = db.income.findMany(paramsObject as any);
+      const count = db.income.count();
+      const result = {
+        data: incomes,
+        totalItems: count,
+      } as DataFromApi;
 
       return delayedResponse(ctx.json(result));
     } catch (error: any) {
@@ -29,7 +46,7 @@ export const incomeHandlers = [
       const result = db.income.findFirst({
         where: {
           id: {
-            equals: incomeId,
+            equals: incomeId as string,
           },
         },
       });
@@ -70,7 +87,7 @@ export const incomeHandlers = [
       const result = db.income.update({
         where: {
           id: {
-            equals: incomeId,
+            equals: incomeId as string,
           },
         },
         data,
@@ -92,7 +109,7 @@ export const incomeHandlers = [
 
       const result = db.income.delete({
         where: {
-          id: incomeId,
+          id: incomeId as any,
         },
       });
 

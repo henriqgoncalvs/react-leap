@@ -39,6 +39,8 @@ src/modules/awesome-module
 |
 +-- components  # components scoped to the module, not used anywhere else
 |
++-- context  # context for the given module
+|
 +-- hooks       # hooks scoped to the module, not used anywhere else
 |
 +-- pages      # pages components for the given module

@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react';
 
-import { NumberInput, NumberInputProps } from './NumberInput';
-
 import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
+
+import { NumberInput, NumberInputProps } from './NumberInput';
 
 type NumberInputStoryProps = NumberInputProps &
   Pick<FieldWrapperProps, 'helper' | 'label' | 'required'>;

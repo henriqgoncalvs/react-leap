@@ -2,9 +2,8 @@ import { BsQuestionCircleFill } from 'react-icons/bs';
 import { FaPiggyBank, FaMoneyBillWave } from 'react-icons/fa';
 import { FiPower } from 'react-icons/fi';
 import { HiUsers, HiUser } from 'react-icons/hi';
-import { RiDashboardLine } from 'react-icons/ri';
 
-import { useAuth } from '@/lib/authentication';
+import { useAuth } from '@/lib/auth/authentication';
 import { ROLES, useRBAC } from '@/lib/authorization';
 import { Roles } from '@/types';
 
@@ -32,8 +31,7 @@ export const useNavigation = () => {
   const { logout } = useAuth();
 
   const navigation = [
-    { name: 'Dashboard', to: '/app', icon: RiDashboardLine, count: '2' },
-    { name: 'About', to: '/app/about', icon: BsQuestionCircleFill },
+    { name: 'About', to: '/app', icon: BsQuestionCircleFill },
     {
       name: 'Incomes',
       to: '/app/incomes',

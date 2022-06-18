@@ -5,21 +5,19 @@ import { PieChart } from '@/components/Charts/PieChart';
 import { useExpenses, parseExpenseCategoryLabel, Category } from '@/modules/expenses';
 
 export const ExpensesChart = () => {
-  const expensesQuery = useExpenses({});
+  const expensesQuery = useExpenses({ take: 10, skip: 0 });
 
   const expensesChartData = useMemo(
     () =>
       _.chain(expensesQuery?.data)
         .groupBy('category')
-        .map((value, key) => ({
+        .map((value: any, key) => ({
           label: parseExpenseCategoryLabel(key as Category),
           value: _.reduce(value, (acc, expense) => Number(expense.value) + acc, 0),
         }))
         .value(),
     [expensesQuery.data],
   );
-
-  console.log(expensesChartData);
 
   return (
     <PieChart

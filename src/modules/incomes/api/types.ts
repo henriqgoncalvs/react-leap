@@ -1,10 +1,15 @@
-import { Income } from '../types';
-
 import { BaseEntity } from '@/types';
+
+import { Income } from '../types';
 
 export type IncomeBody = Omit<Income, keyof BaseEntity | 'id'>;
 
 export type GetIncomeOptions = {
+  take: number;
+  skip: number;
+};
+
+export type GetIncome = {
   id: string;
 };
 

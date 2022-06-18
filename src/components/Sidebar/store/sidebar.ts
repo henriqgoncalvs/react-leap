@@ -1,9 +1,6 @@
-import pipe from 'ramda/es/pipe';
-import create, { StateCreator } from 'zustand';
+import create from 'zustand';
 
-import { immer } from '@/lib/zustand-middlewares';
-
-interface Sidebar {
+type Sidebar = {
   state: {
     isOpen: boolean;
   };
@@ -11,15 +8,13 @@ interface Sidebar {
     toggleSidebar: () => void;
     reset: () => void;
   };
-}
-
-const createStore = pipe(immer, create);
+};
 
 const initialState = {
   isOpen: false,
 };
 
-const store: StateCreator<Sidebar> = (set) => ({
+export const useSidebar = create<Sidebar>((set) => ({
   state: {
     ...initialState,
   },
@@ -30,6 +25,4 @@ const store: StateCreator<Sidebar> = (set) => ({
       }),
     reset: () => set({ state: { ...initialState } }),
   },
-});
-
-export const useSidebar = createStore(store);
+}));
