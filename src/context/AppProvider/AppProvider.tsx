@@ -10,7 +10,7 @@ import SwiperCore, { A11y, Navigation, Pagination } from 'swiper';
 
 import { APP_NAME } from '@/config';
 import { ErrorBoundary } from '@/errors';
-import { AuthProvider } from '@/lib/authentication';
+import { AuthProvider } from '@/lib/auth';
 import { InjectAxiosInterceptors } from '@/lib/axios';
 import { queryClient } from '@/lib/react-query';
 import { theme, Fonts } from '@/styles';
@@ -47,6 +47,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
           />
           <title>{APP_NAME}</title>
         </Helmet>
+
         <ChakraProvider
           theme={{
             ...theme,

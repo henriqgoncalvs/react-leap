@@ -4,18 +4,8 @@ import _ from 'lodash';
 import { rest } from 'msw';
 import { nanoid } from 'nanoid';
 
-import { db, persistDb, db, persistDb } from '../db';
-import {
-  authenticate,
-  delayedResponse,
-  hash,
-  requireAuth,
-  sanitizeUser,
-  authenticate,
-  delayedResponse,
-  hash,
-  requireAuth,
-} from '../utils';
+import { db, persistDb } from '../db';
+import { authenticate, delayedResponse, hash, requireAuth, sanitizeUser } from '../utils';
 
 import { JWT_ACCESS_SECRET, MOCK_API_URL } from '@/config';
 import { LoginCredentials, RegisterCredentials } from '@/modules/auth';

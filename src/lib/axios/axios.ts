@@ -83,8 +83,20 @@ export default {
     return unathenticatedInstance;
   },
 
-  authorized() {
+  authorized({ mock } = { mock: false }) {
     authenticatedInstance.defaults.headers.common.Authorization = `Bearer ${cookies.getAccess()}`;
+
+    authenticatedInstance.interceptors.request.use(
+      function (config) {
+        if (mock) config.baseURL = MOCK_API_URL;
+        else config.baseURL = API_URL;
+
+        return config;
+      },
+      function (error) {
+        return Promise.reject(error);
+      },
+    );
 
     return authenticatedInstance;
   },

@@ -16,7 +16,7 @@ export const getExpenses = ({ take, skip }: GetExpensesParams): Promise<Expense[
   params.append('take', String(take));
   params.append('skip', String(skip));
 
-  return axios.authorized().get(`/expense`, { params });
+  return axios.authorized({ mock: true }).get(`/expense`, { params });
 };
 
 export const getExpense = ({ id }: GetExpenseOptions): Promise<Expense> => {

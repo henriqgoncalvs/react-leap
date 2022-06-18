@@ -1,7 +1,7 @@
 import { useToast } from '@chakra-ui/react';
 import { useEffect } from 'react';
 
-import { useAuth } from '../authentication';
+import { useAuth } from '../auth';
 
 import AxiosSetup from './axios';
 
