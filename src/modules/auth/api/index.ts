@@ -3,7 +3,7 @@ import axios from '@/lib/axios';
 import { LoginCredentials, UserResponse, RegisterCredentials, AuthUser } from './types';
 
 export const loginWithEmailAndPassword = (data: LoginCredentials): Promise<UserResponse> => {
-  return axios.authorized({ mock: true }).post('/auth/login', data);
+  return axios.authorized({ mock: false }).post('/login', data);
 };
 
 export const registerWithEmailAndPassword = (data: RegisterCredentials): Promise<UserResponse> => {
