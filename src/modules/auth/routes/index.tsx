@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { Error404 } from '@/errors';
-
 import { Login } from '../pages/Login';
 import { Register } from '../pages/Register';
+
+import { Error404 } from '@/errors';
 
 export const AuthRoutes = () => {
   return (

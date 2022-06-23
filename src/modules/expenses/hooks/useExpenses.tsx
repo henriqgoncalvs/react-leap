@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query';
 
-import { QueryConfig } from '@/lib/react-query';
-
 import { getExpenses } from '../api';
+
+import { QueryConfig } from '@/lib/react-query';
 
 type UseExpensesOptions = {
   config?: QueryConfig<typeof getExpenses>;

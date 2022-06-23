@@ -1,5 +1,3 @@
-import axios from '@/lib/axios';
-
 import { Expense } from '../types';
 
 import {
@@ -9,6 +7,8 @@ import {
   DeleteExpenseOptions,
   GetExpensesParams,
 } from './types';
+
+import axios from '@/lib/axios';
 
 export const getExpenses = ({ take, skip }: GetExpensesParams): Promise<Expense[]> => {
   const params = new URLSearchParams();

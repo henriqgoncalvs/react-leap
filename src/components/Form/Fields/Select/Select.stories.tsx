@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react';
 
-import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
-
 import { Select, SelectProps } from './Select';
+
+import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
 
 export interface SelectStoryProps
   extends SelectProps,

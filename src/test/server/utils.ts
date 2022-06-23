@@ -2,9 +2,9 @@ import jwt from 'jsonwebtoken';
 import omit from 'lodash/omit';
 import { RestRequest, createResponseComposition, context } from 'msw';
 
-import { JWT_ACCESS_SECRET } from '@/config';
-
 import { db } from './db';
+
+import { JWT_ACCESS_SECRET, JWT_REFRESH_SECRET } from '@/config';
 
 const isTesting = process.env.NODE_ENV === 'test' || ((window as any).Cypress as any);
 
@@ -37,8 +37,9 @@ export function authenticate({ email, password }: { email: string; password: str
     const sanitizedUser = sanitizeUser(user);
 
     const encodedAccess = jwt.sign(sanitizedUser, JWT_ACCESS_SECRET);
+    const encodedRefresh = jwt.sign(sanitizedUser, JWT_REFRESH_SECRET);
 
-    return { user: sanitizedUser, accessToken: encodedAccess };
+    return { user: sanitizedUser, accessToken: encodedAccess, refreshToken: encodedRefresh };
   }
 
   const error = new Error('Invalid username or password');
