@@ -44,7 +44,6 @@ export const authHandlers = [
       });
 
       persistDb('user');
-
       const result = authenticate({ email: userObject.email, password: password });
 
       return delayedResponse(ctx.json(result));
@@ -56,8 +55,8 @@ export const authHandlers = [
   rest.post<LoginCredentials>(`${MOCK_API_URL}/auth/login`, (req, res, ctx) => {
     try {
       const credentials = req.body;
-      const result = authenticate(credentials);
 
+      const result = authenticate(credentials);
       return delayedResponse(ctx.json(result));
     } catch (error: any) {
       return delayedResponse(ctx.status(400), ctx.json({ message: error.message }));

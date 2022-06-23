@@ -16,8 +16,9 @@ import {
 import { storage, cookies } from '@/utils';
 
 function handleUserResponse(data: UserResponse) {
-  const { accessToken, user } = data;
+  const { accessToken, user, refreshToken } = data;
   storage.setUser(user);
+  cookies.setRefresh(refreshToken);
   cookies.setAccess(accessToken);
   return user;
 }
