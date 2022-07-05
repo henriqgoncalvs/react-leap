@@ -12,7 +12,6 @@ import {
   TableBody,
   TableBodyRows,
 } from '@/components/common/Table/TableCompound';
-import scrollbarStyle from '@/styles/scrollbarStyle';
 
 import { getIncomes } from '../../api';
 import { Income } from '../../types';
@@ -20,7 +19,7 @@ import { parseIncomeSourceLabel } from '../../utils';
 
 export const IncomesTable = () => {
   const { onEndReached, data, isLoading, isError } = useInfiniteScroll<Income>({
-    take: 8,
+    take: 5,
     queryFn: getIncomes,
     filters: {},
     queryKey: 'get-incomes-query',
@@ -76,15 +75,13 @@ export const IncomesTable = () => {
   return (
     <InfiniteScroll onEndReached={onEndReached} threshold={1}>
       <TableContainer<any>
-        overflow="auto"
-        h="25rem"
-        sx={{
-          ...scrollbarStyle,
-        }}
         bg="white"
+        overflow="auto"
+        h="13rem"
         borderRadius="xl"
         columns={columns}
-        data={data || []}
+        isInfiniteScroll={true}
+        data={sanitizedData || []}
         isLoading={isLoading}
       >
         <Table variant="striped">

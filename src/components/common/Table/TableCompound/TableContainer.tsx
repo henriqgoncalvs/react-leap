@@ -27,6 +27,7 @@ export type TableP<T extends Record<string, any>> = {
     totalPages: number;
   };
   isLoading?: boolean;
+  isInfiniteScroll?: boolean;
   children?: ReactNode;
 } & Partial<BoxProps>;
 
@@ -36,6 +37,7 @@ export const TableContainer = <T,>({
   data,
   columns,
   manualPagination,
+  isInfiniteScroll = false,
   isLoading,
   children,
   ...props
@@ -44,7 +46,7 @@ export const TableContainer = <T,>({
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    page,
+    page: pageTable,
     prepareRow,
     canPreviousPage,
     canNextPage,
@@ -53,6 +55,7 @@ export const TableContainer = <T,>({
     gotoPage,
     nextPage,
     previousPage,
+    rows,
     state: { pageIndex },
   } = useTable(
     {
@@ -79,6 +82,8 @@ export const TableContainer = <T,>({
     useSortBy,
     usePagination,
   );
+
+  const page = isInfiniteScroll ? rows : pageTable;
 
   return (
     <TableContext.Provider

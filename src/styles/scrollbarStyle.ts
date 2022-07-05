@@ -13,7 +13,7 @@ const scrollbarStyle = {
     borderRadius: '1.2rem',
   },
   '::-webkit-scrollbar-thumb': {
-    background: 'primary.700',
+    background: 'primary.300',
     borderRadius: '0.075rem',
   },
 };
