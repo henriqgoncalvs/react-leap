@@ -1,3 +1,5 @@
+import axios from '@/lib/axios';
+
 import { Income } from '../types';
 
 import {
@@ -7,8 +9,6 @@ import {
   DeleteIncomeOptions,
   GetIncome,
 } from './types';
-
-import axios from '@/lib/axios';
 
 export const getIncomes = ({ take, skip }: GetIncomeOptions): Promise<Income[]> => {
   const params = new URLSearchParams();

@@ -3,11 +3,11 @@ import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { BsFillArchiveFill } from 'react-icons/bs';
 
+import { useTableInstance, DefaultTable } from '@/components/common/Table';
+
 import { getExpenses } from '../../api';
 import { Expense } from '../../types';
 import { parseExpenseCategoryLabel } from '../../utils';
-
-import { useTableInstance, DefaultTable } from '@/components/common/Table';
 
 export const ExpensesTable = () => {
   const {
