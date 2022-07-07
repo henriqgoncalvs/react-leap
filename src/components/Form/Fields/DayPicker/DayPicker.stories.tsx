@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react';
 
-import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
-
 import { DayPicker, DayPickerProps } from './DayPicker';
+
+import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
 
 type DayPickerStoryProps = DayPickerProps &
   Pick<FieldWrapperProps, 'helper' | 'label' | 'required'>;

@@ -1,8 +1,8 @@
 import { factory } from '@mswjs/data';
 
-import { MSW_DB } from '@/config';
-
 import { models } from './models';
+
+import { MSW_DB } from '@/config';
 
 export const db = factory(models);
 

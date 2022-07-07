@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react';
 
-import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
-
 import { TextArea, TextAreaProps } from './TextArea';
+
+import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
 
 export interface TextAreaStoryProps
   extends TextAreaProps,

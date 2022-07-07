@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react';
 
-import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
-
 import { Slider, SliderProps } from './Slider';
+
+import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
 
 type SliderStoryProps = SliderProps & Pick<FieldWrapperProps, 'helper' | 'label' | 'required'>;
 

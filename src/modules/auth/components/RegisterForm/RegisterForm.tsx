@@ -1,19 +1,20 @@
 import { Button } from '@chakra-ui/react';
 
+import { RegisterCredentials } from '../../api/types';
+
+import schema from './schema';
+
 import { Link } from '@/components/common/Link';
 import { FieldWrapper, Form, RadioGroup, TextArea, TextInput, Radio } from '@/components/Form';
 import * as LC from '@/components/LC';
 import { useAuth } from '@/lib/auth/authentication';
 
-import { RegisterCredentials } from '../../api/types';
-
-import schema from './schema';
-
 type RegisterFormProps = {
   onSuccess: () => void;
+  onError: (message: string) => void;
 };
 
-export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
+export const RegisterForm = ({ onSuccess, onError }: RegisterFormProps) => {
   const { register, isRegistering } = useAuth();
 
   return (
@@ -28,8 +29,12 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
         confirmPassword: '',
       }}
       onSubmit={async (values) => {
-        await register(values);
-        onSuccess();
+        try {
+          await register(values);
+          onSuccess();
+        } catch (err: any) {
+          onError(err.message);
+        }
       }}
       validationSchema={schema}
     >

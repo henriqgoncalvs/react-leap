@@ -1,8 +1,8 @@
-import * as LC from '@/components/LC';
-import { Page } from '@/components/Page';
-
 import { ExpensesChart } from '../components/ExpensesChart';
 import { IncomesChart } from '../components/IncomesChart';
+
+import * as LC from '@/components/LC';
+import { Page } from '@/components/Page';
 
 export const Dashboard = () => {
   return (

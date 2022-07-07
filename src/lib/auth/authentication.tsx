@@ -1,5 +1,9 @@
 import { Spinner } from '@chakra-ui/react';
 
+import history from '../history';
+
+import { initReactQueryAuth } from './context';
+
 import {
   loginWithEmailAndPassword,
   getUserProfile,
@@ -11,13 +15,10 @@ import {
 } from '@/modules/auth';
 import { storage, cookies } from '@/utils';
 
-import history from '../history';
-
-import { initReactQueryAuth } from './context';
-
 function handleUserResponse(data: UserResponse) {
-  const { accessToken, user } = data;
+  const { accessToken, user, refreshToken } = data;
   storage.setUser(user);
+  cookies.setRefresh(refreshToken);
   cookies.setAccess(accessToken);
   return user;
 }
@@ -55,7 +56,9 @@ async function registerFn(data: RegisterCredentials) {
 async function logoutFn() {
   storage.clearUser();
   cookies.clearAccess();
+  cookies.clearRefresh();
   history.push('/');
+  window.location.reload();
 }
 
 const authConfig = {
