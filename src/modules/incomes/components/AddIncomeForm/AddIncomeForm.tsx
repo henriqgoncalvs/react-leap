@@ -1,12 +1,12 @@
 import { Button } from '@chakra-ui/react';
 
+import { Form, FieldWrapper, DayPicker, TextArea, NumberInput, Select } from '@/components/Form';
+import * as LC from '@/components/LC';
+
 import { IncomeBody } from '../../api/types';
 import { useCreateIncome } from '../../hooks/useCreateIncome';
 
 import schema from './schema';
-
-import { Form, FieldWrapper, DayPicker, TextArea, NumberInput, Select } from '@/components/Form';
-import * as LC from '@/components/LC';
 
 type AddIncomeFormProps = {
   onClose?: () => void;

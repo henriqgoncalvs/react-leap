@@ -1,6 +1,6 @@
-import { Expense } from '../types';
-
 import { BaseEntity } from '@/types';
+
+import { Expense } from '../types';
 
 export type ExpenseBody = Omit<Expense, keyof BaseEntity | 'id'>;
 

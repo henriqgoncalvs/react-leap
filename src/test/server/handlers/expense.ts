@@ -2,12 +2,12 @@ import dayjs from 'dayjs';
 import { rest } from 'msw';
 import { nanoid } from 'nanoid';
 
-import { db, persistDb } from '../db';
-import { requireAuth, requireAdmin, delayedResponse } from '../utils';
-
 import { DataFromApi } from '@/components/common/Table';
 import { MOCK_API_URL } from '@/config';
 import { ExpenseBody } from '@/modules/expenses';
+
+import { db, persistDb } from '../db';
+import { requireAuth, requireAdmin, delayedResponse } from '../utils';
 
 export const expenseHandlers = [
   rest.get(`${MOCK_API_URL}/expense`, (req, res, ctx) => {

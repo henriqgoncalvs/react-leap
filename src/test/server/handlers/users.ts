@@ -1,10 +1,10 @@
 import { rest } from 'msw';
 
-import { db, persistDb } from '../db';
-import { requireAuth, requireAdmin, delayedResponse } from '../utils';
-
 import { MOCK_API_URL } from '@/config';
 import { UpdateCredentials } from '@/modules/auth';
+
+import { db, persistDb } from '../db';
+import { requireAuth, requireAdmin, delayedResponse } from '../utils';
 
 export const usersHandlers = [
   rest.get(`${MOCK_API_URL}/users`, (req, res, ctx) => {

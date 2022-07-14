@@ -1,13 +1,13 @@
 import { Button } from '@chakra-ui/react';
 
-import { RegisterCredentials } from '../../api/types';
-
-import schema from './schema';
-
 import { Link } from '@/components/common/Link';
 import { FieldWrapper, Form, RadioGroup, TextArea, TextInput, Radio } from '@/components/Form';
 import * as LC from '@/components/LC';
 import { useAuth } from '@/lib/auth/authentication';
+
+import { RegisterCredentials } from '../../api/types';
+
+import schema from './schema';
 
 type RegisterFormProps = {
   onSuccess: () => void;

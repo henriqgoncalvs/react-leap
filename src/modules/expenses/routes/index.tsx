@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { Expenses } from '../pages/Expenses';
-
 import { Error404 } from '@/errors';
+
+import { Expenses } from '../pages/Expenses';
 
 export const ExpensesRoutes = () => {
   return (

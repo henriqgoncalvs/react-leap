@@ -1,8 +1,8 @@
 import { Meta, Story } from '@storybook/react';
 
-import { Switch, SwitchProps } from './Switch';
-
 import { FieldWrapper, Form, FieldWrapperProps } from '@/components/Form';
+
+import { Switch, SwitchProps } from './Switch';
 
 type SwitchWithFormProps = SwitchProps & Pick<FieldWrapperProps, 'helper' | 'label' | 'required'>;
 
