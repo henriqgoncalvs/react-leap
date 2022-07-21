@@ -1,24 +1,23 @@
-import { Box, Button, Flex, Image, List, ListIcon, ListItem, Text, VStack } from '@chakra-ui/react';
-import { useMemo, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { IoMdCheckmarkCircle } from 'react-icons/io';
-
 import {
-  acceptStyle,
-  baseStyle,
-  focusedStyle,
-  img,
-  rejectStyle,
-  thumb,
-  thumbInner,
-  thumbsContainer,
-} from './baseStyles';
+  Box,
+  Button,
+  Flex,
+  Image,
+  List,
+  ListIcon,
+  ListItem,
+  Text,
+  VStack,
+  Icon,
+} from '@chakra-ui/react';
+import { useEffect, useMemo, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
+import { IoMdCheckmarkCircle, IoMdClose } from 'react-icons/io';
 
 type FileInputProps = {
   dragAndDrop?: boolean;
   button?: boolean;
   preview?: boolean;
-  style?: any;
   dragMessage?: string;
   buttonMessage?: string;
   filesListTitle?: string;
@@ -26,60 +25,124 @@ type FileInputProps = {
   maxFiles?: number;
   maxSize?: number;
   minSize?: number;
+  removeIcon?: any;
   disabled?: boolean;
+};
+
+const baseStyle = {
+  flex: 1,
+  display: 'flex',
+  alignItems: 'center',
+  padding: '20px',
+  borderWidth: 2,
+  borderRadius: 2,
+  borderColor: '#eeeeee',
+  borderStyle: 'dashed',
+  backgroundColor: '#fafafa',
+  color: '#bdbdbd',
+  outline: 'none',
+  transition: 'border .24s ease-in-out',
+};
+
+const focusedStyle = {
+  borderColor: '#2196f3',
+};
+
+const acceptStyle = {
+  borderColor: '#00e676',
+};
+
+const rejectStyle = {
+  borderColor: '#ff1744',
+};
+
+const thumbsContainer = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  marginTop: 16,
+};
+
+const thumb = {
+  display: 'inline-flex',
+  borderRadius: 2,
+  border: '1px solid #eaeaea',
+  marginBottom: 8,
+  marginRight: 8,
+  width: 100,
+  height: 100,
+  padding: 4,
+  boxSizing: 'border-box',
+};
+
+const thumbInner = {
+  display: 'flex',
+  minWidth: 0,
+  overflow: 'hidden',
+};
+
+const img = {
+  display: 'block',
+  width: 'auto',
+  height: '100%',
 };
 
 export const FileInput = ({
   dragAndDrop = true,
-  button = false,
-  preview = false,
-  style = baseStyle,
+  preview = true,
   dragMessage = 'Drag and drop some files here, or click to select files',
-  buttonMessage = 'Open file dialog',
-  filesList = false,
+  filesList = true,
   filesListTitle = 'Accepted',
   maxFiles,
   maxSize,
   minSize,
+  removeIcon = IoMdClose,
+  button = false,
+  buttonMessage = 'send file',
   disabled = false,
 }: FileInputProps) => {
   const [files, setFiles] = useState<any[]>([]);
 
-  const {
-    acceptedFiles,
-    getRootProps,
-    getInputProps,
-    isFocused,
-    isDragAccept,
-    isDragReject,
-    open,
-  } = useDropzone({
-    accept: {
-      'image/jpeg': [],
-      'image/png': [],
-    },
-    maxFiles: maxFiles,
-    noClick: true,
-    noKeyboard: true,
-    maxSize: maxSize,
-    minSize: minSize,
-    disabled: disabled,
-    onDrop: (acceptedFiles) => {
-      setFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          }),
-        ),
-      );
-    },
-  });
+  const { acceptedFiles, getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
+    useDropzone({
+      accept: {
+        'image/jpeg': [],
+        'image/png': [],
+      },
+      maxFiles: maxFiles,
+      maxSize: maxSize,
+      minSize: minSize,
+      disabled: disabled,
+      onDrop: (acceptedFiles) => {
+        setFiles(
+          acceptedFiles.map((file) =>
+            Object.assign(file, {
+              preview: URL.createObjectURL(file),
+            }),
+          ),
+        );
+      },
+    });
 
   const acceptedFileItems = acceptedFiles.map((file) => {
     return (
       <ListItem fontSize="sm" key={file.name}>
-        <ListIcon as={IoMdCheckmarkCircle} color="green.500" />
-        {file.name} - {file.size} bytes
+        <Flex justifyContent="space-between" alignItems="center">
+          <ListIcon as={IoMdCheckmarkCircle} color="green.500" />
+          <Text>
+            {file.name} - {file.size} bytes
+          </Text>
+          <Button
+            onClick={() => removeFile(file)}
+            bg="transparent"
+            _focus={{}}
+            _hover={{}}
+            _active={{}}
+            cursor="pointer"
+          >
+            <Icon as={removeIcon} color="red" />
+          </Button>
+        </Flex>
       </ListItem>
     );
   });
@@ -98,32 +161,37 @@ export const FileInput = ({
     </Box>
   ));
 
-  const styleChanging = useMemo(
+  const removeFile = (file: File) => () => {
+    acceptedFiles.splice(acceptedFiles.indexOf(file), 1);
+  };
+
+  const style = useMemo(
     () => ({
-      ...style,
+      ...baseStyle,
       ...(isFocused ? focusedStyle : {}),
       ...(isDragAccept ? acceptStyle : {}),
       ...(isDragReject ? rejectStyle : {}),
     }),
-    [isFocused, isDragAccept, isDragReject, style],
+    [isFocused, isDragAccept, isDragReject],
   );
+
+  useEffect(() => {
+    console.log('isFocused :>> ', isFocused);
+    console.log('isDragAccept :>> ', isDragAccept);
+  }, [isFocused, isDragAccept]);
 
   return (
     <VStack justify="left" alignItems="flex-start">
       {dragAndDrop && (
-        <Flex flexDir="column" {...getRootProps({ styleChanging })}>
-          <input type="file" {...getInputProps({ className: 'dropzone' })} />
+        <Flex flexDir="column" cursor="pointer" className="container" {...getRootProps({ style })}>
+          <input type="file" {...getInputProps()} />
           <Text fontSize="md">{dragMessage}</Text>
         </Flex>
       )}
 
-      {button && (
-        <Flex flexDir="column" {...getRootProps({ styleChanging })}>
-          {button && <Button onClick={open}>{buttonMessage}</Button>}
-        </Flex>
-      )}
-
       {preview && <Flex sx={thumbsContainer}>{previewFiles}</Flex>}
+
+      {button && <Button {...getRootProps()}>{buttonMessage}</Button>}
 
       {filesList && (
         <Flex alignItems="flex-start" justify="left">
