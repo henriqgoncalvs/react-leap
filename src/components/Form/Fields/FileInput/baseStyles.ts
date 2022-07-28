@@ -33,14 +33,15 @@ export const thumbsContainer = {
 };
 
 export const thumb = {
-  display: 'inline-flex',
+  display: 'flex',
+  justifyContent: 'center',
   borderRadius: 2,
   border: '1px solid #eaeaea',
   marginBottom: 8,
-  marginRight: 8,
+  marginRight: 1,
   width: 100,
   height: 100,
-  padding: 4,
+  padding: 0.5,
   boxSizing: 'border-box',
 };
 

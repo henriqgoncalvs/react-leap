@@ -11,7 +11,7 @@ import {
   Icon,
   Tooltip,
 } from '@chakra-ui/react';
-import { useEffect, useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { IoMdCheckmarkCircle, IoMdClose } from 'react-icons/io';
 
@@ -35,6 +35,7 @@ type FileInputProps = {
   filesListTitle?: string;
   filesList?: boolean;
   maxFiles?: number;
+  acceptFiles?: any;
   maxSize?: number;
   minSize?: number;
   removeIcon?: any;
@@ -51,6 +52,7 @@ export const FileInput = ({
   maxFiles,
   maxSize,
   minSize,
+  acceptFiles = { 'image/jpeg': [], 'image/png': [] },
   removeIcon = IoMdClose,
   removeAllMessage = 'Remove all files',
   button = false,
@@ -60,10 +62,7 @@ export const FileInput = ({
   const [files, setFiles] = useState<any>([]);
 
   const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } = useDropzone({
-    accept: {
-      'image/jpeg': [],
-      'image/png': [],
-    },
+    accept: acceptFiles,
     maxFiles: maxFiles,
     maxSize: maxSize,
     minSize: minSize,
@@ -101,20 +100,36 @@ export const FileInput = ({
   ));
 
   const previewFiles = files.map((file) => (
-    <Box sx={thumb} key={file.name}>
-      <Box style={thumbInner}>
-        <Image
-          src={file.preview}
-          style={img}
-          onLoad={() => {
-            URL.revokeObjectURL(file.preview);
-          }}
-        />
+    <Fragment key={file.name}>
+      <Box sx={thumb}>
+        <Box style={thumbInner}>
+          <Image
+            src={file.preview}
+            style={img}
+            onLoad={() => {
+              URL.revokeObjectURL(file.preview);
+            }}
+          />
+        </Box>
       </Box>
-    </Box>
+      {!filesList && (
+        <Button
+          w="0"
+          onClick={() => removeFile(file)}
+          bg="transparent"
+          _focus={{}}
+          _hover={{}}
+          _active={{}}
+          cursor="pointer"
+          position="relative"
+          right="10px"
+          bottom="10px"
+        >
+          <Icon as={removeIcon} color="red" />
+        </Button>
+      )}
+    </Fragment>
   ));
-
-  console.log(files);
 
   const removeFile = (file: File) => {
     const newFiles = [...files];
@@ -122,9 +137,7 @@ export const FileInput = ({
     setFiles(newFiles);
   };
 
-  const removeAll = () => {
-    setFiles([]);
-  };
+  const removeAll = () => setFiles([]);
 
   const style = useMemo(
     () => ({
@@ -136,17 +149,21 @@ export const FileInput = ({
     [isFocused, isDragAccept, isDragReject],
   );
 
-  useEffect(() => {
-    console.log('isFocused :>> ', isFocused);
-    console.log('isDragAccept :>> ', isDragAccept);
-  }, [isFocused, isDragAccept]);
+  const setColor = () => {
+    if (isDragReject) return '#ff1744';
+    if (isDragAccept) return '#00e676';
+    if (isFocused) return '#2196f3';
+    return '';
+  };
 
   return (
     <VStack justify="left" alignItems="flex-start">
       {dragAndDrop && (
         <Flex flexDir="column" cursor="pointer" className="container" {...getRootProps({ style })}>
           <input type="file" {...getInputProps()} />
-          <Text fontSize="md">{dragMessage}</Text>
+          <Text fontSize="md" color={setColor()}>
+            {dragMessage}
+          </Text>
         </Flex>
       )}
 
