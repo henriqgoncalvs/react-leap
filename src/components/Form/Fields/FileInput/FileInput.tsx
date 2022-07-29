@@ -52,7 +52,7 @@ export const FileInput = ({
   maxFiles,
   maxSize,
   minSize,
-  acceptFiles = { 'image/jpeg': [], 'image/png': [] },
+  acceptFiles = { 'image/*': [], 'video/*': [], 'application/pdf': [] },
   removeIcon = IoMdClose,
   removeAllMessage = 'Remove all files',
   button = false,
