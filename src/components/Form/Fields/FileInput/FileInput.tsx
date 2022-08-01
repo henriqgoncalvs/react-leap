@@ -27,6 +27,7 @@ type FileInputProps = {
   minSize?: number;
   removeIcon?: any;
   disabled?: boolean;
+  acceptFiles?: any;
 };
 
 const baseStyle = {
@@ -96,6 +97,7 @@ export const FileInput = ({
   maxFiles,
   maxSize,
   minSize,
+  acceptFiles = { 'image/*': [], 'video/*': [], 'application/pdf': [] },
   removeIcon = IoMdClose,
   button = false,
   buttonMessage = 'send file',
@@ -105,10 +107,7 @@ export const FileInput = ({
 
   const { acceptedFiles, getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
     useDropzone({
-      accept: {
-        'image/jpeg': [],
-        'image/png': [],
-      },
+      accept: acceptFiles,
       maxFiles: maxFiles,
       maxSize: maxSize,
       minSize: minSize,
