@@ -1,5 +1,6 @@
-/* eslint-disable no-case-declarations */
 import { Center, Spinner } from '@chakra-ui/react';
+
+import scrollbarStyle from '@/styles/scrollbarStyle';
 
 import {
   TableContainer,
@@ -19,23 +20,7 @@ export const DefaultTable = <T,>({ ...tableContainerProps }: TableP<T>) => {
       overflow="auto"
       h="100%"
       sx={{
-        '::-webkit-scrollbar': {
-          height: '0.75rem',
-          width: '0.75rem',
-        },
-        '::-webkit-scrollbar-track': {
-          height: '0.25rem',
-          borderLeft: '0.125rem solid #5BA699',
-          borderRight: '0.125rem solid #5BA699',
-          borderTop: '0.125rem solid #5BA699',
-          borderBottom: '0.125 solid #5BA699',
-          background: 'primary.600',
-          borderRadius: '1.2rem',
-        },
-        '::-webkit-scrollbar-thumb': {
-          background: 'primary.700',
-          borderRadius: '0.075rem',
-        },
+        ...scrollbarStyle,
       }}
       bg="white"
       borderRadius="xl"

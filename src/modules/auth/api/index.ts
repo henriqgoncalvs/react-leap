@@ -7,9 +7,9 @@ export const loginWithEmailAndPassword = (data: LoginCredentials): Promise<UserR
 };
 
 export const registerWithEmailAndPassword = (data: RegisterCredentials): Promise<UserResponse> => {
-  return axios.authorized({ mock: true }).post('/auth/register', data);
+  return axios.unauthorized().post('/auth/register', data);
 };
 
 export const getUserProfile = (): Promise<AuthUser> => {
-  return axios.authorized({ mock: true }).get('/auth/me');
+  return axios.authorized().get('/auth/me');
 };

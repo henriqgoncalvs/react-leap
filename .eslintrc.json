@@ -48,7 +48,7 @@
             "patterns": ["@/modules/*/*"]
           }
         ],
-        "linebreak-style": ["error", "unix"],
+        "linebreak-style": ["off", "windows"],
         "react/prop-types": "off",
         "no-debugger": "off",
         "import/order": [
