@@ -1,17 +1,5 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Image,
-  List,
-  ListIcon,
-  ListItem,
-  Text,
-  VStack,
-  Icon,
-  Tooltip,
-} from '@chakra-ui/react';
-import { Fragment, useMemo, useState } from 'react';
+import { Button, Flex, List, Text, VStack, Icon, Tooltip } from '@chakra-ui/react';
+import { useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { IoMdCheckmarkCircle, IoMdClose } from 'react-icons/io';
 
@@ -25,23 +13,9 @@ import {
   thumbInner,
   thumbsContainer,
 } from './baseStyles';
-
-type FileInputProps = {
-  dragAndDrop?: boolean;
-  button?: boolean;
-  preview?: boolean;
-  dragMessage?: string;
-  buttonMessage?: string;
-  filesListTitle?: string;
-  filesList?: boolean;
-  maxFiles?: number;
-  acceptFiles?: any;
-  maxSize?: number;
-  minSize?: number;
-  removeIcon?: any;
-  disabled?: boolean;
-  removeAllMessage?: string;
-};
+import { FileListItem } from './FileListItem';
+import { PreviewFiles } from './PreviewFiles';
+import { FileInputProps } from './types';
 
 export const FileInput = ({
   dragAndDrop = true,
@@ -54,6 +28,7 @@ export const FileInput = ({
   minSize,
   acceptFiles = { 'image/*': [], 'video/*': [], 'application/pdf': [] },
   removeIcon = IoMdClose,
+  listIcon = IoMdCheckmarkCircle,
   removeAllMessage = 'Remove all files',
   button = false,
   buttonMessage = 'Send file',
@@ -78,64 +53,34 @@ export const FileInput = ({
     },
   });
 
-  const acceptedFileItems = files.map((file: File) => (
-    <ListItem fontSize="sm" key={file.name}>
-      <Flex justifyContent="space-between" alignItems="center">
-        <ListIcon as={IoMdCheckmarkCircle} color="green.500" />
-        <Text>
-          {file.name} - {file.size} bytes
-        </Text>
-        <Button
-          onClick={() => removeFile(file)}
-          bg="transparent"
-          _focus={{}}
-          _hover={{}}
-          _active={{}}
-          cursor="pointer"
-        >
-          <Icon as={removeIcon} color="red" />
-        </Button>
-      </Flex>
-    </ListItem>
-  ));
-
-  const previewFiles = files.map((file) => (
-    <Fragment key={file.name}>
-      <Box sx={thumb}>
-        <Box style={thumbInner}>
-          <Image
-            src={file.preview}
-            style={img}
-            onLoad={() => {
-              URL.revokeObjectURL(file.preview);
-            }}
-          />
-        </Box>
-      </Box>
-      {!filesList && (
-        <Button
-          w="0"
-          onClick={() => removeFile(file)}
-          bg="transparent"
-          _focus={{}}
-          _hover={{}}
-          _active={{}}
-          cursor="pointer"
-          position="relative"
-          right="10px"
-          bottom="10px"
-        >
-          <Icon as={removeIcon} color="red" />
-        </Button>
-      )}
-    </Fragment>
-  ));
-
   const removeFile = (file: File) => {
     const newFiles = [...files];
     newFiles.splice(newFiles.indexOf(file), 1);
     setFiles(newFiles);
   };
+
+  const acceptedFileItems = files.map((file: File) => (
+    <FileListItem
+      file={file}
+      removeIcon={removeIcon}
+      listIcon={listIcon}
+      removeFile={removeFile}
+      key={file.name}
+    />
+  ));
+
+  const previewFiles = files.map((file: { preview: string } & File) => (
+    <PreviewFiles
+      file={file}
+      filesList={filesList}
+      img={img}
+      removeFile={removeFile}
+      removeIcon={removeIcon}
+      thumbInner={thumbInner}
+      thumb={thumb}
+      key={file.name}
+    />
+  ));
 
   const removeAll = () => setFiles([]);
 
