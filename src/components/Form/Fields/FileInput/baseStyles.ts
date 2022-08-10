@@ -13,16 +13,19 @@ export const baseStyle = {
   transition: 'border .24s ease-in-out',
 };
 
-export const focusedStyle = {
+export const focused = {
   borderColor: '#2196f3',
+  color: '#2196f3',
 };
 
-export const acceptStyle = {
+export const accept = {
   borderColor: '#00e676',
+  color: '#00e676',
 };
 
-export const rejectStyle = {
+export const reject = {
   borderColor: '#ff1744',
+  color: '#ff1744',
 };
 
 export const thumbsContainer = {

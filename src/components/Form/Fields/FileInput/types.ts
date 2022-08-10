@@ -18,6 +18,9 @@ export type FileInputProps = {
   listIcon?: IconType;
   disabled?: boolean;
   removeAllMessage?: string;
+  acceptStyle?: CSSProperties;
+  focusedStyle?: CSSProperties;
+  rejectStyle?: CSSProperties;
 };
 
 export type FileListProps = {

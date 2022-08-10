@@ -4,11 +4,11 @@ import { useDropzone } from 'react-dropzone';
 import { IoMdCheckmarkCircle, IoMdClose } from 'react-icons/io';
 
 import {
-  acceptStyle,
+  accept,
   baseStyle,
-  focusedStyle,
+  focused,
   img,
-  rejectStyle,
+  reject,
   thumb,
   thumbInner,
   thumbsContainer,
@@ -33,6 +33,9 @@ export const FileInput = ({
   button = false,
   buttonMessage = 'Send file',
   disabled = false,
+  acceptStyle = accept,
+  focusedStyle = focused,
+  rejectStyle = reject,
 }: FileInputProps) => {
   const [files, setFiles] = useState<any>([]);
 
@@ -69,7 +72,7 @@ export const FileInput = ({
     />
   ));
 
-  const previewFiles = files.map((file: { preview: string } & File) => (
+  const previewFiles = files.map((file) => (
     <PreviewFiles
       file={file}
       filesList={filesList}
@@ -91,24 +94,15 @@ export const FileInput = ({
       ...(isDragAccept ? acceptStyle : {}),
       ...(isDragReject ? rejectStyle : {}),
     }),
-    [isFocused, isDragAccept, isDragReject],
+    [isFocused, isDragAccept, isDragReject, acceptStyle, rejectStyle, focusedStyle],
   );
-
-  const setColor = () => {
-    if (isDragReject) return '#ff1744';
-    if (isDragAccept) return '#00e676';
-    if (isFocused) return '#2196f3';
-    return '';
-  };
 
   return (
     <VStack justify="left" alignItems="flex-start">
       {dragAndDrop && (
         <Flex flexDir="column" cursor="pointer" className="container" {...getRootProps({ style })}>
           <input type="file" {...getInputProps()} />
-          <Text fontSize="md" color={setColor()}>
-            {dragMessage}
-          </Text>
+          <Text fontSize="md">{dragMessage}</Text>
         </Flex>
       )}
 
