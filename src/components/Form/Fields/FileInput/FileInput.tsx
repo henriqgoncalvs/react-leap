@@ -38,7 +38,6 @@ export const FileInput = ({
   rejectStyle = reject,
 }: FileInputProps) => {
   const [files, setFiles] = useState<any>([]);
-
   const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } = useDropzone({
     accept: acceptFiles,
     maxFiles: maxFiles,
