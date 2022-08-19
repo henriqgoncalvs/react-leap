@@ -20,6 +20,8 @@ export interface CarouselProps<T> {
   [x: string]: any;
 }
 
+export let test: string = 0
+
 export const Carousel = <T extends unknown>({
   data,
   columns = 3,
