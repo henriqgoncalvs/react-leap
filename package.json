@@ -61,7 +61,7 @@
     "start:cli": "cross-env BROWSER=none craco start",
     "eject": "react-scripts eject",
     "husky:postinstall": "husky install",
-    "lint": "eslint --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
+    "lint": "eslint --ext .ts,.tsx ./src --ignore-path .gitignore",
     "lint:fix": "eslint --fix --ext .js,.ts,.tsx ./src --ignore-path .gitignore",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
     "format": "yarn prettier -- --write",
