@@ -1,8 +1,4 @@
-import {
-  Input,
-  InputGroup,
-  InputProps,
-} from '@chakra-ui/react';
+import { Input, InputGroup, InputProps } from '@chakra-ui/react';
 import { FieldProps } from 'formik';
 import InputMask, { Props as ReactInputMaskProps } from 'react-input-mask';
 
@@ -19,11 +15,11 @@ export const TextInputMask = ({
   placeholder,
   onChange,
   field,
-  meta,
   form,
   ...restProps
 }: TextInputMaskProps) => {
   const { name, value } = field;
+
   const { setFieldValue } = form;
 
   return (
