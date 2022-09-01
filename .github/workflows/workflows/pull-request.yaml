@@ -1,0 +1,94 @@
+name: CI/CD - Pull Request - Pipeline
+
+on:
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  continuous-deployment:
+    runs-on: ubuntu-latest
+
+   # Here will be the envs of your project
+    env:
+      REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+      REACT_APP_MOCK_API_URL: ${{ secrets.REACT_APP_API_MOCKING }}
+      REACT_APP_API_MOCKING: ${{ secrets.REACT_APP_API_MOCKING }}
+      TSC_COMPILE_ON_ERROR: ${{ secrets.TSC_COMPILE_ON_ERROR }}
+      ESLINT_NO_DEV_ERRORS: ${{ secrets.ESLINT_NO_DEV_ERRORS }}
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_S3_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_S3_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_S3_REGION }}
+
+      - name: Repository Name
+        run: echo ${{ github.repository }}
+
+      - name: Get bucket name
+        id: get-bucket-name
+        run: echo "::set-output name=name::$(echo ${{ github.repository }} | sed 's/loomi\///g')-preview-${{ github.event.pull_request.number }}"
+
+      - name: S3 Search
+        id: s3-search-bucket
+        run: echo "::set-output name=code::$(aws s3 ls s3://${{ steps.get-bucket-name.outputs.name }} || echo $?)"
+
+      - name: Config bucket
+        if: contains(steps.s3-search-bucket.outputs.code, '25')
+        run: |
+          aws s3 mb s3://${{ steps.get-bucket-name.outputs.name }}
+          aws s3 website s3://${{ steps.get-bucket-name.outputs.name }}/ --index-document index.html --error-document index.html
+
+          policy='{"Version":"2012-10-17","Statement":[{"Sid":"AddPerm","Effect":"Allow","Principal":"*","Action":"s3:GetObject","Resource":"arn:aws:s3:::bucket-name/*"}]}'
+          policy_with_bucket_name=$(echo $policy | sed 's/bucket-name/${{ steps.get-bucket-name.outputs.name }}/g')
+
+          aws s3api put-bucket-policy --bucket ${{ steps.get-bucket-name.outputs.name }} --policy $(echo $policy_with_bucket_name)
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            ~/cache
+            !~/cache/exclude
+            **/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Linting
+        run: yarn lint
+
+      - name: Build
+        run: yarn build
+
+      - name: S3 Sync
+        if: success()
+        run: aws s3 sync build/ s3://${{ steps.get-bucket-name.outputs.name }}
+
+      - name: Comment on PR
+        if: success()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'PR Link: http://${{ steps.get-bucket-name.outputs.name }}.s3-website-${{ secrets.AWS_S3_REGION }}.amazonaws.com'
+            })
