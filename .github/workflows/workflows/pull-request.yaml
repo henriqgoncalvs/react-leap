@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
    # Here will be the envs of your project
-   # env:
-      #REACT_APP_API_URL: https://stagingapp.learningvillage.com.br/
-      #REACT_APP_MOCK_API_URL: http://api.mock.reactleap.loomi.com.br/
-      #REACT_APP_API_MOCKING: true
-      #TSC_COMPILE_ON_ERROR: true
-      #ESLINT_NO_DEV_ERRORS: false
+    env:
+      REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+      REACT_APP_MOCK_API_URL: ${{ secrets.REACT_APP_API_MOCKING }}
+      REACT_APP_API_MOCKING: ${{ secrets.REACT_APP_API_MOCKING }}
+      TSC_COMPILE_ON_ERROR: ${{ secrets.TSC_COMPILE_ON_ERROR }}
+      ESLINT_NO_DEV_ERRORS: ${{ secrets.ESLINT_NO_DEV_ERRORS }}
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
