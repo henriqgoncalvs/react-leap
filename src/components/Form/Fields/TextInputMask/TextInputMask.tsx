@@ -1,15 +1,9 @@
 import {
-  IconButton,
   Input,
   InputGroup,
-  InputLeftElement,
   InputProps,
-  InputRightElement,
-  Spinner,
 } from '@chakra-ui/react';
 import { FieldProps } from 'formik';
-import { useState } from 'react';
-import { RiEyeCloseLine, RiEyeLine } from 'react-icons/ri';
 import InputMask, { Props as ReactInputMaskProps } from 'react-input-mask';
 
 export interface TextInputMaskProps
@@ -22,7 +16,6 @@ export interface TextInputMaskProps
 
 export const TextInputMask = ({
   size = 'md',
-  type = 'text',
   placeholder,
   onChange,
   field,
@@ -31,8 +24,7 @@ export const TextInputMask = ({
   ...restProps
 }: TextInputMaskProps) => {
   const { name, value } = field;
-  const { touched } = meta;
-  const { isValidating, isSubmitting, setFieldValue } = form;
+  const { setFieldValue } = form;
 
   return (
     <InputGroup size={size}>
