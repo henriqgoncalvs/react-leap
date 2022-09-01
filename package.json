@@ -57,7 +57,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "GENERATE_SOURCEMAP=false craco build",
     "start:cli": "cross-env BROWSER=none craco start",
     "eject": "react-scripts eject",
     "husky:postinstall": "husky install",
