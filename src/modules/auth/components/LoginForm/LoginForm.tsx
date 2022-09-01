@@ -28,7 +28,7 @@ export const LoginForm = ({ onSuccess, onError }: LoginFormProps) => {
           await login(values);
           onSuccess();
         } catch (err: any) {
-          onError(err.response.data.message);
+          onError(err.response?.data?.message || 'Erro ao logar');
         }
       }}
       validationSchema={schema}

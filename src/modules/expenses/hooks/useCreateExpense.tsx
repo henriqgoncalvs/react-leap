@@ -20,10 +20,10 @@ export const useCreateExpense = ({ onClose, config }: UseCreateExpenseOptions) =
     onMutate: async (newExpense: CreateExpenseOptions) => {
       await queryClient.cancelQueries('expenses');
 
-      const previousExpenses = queryClient.getQueryData<Expense[]>('expenses');
+      const previousExpenses: any = queryClient.getQueryData<Expense[]>('expenses');
 
       queryClient.setQueryData('expenses', [
-        ...(previousExpenses || []),
+        ...(previousExpenses?.data || []),
         { ...newExpense.data, createdAt: dayjs().toISOString() },
       ]);
 

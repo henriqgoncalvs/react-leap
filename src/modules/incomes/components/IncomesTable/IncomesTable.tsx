@@ -3,15 +3,27 @@ import dayjs from 'dayjs';
 import { useMemo } from 'react';
 import { BsFillArchiveFill } from 'react-icons/bs';
 
-import { useIncomes } from '../../hooks/useIncomes';
+import { InfiniteScroll, useInfiniteScroll } from '@/components/common/InfiniteScroll';
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableHeaderRows,
+  TableBody,
+  TableBodyRows,
+} from '@/components/common/Table/TableCompound';
+
+import { getIncomes } from '../../api';
+import { Income } from '../../types';
 import { parseIncomeSourceLabel } from '../../utils';
 
-import { Table } from './Table';
-
 export const IncomesTable = () => {
-  const incomesQuery = useIncomes({});
-
-  const data = useMemo(() => incomesQuery?.data?.map((income) => income), [incomesQuery.data]);
+  const { onEndReached, data, isLoading, isError } = useInfiniteScroll<Income>({
+    take: 5,
+    queryFn: getIncomes,
+    filters: {},
+    queryKey: 'get-incomes-query',
+  });
 
   const columns = useMemo(
     () => [
@@ -42,14 +54,17 @@ export const IncomesTable = () => {
     [],
   );
 
-  if (incomesQuery.isLoading)
+  const sanitizedData = data?.map((expense) => expense);
+
+  if (isError)
     return (
       <Center mt={8}>
-        <Spinner size="lg" />
+        <BsFillArchiveFill />
+        <Text ml={4}>A error has occured</Text>
       </Center>
     );
 
-  if (!incomesQuery?.data?.length)
+  if (!sanitizedData?.length && !isLoading)
     return (
       <Center mt={8}>
         <BsFillArchiveFill />
@@ -57,5 +72,40 @@ export const IncomesTable = () => {
       </Center>
     );
 
-  return <Table data={data || []} columns={columns} mt={8} />;
+  return (
+    <InfiniteScroll onEndReached={onEndReached} threshold={1}>
+      <TableContainer<any>
+        bg="white"
+        overflow="auto"
+        h="13rem"
+        borderRadius="xl"
+        columns={columns}
+        isInfiniteScroll={true}
+        data={sanitizedData || []}
+        isLoading={isLoading}
+      >
+        <Table variant="striped">
+          <TableHead position="sticky" top={0} bg="brand.700" zIndex={1} boxShadow="md">
+            <TableHeaderRows
+              headerCellProps={{
+                color: 'white',
+                textTransform: 'none',
+                py: 3,
+                fontWeight: '500',
+                fontSize: '1rem',
+              }}
+            />
+          </TableHead>
+          <TableBody>
+            <TableBodyRows />
+          </TableBody>
+        </Table>
+        {isLoading && (
+          <Center w="100%" mt={8}>
+            <Spinner size="lg" />
+          </Center>
+        )}
+      </TableContainer>
+    </InfiniteScroll>
+  );
 };

@@ -30,4 +30,4 @@ module.exports = {
       templateFile: 'templates/component/component.stories.tsx.hbs',
     },
   ],
-}
+};

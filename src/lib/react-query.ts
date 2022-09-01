@@ -11,12 +11,11 @@ const queryConfig: DefaultOptions = {
 
 export const queryClient = new QueryClient({ defaultOptions: queryConfig });
 
-export type QueryConfig<FetcherFnType extends (...args: any) => any> = UseQueryOptions<
-  Awaited<ReturnType<FetcherFnType>>
->;
+export type QueryConfig<FetcherFnType extends (...args: any) => any> =
+  UseQueryOptions<FetcherFnType>;
 
 export type MutationConfig<FetcherFnType extends (...args: any) => any> = UseMutationOptions<
-  Awaited<ReturnType<FetcherFnType>>,
+  any,
   AxiosError,
   Parameters<FetcherFnType>[0]
 >;
