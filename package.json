@@ -70,7 +70,7 @@
     "check-format": "npm run prettier -- --list-different",
     "validate-and-build": "npm-run-all --parallel check-types check-format lint build",
     "validate": "npm-run-all --parallel check-types && yarn lint",
-    "generate": "yarn plop --plopfile generators/plopfile.js",
+    "plop": "plop",
     "commit": "commit"
   },
   "browserslist": {

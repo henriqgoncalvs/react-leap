@@ -1,0 +1,33 @@
+import axios from '@/lib/axios';
+
+import {{properCase module}} from '../types';
+
+import {
+  Get{{camelCase module}}Options,
+  Create{{camelCase module}}Options,
+  Update{{camelCase module}}Options,
+  Delete{{camelCase module}}Options,
+  Get{{camelCase module}} ,
+} from './types';
+
+export const get{{ProperCase module}}s = (params: Get{{properCase module}}Options): Promise<{{properCase module}}[]> => {
+
+  return axios.authorized().get(`/{{lowerCase module}}`, { params });
+};
+
+export const get{{ProperCase module}} = ({ id }: Get{{properCase module}} ): Promise<{{properCase module}}> => {
+  return axios.authorized().get(`/{{lowerCase module}}/${id}`);
+};
+
+export const create{{ProperCase module}} = ({ data }: Create{{properCase module}}Options): Promise<{{properCase module}}> => {
+  return axios.authorized().post(`/{{lowerCase module}}`, data);
+};
+
+export const update{{ProperCase module}} = ({ id, data }: Update{{properCase module}}Options): Promise<{{properCase module}}> => {
+  return axios.authorized().patch(`/{{lowerCase module}}/${id}`, data);
+};
+
+export const delete{{ProperCase module}} = ({ id }: Delete{{properCase module}}Options) => {
+  return axios.authorized().patch(`/{{lowerCase module}}/${id}`);
+};
+
