@@ -1,0 +1,14 @@
+import { Route, Routes } from 'react-router-dom';
+
+import { Error404 } from '@/errors';
+
+import { {{properCase module}}Page } from '../pages';
+
+export const {{properCase module}}Routes = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<{{properCase module}}Page />} />
+      <Route path="*" element={<Error404 />} />
+    </Routes>
+  );
+};

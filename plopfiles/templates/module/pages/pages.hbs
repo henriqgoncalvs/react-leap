@@ -1,8 +1,8 @@
 
 import { Page } from '@/components/Page';
-
-export const {{properCase module}}: React.FC = () => {
-  return (
-    <Page title="{{properCase module}}"></Page>
-  );
+/*
+ * Always leave the <Pages/> component wrapping
+*/
+export const {{properCase module}}Page: React.FC = () => {
+  return <Page title="{{properCase module}}"></Page>;
 };

@@ -2,7 +2,7 @@
 const folderGenerator = {
   type: 'add',
   path: './src/modules/{{camelCase module}}/components/.gitkeep',
-  templateFile: './plopfiles/templates/module/components/default-component-folder-generator.hbs',
+  templateFile: './plopfiles/templates/module/components/.gitkeep.hbs',
 };
 
 

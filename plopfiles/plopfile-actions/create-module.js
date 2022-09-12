@@ -10,12 +10,24 @@ const {
 const {
   hooksFolderGenerator,
 } = require('../generators/module/hooks/default-hooks-folder-generator');
+const {
+  pageFolderGenerator,
+} = require('../generators/module/pages/default-pages-generator');
+const { routesGenerator } = require('../generators/module/routes/default-routes-generator');
+const { typesFileGenerator } = require('../generators/module/types/default-types-generator');
+const { indexFileGenerator } = require('../generators/module/default-index-generator');
+const { utilsFolderGenerator } = require('../generators/module/utils/default-utils-folder-generator');
 
 const createModule = [
   ...apiGenerator,
   ...componentFolderGenerator,
   ...assetsFolderGenerator,
   ...hooksFolderGenerator,
+  ...pageFolderGenerator,
+  ...routesGenerator,
+  ...typesFileGenerator,
+  ...indexFileGenerator,
+  ...utilsFolderGenerator,
 ];
 
 module.exports = {

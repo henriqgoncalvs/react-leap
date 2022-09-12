@@ -1,15 +1,15 @@
 /* eslint-disable no-undef */
+const pageGenerator = {
+  type: 'add',
+  path: './src/modules/{{camelCase module}}/pages/{{properCase module}}Page.tsx',
+  templateFile: './plopfiles/templates/module/pages/pages.hbs',
+};
 const indexGenerator = {
   type: 'add',
-  path: './src/modules/{{camelCase module}}/api/index.ts',
-  templateFile: './plopfiles/templates/module/api/api-index.hbs',
-};
-const typesGenerator = {
-  type: 'add',
-  path: './src/modules/{{camelCase module}}/api/types.ts',
-  templateFile: './plopfiles/templates/module/api/api-types.hbs',
+  path: './src/modules/{{camelCase module}}/pages/index.ts',
+  templateFile: './plopfiles/templates/module/pages/pages-index.hbs',
 };
 
-const apiGenerator = [indexGenerator, typesGenerator];
+const pageFolderGenerator = [indexGenerator, pageGenerator];
 
-module.exports = { apiGenerator };
+module.exports = { pageFolderGenerator };

@@ -1,1 +1,18 @@
-export type {{properCase module}} = unknown;
+
+export type Get{{camelCase module}}OptionsTypes = {
+  id?: string;
+};
+export type  Create{{camelCase module}}OptionsTypes = {
+  data: unknown;
+};
+export type  Update{{camelCase module}}OptionsTypes = {
+  id?: string;
+  data: unknown;
+};
+export type  Delete{{camelCase module}}OptionsTypes = {
+  id: string;
+};
+export type  Get{{camelCase module}}Types = unknown;
+export type  Create{{camelCase module}}Types = unknown;
+export type  Update{{camelCase module}}Types = unknown;
+

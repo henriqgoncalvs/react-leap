@@ -1,33 +1,32 @@
 import axios from '@/lib/axios';
-
-import {{properCase module}} from '../types';
-
 import {
-  Get{{camelCase module}}Options,
-  Create{{camelCase module}}Options,
-  Update{{camelCase module}}Options,
-  Delete{{camelCase module}}Options,
-  Get{{camelCase module}} ,
+  Get{{camelCase module}}OptionsTypes,
+  Create{{camelCase module}}OptionsTypes,
+  Update{{camelCase module}}OptionsTypes,
+  Delete{{camelCase module}}OptionsTypes,
+  Get{{camelCase module}},
+  Create{{camelCase module}},
+  Update{{camelCase module}},
 } from './types';
 
-export const get{{ProperCase module}}s = (params: Get{{properCase module}}Options): Promise<{{properCase module}}[]> => {
+export const get{{properCase module}}s = (params: Get{{properCase module}}OptionsTypes): Promise<Get{{properCase module}}Types[]> => {
 
   return axios.authorized().get(`/{{lowerCase module}}`, { params });
 };
 
-export const get{{ProperCase module}} = ({ id }: Get{{properCase module}} ): Promise<{{properCase module}}> => {
+export const get{{properCase module}} = ({ id }: Get{{properCase module}} ): Promise<Get{{properCase module}}Types> => {
   return axios.authorized().get(`/{{lowerCase module}}/${id}`);
 };
 
-export const create{{ProperCase module}} = ({ data }: Create{{properCase module}}Options): Promise<{{properCase module}}> => {
+export const create{{properCase module}} = ({ data }: Create{{properCase module}}OptionsTypes): Promise<Create{{properCase module}}Types> => {
   return axios.authorized().post(`/{{lowerCase module}}`, data);
 };
 
-export const update{{ProperCase module}} = ({ id, data }: Update{{properCase module}}Options): Promise<{{properCase module}}> => {
+export const update{{properCase module}} = ({ id, data }: Update{{properCase module}}OptionsTypes): Promise<Update{{properCase module}}Types> => {
   return axios.authorized().patch(`/{{lowerCase module}}/${id}`, data);
 };
 
-export const delete{{ProperCase module}} = ({ id }: Delete{{properCase module}}Options) => {
+export const delete{{properCase module}} = ({ id }: Delete{{properCase module}}OptionsTypes) => {
   return axios.authorized().patch(`/{{lowerCase module}}/${id}`);
 };
 
