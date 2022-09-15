@@ -5,7 +5,6 @@ const routeGenerator = {
   templateFile: './plopfiles/templates/module/routes/routes-index.hbs',
 };
 
-
 const routesGenerator = [routeGenerator];
 
 module.exports = { routesGenerator };

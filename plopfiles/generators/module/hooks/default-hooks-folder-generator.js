@@ -5,7 +5,6 @@ const folderGenerator = {
   templateFile: './plopfiles/templates/module/hooks/.gitkeep.hbs',
 };
 
-
 const hooksFolderGenerator = [folderGenerator];
 
 module.exports = { hooksFolderGenerator };

@@ -22,4 +22,4 @@ module.exports = (plop) => {
     prompts: [commandWithInputModule],
     actions: createModule,
   });
-}
+};

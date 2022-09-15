@@ -5,7 +5,6 @@ const typesGenerator = {
   templateFile: './plopfiles/templates/module/types/types-index.ts.hbs',
 };
 
-
 const typesFileGenerator = [typesGenerator];
 
 module.exports = { typesFileGenerator };

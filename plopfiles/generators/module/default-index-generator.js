@@ -5,7 +5,6 @@ const indexGenerator = {
   templateFile: './plopfiles/templates/module/index.ts.hbs',
 };
 
-
 const indexFileGenerator = [indexGenerator];
 
 module.exports = { indexFileGenerator };
