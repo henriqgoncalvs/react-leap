@@ -69,9 +69,10 @@
     "check-types": "tsc --project tsconfig.json --pretty --noEmit",
     "check-format": "npm run prettier -- --list-different",
     "validate-and-build": "npm-run-all --parallel check-types check-format lint build",
-    "validate": "npm-run-all --parallel check-types && yarn lint",
     "generate": "yarn plop --plopfile generators/plopfile.js",
-    "commit": "commit"
+    "commit": "commit",
+    "validate": "npm-run-all --parallel check-types && yarn lint && yarn prettier",
+    "husky-init": "husky install && husky set .husky/pre-push \"yarn validate\""
   },
   "browserslist": {
     "production": [
