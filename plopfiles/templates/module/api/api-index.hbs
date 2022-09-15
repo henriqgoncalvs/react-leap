@@ -1,12 +1,12 @@
 import axios from '@/lib/axios';
 import {
-  Get{{camelCase module}}OptionsTypes,
-  Create{{camelCase module}}OptionsTypes,
-  Update{{camelCase module}}OptionsTypes,
-  Delete{{camelCase module}}OptionsTypes,
-  Get{{camelCase module}},
-  Create{{camelCase module}},
-  Update{{camelCase module}},
+  Get{{properCase module}}OptionsTypes,
+  Create{{properCase module}}OptionsTypes,
+  Update{{properCase module}}OptionsTypes,
+  Delete{{properCase module}}OptionsTypes,
+  Get{{properCase module}}Types,
+  Create{{properCase module}}Types,
+  Update{{properCase module}}Types,
 } from './types';
 
 export const get{{properCase module}}s = (params: Get{{properCase module}}OptionsTypes): Promise<Get{{properCase module}}Types[]> => {
@@ -14,7 +14,7 @@ export const get{{properCase module}}s = (params: Get{{properCase module}}Option
   return axios.authorized().get(`/{{lowerCase module}}`, { params });
 };
 
-export const get{{properCase module}} = ({ id }: Get{{properCase module}} ): Promise<Get{{properCase module}}Types> => {
+export const get{{properCase module}} = ({ id }: Get{{properCase module}}OptionsTypes ): Promise<Get{{properCase module}}Types> => {
   return axios.authorized().get(`/{{lowerCase module}}/${id}`);
 };
 
