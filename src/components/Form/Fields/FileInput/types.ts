@@ -1,5 +1,6 @@
 import { ChakraProps } from '@chakra-ui/react';
 import { CSSProperties } from 'react';
+import { DropzoneOptions } from 'react-dropzone';
 import { IconType } from 'react-icons/lib';
 
 export type FileInputProps = {
@@ -10,18 +11,13 @@ export type FileInputProps = {
   buttonMessage?: string;
   filesListTitle?: string;
   filesList?: boolean;
-  maxFiles?: number;
-  acceptFiles?: any;
-  maxSize?: number;
-  minSize?: number;
   removeIcon?: IconType;
   listIcon?: IconType;
-  disabled?: boolean;
   removeAllMessage?: string;
   acceptStyle?: CSSProperties;
   focusedStyle?: CSSProperties;
   rejectStyle?: CSSProperties;
-};
+} & DropzoneOptions;
 
 export type FileListProps = {
   listIcon: IconType;
@@ -31,7 +27,7 @@ export type FileListProps = {
 } & ChakraProps;
 
 export type PreviewFilesProps = {
-  file: { preview: string } & File;
+  file: File & FileProperties;
   thumb: any;
   img: CSSProperties;
   thumbInner: CSSProperties;
@@ -39,3 +35,8 @@ export type PreviewFilesProps = {
   removeFile: (file: File) => void;
   removeIcon: IconType;
 } & ChakraProps;
+
+type FileProperties = {
+  name?: string;
+  preview?: string;
+};

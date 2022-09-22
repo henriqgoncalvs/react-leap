@@ -20,7 +20,7 @@ export const PreviewFiles: React.FC<PreviewFilesProps> = ({
             src={file.preview}
             style={img}
             onLoad={() => {
-              URL.revokeObjectURL(file.preview);
+              URL.revokeObjectURL(file?.preview || '');
             }}
           />
         </Box>

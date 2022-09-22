@@ -3,16 +3,7 @@ import { useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { IoMdCheckmarkCircle, IoMdClose } from 'react-icons/io';
 
-import {
-  accept,
-  baseStyle,
-  focused,
-  img,
-  reject,
-  thumb,
-  thumbInner,
-  thumbsContainer,
-} from './baseStyles';
+import { baseStyle, focused, img, reject, thumb, thumbInner, thumbsContainer } from './baseStyles';
 import { FileListItem } from './FileListItem';
 import { PreviewFiles } from './PreviewFiles';
 import { FileInputProps } from './types';
@@ -26,7 +17,7 @@ export const FileInput = ({
   maxFiles,
   maxSize,
   minSize,
-  acceptFiles = { 'image/*': [], 'video/*': [], 'application/pdf': [] },
+  accept = { 'image/*': [], 'video/*': [], 'application/pdf': [] },
   removeIcon = IoMdClose,
   listIcon = IoMdCheckmarkCircle,
   removeAllMessage = 'Remove all files',
@@ -37,21 +28,20 @@ export const FileInput = ({
   focusedStyle = focused,
   rejectStyle = reject,
 }: FileInputProps) => {
-  const [files, setFiles] = useState<any>([]);
+  const [files, setFiles] = useState<File[]>([]);
   const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } = useDropzone({
-    accept: acceptFiles,
-    maxFiles: maxFiles,
-    maxSize: maxSize,
-    minSize: minSize,
-    disabled: disabled,
+    accept,
+    maxFiles,
+    maxSize,
+    minSize,
+    disabled,
     onDrop: (acceptedFiles) => {
-      setFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          }),
-        ),
+      acceptedFiles.map((file: File) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        }),
       );
+      setFiles(files.concat(acceptedFiles));
     },
   });
 
@@ -71,7 +61,7 @@ export const FileInput = ({
     />
   ));
 
-  const previewFiles = files.map((file) => (
+  const previewFiles = files.map((file: File) => (
     <PreviewFiles
       file={file}
       filesList={filesList}
@@ -132,7 +122,7 @@ export const FileInput = ({
                     </Button>
                   </Tooltip>
                 ) : (
-                  ''
+                  <></>
                 )}
               </Flex>
               <List>{acceptedFileItems}</List>
