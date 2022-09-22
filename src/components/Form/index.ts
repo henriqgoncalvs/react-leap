@@ -12,4 +12,3 @@ export * from './Fields/Slider';
 export * from './Fields/Switch';
 export * from './Fields/TextArea';
 export * from './Fields/TextInput';
-export * from './Fields/TextInputMask';
