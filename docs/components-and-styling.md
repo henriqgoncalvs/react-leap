@@ -28,19 +28,3 @@ If you need a realtime editor for Chakra Theme, you can enable the [HyperTheme E
 Chakra allows us to do a global theme configuration extremely easily. You can find this setting [here](../src/styles).
 
 We use a separation based on Chakra documentation and [Design System](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969).
-
-## Storybook
-
-We use [Storybook](https://storybook.js.org/) for documenting and testing components in isolation. You can check the storybook by running
-
-```
-yarn storybook
-```
-
-or
-
-```
-npm run storybook
-```
-
-[Storybook Story Example Code](../src/components/Form/Form.stories.tsx)
