@@ -24,10 +24,5 @@ module.exports = {
       path: '../src/components/{{folder}}/{{properCase name}}/{{properCase name}}.tsx',
       templateFile: 'templates/component/component.tsx.hbs',
     },
-    {
-      type: 'add',
-      path: '../src/components/{{folder}}/{{properCase name}}/{{properCase name}}.stories.tsx',
-      templateFile: 'templates/component/component.stories.tsx.hbs',
-    },
   ],
 };
