@@ -2,15 +2,9 @@
 
 # React Leap 🚀👨‍🚀
 
-The project that's one small step for developers, one giant _leap🚀_ for Loomi.
-
-<p style="font-size: 13px;font-style: italic;">Powered by <a href="https://github.com/loomi">Loomi</a> Developers.</p>
-
 ## Introduction
 
-At Loomi we are always experimenting new technologies, libraries, architectures and so on. This makes our projects always a total surprise, and that's awesome, but when the number of projects starts to grow, it becomes more difficult to maintain.
-
-So we decided to create an example project that implements the best tools we use to build robust, scalable and production ready applications.
+After building many applications, I decided to create an example project that implements the best tools I use to build robust, scalable and production ready applications.
 
 The goal of this repo is to serve as a collection of good practices when developing React applications. It is supposed to showcase solving most of the real-world problems of an application in a practical way and help developers writing better applications.
 
