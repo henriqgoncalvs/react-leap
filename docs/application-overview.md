@@ -14,7 +14,7 @@ Prerequisites:
 To set up the app execute the following commands.
 
 ```bash
-git clone https://github.com/loomi/react-leap
+git clone https://github.com/henriqgoncalvs/react-leap
 cd react-leap
 cp .env.example .env
 yarn

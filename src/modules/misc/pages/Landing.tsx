@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import { Button, Heading, Text, Image, VisuallyHidden, Box, chakra } from '@chakra-ui/react';
+import { Button, Heading, Image, VisuallyHidden, Box, chakra } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import Parallax from 'parallax-js';
 import { useEffect, useRef } from 'react';
@@ -7,12 +7,12 @@ import { AiFillGithub } from 'react-icons/ai';
 import { BsArrowRightShort } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
-import detailAstronaut from '@/assets/detail-astronaut.png';
-import detailBallBlack from '@/assets/detail-ball-black.png';
-import detailBallPink from '@/assets/detail-ball-pink.png';
+import detail1 from '@/assets/detail-1.png';
+import detail2 from '@/assets/detail-2.png';
+import detail3 from '@/assets/detail-3.png';
+import detail4 from '@/assets/detail-4.png';
 import landingBg from '@/assets/landing-bg.png';
 import reactLeapLetter from '@/assets/react-leap-letter.png';
-import { Logo } from '@/components/common/Logo';
 import { Head } from '@/components/Head';
 import * as LC from '@/components/LC';
 
@@ -68,21 +68,10 @@ export const Landing = () => {
               lineHeight="shorter"
               letterSpacing={{ base: 'normal', md: 'tight' }}
             >
-              The project that&apos;s one small step for developers, one giant{' '}
-              <Text
-                display="inline"
-                w="full"
-                bgClip="text"
-                bgGradient="linear(to-r, #C6009E, #530099)"
-                fontWeight="extrabold"
-                fontStyle="italic"
-              >
-                leap
-              </Text>{' '}
+              Build your next great product{' '}
               <chakra.span role="img" aria-labelledby="Rocket Emoji" display="inline">
                 🚀
-              </chakra.span>{' '}
-              for Loomi.
+              </chakra.span>
             </Heading>
             <LC.Horizontal mt={20} spacing={20} center>
               <Button
@@ -102,7 +91,7 @@ export const Landing = () => {
               </Button>
               <Button
                 as="a"
-                href="https://github.com/loomi/react-leap"
+                href="https://github.com/henriqgoncalvs/react-leap"
                 display="inline-flex"
                 alignItems="center"
                 justifyContent="center"
@@ -122,7 +111,7 @@ export const Landing = () => {
         <Box w="100%" h="100vh" position="absolute" ref={sceneEl} overflow="hidden">
           <Image
             data-depth="1"
-            src={detailBallBlack}
+            src={detail2}
             maxW="48"
             pos="absolute"
             css={css`
@@ -133,19 +122,19 @@ export const Landing = () => {
           />
           <Image
             data-depth=".3"
-            src={detailBallPink}
-            maxW="lg"
+            src={detail3}
+            maxW="52"
             pos="absolute"
             css={css`
-              top: -10% !important;
-              left: 0% !important;
+              top: 10% !important;
+              left: 10% !important;
               bottom: auto !important;
               right: auto !important;
             `}
           />
           <Image
             data-depth="-0.8"
-            src={detailBallPink}
+            src={detail4}
             maxW="52"
             pos="absolute"
             css={css`
@@ -156,34 +145,19 @@ export const Landing = () => {
             `}
           />
           <Image
-            data-depth=".1"
-            src={detailAstronaut}
+            data-depth=".2"
+            src={detail1}
             maxW="xs"
             pos="absolute"
             css={css`
-              bottom: 30px !important;
-              right: 0 !important;
+              bottom: 10% !important;
+              right: 12% !important;
               top: auto !important;
               left: auto !important;
             `}
           />
         </Box>
       </LC.Vertical>
-
-      <Text
-        color="white"
-        fontWeight="medium"
-        pos="absolute"
-        bottom="20px"
-        left="50%"
-        transform="translateX(-50%)"
-      >
-        Made with love{' '}
-        <chakra.span role="img" aria-labelledby="Rocket Emoji" display="inline">
-          💜
-        </chakra.span>{' '}
-        by <Logo maxW="12" display="inline" /> developers.
-      </Text>
     </>
   );
 };
